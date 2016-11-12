@@ -38,5 +38,5 @@ public class ViewerDetailControler implements Initializable {
     private void setString() {
 
     }
-    private void
+    //private void
 }

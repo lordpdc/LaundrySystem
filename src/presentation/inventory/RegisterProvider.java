@@ -1,5 +1,6 @@
 package presentation.inventory;
 
+import business.entities.Supplier;
 import data.dao.ProviderDao;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -43,7 +44,7 @@ public class RegisterProvider implements Initializable {
     }
 
     private void save(String name, String address, String phone, String email){
-        Provider provider = new Provider(name,address,phone,email);
+        Supplier provider = new Supplier(name,address,phone,email);
         System.out.println(providerDao.create(provider));
         mainCtrl.updateObsList(provider);
     }
