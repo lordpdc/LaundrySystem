@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 
 import java.io.IOException;
 
@@ -13,6 +14,7 @@ import java.io.IOException;
 public class TabContainer {
     private Scene MainContanier;
     private final Tab supplierTab = new Tab();
+    TabPane tabPane;
 
     public TabContainer(){
         FXMLLoader loader = new FXMLLoader();
@@ -30,6 +32,15 @@ public class TabContainer {
     }
 
     private void addTabs(){
+        tabPane = (TabPane) MainContanier.lookup("#tabPanel");
+
+        Tab genTab = null;
+        try {
+            genTab = (Tab) new FXMLLoader().load(getClass().getResource("GenericTab.fxml").openStream());
+            tabPane.getTabs().add(genTab);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 }

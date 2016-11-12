@@ -8,7 +8,6 @@ import javafx.scene.control.*;
  * Created by raoman on 12/11/2016.
  */
 public class CustomerTab {
-
     @FXML private Tab genericTab;
     @FXML private Button createButton;
     @FXML private Button editButton;
@@ -20,8 +19,8 @@ public class CustomerTab {
 
 
     public void CustomerTab(){
+        System.out.println("CREANDO CUSTOMERTAB");
         setText();
-
     }
 
     private void setText(){
@@ -33,7 +32,9 @@ public class CustomerTab {
         searchField.setText(CustomerStringViewer.searchValues);
     }
 
-
+    public Tab getTab(){
+        return genericTab;
+    }
 
 
 }
