@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="614.0" prefWidth="880.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.inventory.Inventory">
+  <tabs>
+    <Tab text="Proveedores">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0">
+               <children>
+                  <Button layoutX="806.0" layoutY="14.0" mnemonicParsing="false" text="buscar" />
+                  <TextField fx:id="providerSearchField" layoutX="491.0" layoutY="14.0" prefHeight="27.0" prefWidth="303.0" promptText="id, nombre" />
+                  <TableView fx:id="providersTable" layoutX="13.0" layoutY="50.0" prefHeight="520.0" prefWidth="875.0">
+                    <columns>
+                      <TableColumn id="provider_id" fx:id="providerId" prefWidth="36.0" text="id" />
+                      <TableColumn id="provider_name" fx:id="providerName" prefWidth="167.0" text="nombre" />
+                        <TableColumn id="provider_phone" fx:id="providerPhone" prefWidth="104.0" text="teléfono" />
+                        <TableColumn id="provider_address" fx:id="providerAddress" prefWidth="351.0" text="dirección" />
+                        <TableColumn fx:id="providerEmail" prefWidth="195.0" text="email" />
+                    </columns>
+                  </TableView>
+                  <Button fx:id="registerButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="registrar" />
+               </children>
+        </AnchorPane>
+      </content>
+         <contextMenu>
+            <ContextMenu>
+              <items>
+                <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+              </items>
+            </ContextMenu>
+         </contextMenu>
+    </Tab>
+      <Tab text="Facturas">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView layoutX="15.0" layoutY="50.0" prefHeight="518.0" prefWidth="862.0">
+                    <columns>
+                      <TableColumn prefWidth="41.0" text="id" />
+                      <TableColumn prefWidth="366.0" text="proveedor" />
+                        <TableColumn prefWidth="261.0" text="fecha emisión" />
+                        <TableColumn minWidth="3.0" prefWidth="172.0" text="total" />
+                    </columns>
+                  </TableView>
+                  <Button fx:id="captureInvoice" layoutX="15.0" layoutY="14.0" mnemonicParsing="false" text="facturar" />
+                  <TextField layoutX="490.0" layoutY="14.0" prefHeight="27.0" prefWidth="308.0" promptText="proveedor, fecha" />
+                  <Button layoutX="806.0" layoutY="14.0" mnemonicParsing="false" text="buscar" />
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+    <Tab text="Insumos">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="registerConsumable" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="registrar" />
+                  <Button layoutX="806.0" layoutY="14.0" mnemonicParsing="false" text="buscar" />
+                  <TextField layoutX="493.0" layoutY="14.0" prefHeight="27.0" prefWidth="305.0" promptText="id, nombre" />
+                  <TableView layoutX="14.0" layoutY="50.0" prefHeight="520.0" prefWidth="862.0">
+                    <columns>
+                      <TableColumn prefWidth="49.0" text="id" />
+                      <TableColumn prefWidth="155.0" text="nombre" />
+                        <TableColumn prefWidth="277.0" text="descripción" />
+                        <TableColumn prefWidth="91.0" text="precio" />
+                    </columns>
+                  </TableView>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+  </tabs>
+</TabPane>

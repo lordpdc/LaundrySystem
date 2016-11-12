@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<<<<<<< HEAD:src/presentation/inventory/ProviderRegistration.fxml
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="276.0" prefWidth="516.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.inventory.ProviderRegistration">
+=======
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="276.0" prefWidth="516.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.inventory.RegisterProvider">
+>>>>>>> Pinkus96-upload-1:src/presentation/inventory/RegisterProvider.fxml
+   <children>
+      <TextField fx:id="nameField" layoutX="109.0" layoutY="36.0" prefHeight="22.0" prefWidth="298.0" />
+      <TextField fx:id="addressField" layoutX="109.0" layoutY="76.0" prefHeight="27.0" prefWidth="382.0" />
+      <TextField fx:id="phoneField" layoutX="109.0" layoutY="117.0" prefHeight="27.0" prefWidth="298.0" />
+      <TextField fx:id="emailField" layoutX="109.0" layoutY="159.0" prefHeight="22.0" prefWidth="298.0" />
+      <Label layoutX="53.0" layoutY="41.0" text="Nombre" />
+      <Label layoutX="41.0" layoutY="81.0" text="Dirección" />
+      <Label layoutX="57.0" layoutY="122.0" text="Téfono" />
+      <Label layoutX="59.0" layoutY="164.0" text="E-mail" />
+      <Button fx:id="saveButton" layoutX="426.0" layoutY="225.0" mnemonicParsing="false" text="Guardar" />
+      <Button fx:id="cancelButton" layoutX="343.0" layoutY="225.0" mnemonicParsing="false" text="Cancelar" />
+      <Label fx:id="warningLabel" layoutX="23.0" layoutY="217.0" prefHeight="17.0" prefWidth="272.0" textFill="#b30006" />
+   </children>
+</Pane>
