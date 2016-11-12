@@ -22,7 +22,6 @@ public class WindowManager {
         setSystemProperties();
     }
 
-
     public void showInventory(){
 
         inventory = new JFrame("Inventario");
@@ -37,17 +36,7 @@ public class WindowManager {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                try {
-                    inventory.setVisible(true);
-                    FXMLLoader loader = new FXMLLoader();
-                    Parent root = loader.load(getClass().getResource("../inventory/Inventory.fxml").openStream());
-                    Scene scene = new Scene(root);
-                    fxPanel.setScene(scene);
-
-                    //mainCtrl = loader.getController();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                    fxPanel.setScene(new TabContainer().getMainContanier());
             }
         });
 
