@@ -5,23 +5,38 @@
  */
 package business.Administrator;
 
-import data.dao.Dao;
+import data.dao.GenericDao;
+import java.util.List;
 
 /**
  *
  * @author Luis
  */
 public abstract class Administrator {
-    protected Dao element;
+    private GenericDao accessData;
 
-    public abstract void create(Object entiti);
-    
-    public abstract void delete(Object entiti);
-    
-    public abstract void update(Object entiti);
-    
-    public abstract void read(int id);
-    
-    public abstract void readAll();
+    public void addNew(Object entiti){
+        accessData.create(entiti);
+    }
+
+    public void remove(int id){
+        this.accessData.delete(id);
+    }
+
+    public void update(int id, Object entiti){
+        this.accessData.update(id, entiti);
+    }
+
+    public Object search(int id){
+        return accessData.read(id);
+    }
+
+    public List readAll(){
+        return accessData.readAll();
+    }
+
+    protected void setAccessData(GenericDao Data){
+        this.accessData = Data;
+    }
     
 }
