@@ -35,7 +35,6 @@ public class WindowManager {
         inventory.setVisible(true);
 
         Platform.runLater(new Runnable() {
-
             @Override
             public void run() {
                 try {

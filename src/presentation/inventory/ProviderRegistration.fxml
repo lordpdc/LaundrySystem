@@ -4,11 +4,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<<<<<<< HEAD:src/presentation/inventory/ProviderRegistration.fxml
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="276.0" prefWidth="516.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.inventory.ProviderRegistration">
-=======
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="276.0" prefWidth="516.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.inventory.RegisterProvider">
->>>>>>> Pinkus96-upload-1:src/presentation/inventory/RegisterProvider.fxml
    <children>
       <TextField fx:id="nameField" layoutX="109.0" layoutY="36.0" prefHeight="22.0" prefWidth="298.0" />
       <TextField fx:id="addressField" layoutX="109.0" layoutY="76.0" prefHeight="27.0" prefWidth="382.0" />

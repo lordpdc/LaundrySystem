@@ -9,7 +9,7 @@ public class Connector {
     private static String DB_NAME = "laundrysys";
     private static String URL = "jdbc:mysql://localhost:3306/"+ DB_NAME;
     private static String USERNAME = "root";
-    private static String PASSWORD = "";
+    private static String PASSWORD = "juancmonhey";
     private Connection conn = null;
 
     public Connector(){
