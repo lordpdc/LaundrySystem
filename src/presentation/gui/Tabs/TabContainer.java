@@ -32,7 +32,10 @@ public class TabContainer {
     }
 
     private void addTabs(){
-        tabPane = (TabPane) MainContanier.lookup("#tabPanel");
+        CustomerTabAministrator customerTabAministrator=new CustomerTabAministrator();
+
+        tabPane.getTabs().addAll(customerTabAministrator.getTab());
+        /*tabPane = (TabPane) MainContanier.lookup("#tabPanel");
 
         Tab genTab = null;
         try {
@@ -42,6 +45,6 @@ public class TabContainer {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+*/
     }
 }
