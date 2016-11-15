@@ -1,4 +1,6 @@
-package presentation.InvoicePurchaseViews;
+package presentation.gui.DetailsViews;
+
+import presentation.Utilities.StringValuesInvoicePurchaseViewer;
 
 import javax.swing.*;
 
@@ -23,10 +25,10 @@ public class ListInvoicePurchase extends JFrame{
         // TODO: place custom component creation code here
     }
     private void setTextComponents(){
-        lbTitle.setText(StringInvoicePurchase.TITLE);
-        btAdd.setText(StringInvoicePurchase.ADD);
-        btEdit.setText(StringInvoicePurchase.EDIT);
-        btDelete.setText(StringInvoicePurchase.DELETE);
+        lbTitle.setText(StringValuesInvoicePurchaseViewer.TITLE);
+        btAdd.setText(StringValuesInvoicePurchaseViewer.ADD);
+        btEdit.setText(StringValuesInvoicePurchaseViewer.EDIT);
+        btDelete.setText(StringValuesInvoicePurchaseViewer.DELETE);
     }
     private void setCustomPropertyComponent(){
 

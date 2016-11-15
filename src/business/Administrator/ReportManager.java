@@ -5,27 +5,22 @@ import business.utilities.DefaultValues;
 import business.utilities.MsgErrorReport;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 /**
  * Created by raoman on 11/11/2016.
  */
-public class ReportManager {
-    private Date initialDate;
-    private Date finalDate;
-    private Report report;
+public abstract class ReportManager<T> {
+    protected Date initialDate;
+    protected Date finalDate;
+    protected Report report;
+    protected ArrayList<T> data;
 
-    private static ReportManager reportManager;
-
-    public static ReportManager presentManager(){
-        if(reportManager==null){
-            reportManager=new ReportManager();
-        }
-        return reportManager;
-    }
-
-    private void ReportManager(){
-        initialDate= DefaultValues.date();
-        finalDate=DefaultValues.date();
+    public void ReportManager() {
+        initialDate = DefaultValues.DATE;
+        finalDate = DefaultValues.DATE;
+        report = DefaultValues.REPORT;
+        data= DefaultValues.ARRAY_LIST;
     }
 
     public Date getInitialDate() {
@@ -33,43 +28,44 @@ public class ReportManager {
     }
 
     public void setInitialDate(Date initialDate) throws Exception {
-
-        if(isValidInitialDate(initialDate)){
+        if (isValidInitialDate(initialDate)) {
             this.initialDate = initialDate;
-        }
-        else{
+        } else {
             throw new Exception(MsgErrorReport.msgInitialDateInvalid);
         }
-
     }
+
     public Date getFinalDate() {
         return finalDate;
     }
 
-    public void setFinalDate(Date finalDate)  throws Exception{
-        if(isValidFinalDate(finalDate)){
+    public void setFinalDate(Date finalDate) throws Exception {
+        if (isValidFinalDate(finalDate)) {
             this.finalDate = finalDate;
-        }
-        else{
+        } else {
             throw new Exception(MsgErrorReport.msgFinalDateInvalid);
         }
-
     }
-    public Report getReport(){
+
+    public Report getReport() {
         return report;
     }
-    public void generateReport(){
+
+    public void generateReport() {
+        fillData();
+        filterData();
+        fillReport();
+    }
+    abstract void fillData();
+    abstract void filterData();
+    abstract void fillReport();
 
 
+    private boolean isValidInitialDate(Date date) {
+        return date != null && date.before(finalDate);
     }
 
-
-
-
-    private boolean isValidInitialDate(Date date){
-        return date!=null && date.before(finalDate);
-    }
-    private boolean isValidFinalDate(Date date){
-        return date!=null && date.after(initialDate);
+    private boolean isValidFinalDate(Date date) {
+        return date != null && date.after(initialDate);
     }
 }

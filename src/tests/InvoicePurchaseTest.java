@@ -1,6 +1,6 @@
 package tests;
 
-import presentation.InvoicePurchaseViews.ListInvoicePurchase;
+import presentation.gui.DetailsViews.ListInvoicePurchase;
 
 /**
  * Created by raoman on 09/10/2016.
