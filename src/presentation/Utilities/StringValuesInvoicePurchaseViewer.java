@@ -1,9 +1,9 @@
-package presentation.InvoicePurchaseViews;
+package presentation.Utilities;
 
 /**
  * Created by raoman on 09/10/2016.
  */
-public class StringInvoicePurchase {
+public class StringValuesInvoicePurchaseViewer {
     public final static String TITLE=" Facturas de Compra";
     public final static String ADD= "Nueva compra";
     public final static String DELETE="Eliminar Compra";

@@ -1,4 +1,4 @@
-package presentation.gui;
+package presentation.gui.Tabs;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -36,7 +36,8 @@ public class TabContainer {
 
         Tab genTab = null;
         try {
-            genTab = (Tab) new FXMLLoader().load(getClass().getResource("GenericTab.fxml").openStream());
+            genTab = (Tab) new FXMLLoader().load(getClass().getResource("TabDesign.fxml").openStream());
+
             tabPane.getTabs().add(genTab);
         } catch (IOException e) {
             e.printStackTrace();

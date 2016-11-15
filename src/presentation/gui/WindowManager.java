@@ -2,18 +2,9 @@ package presentation.gui;
 
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TabPane;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
+import presentation.gui.Tabs.TabContainer;
 
 import javax.swing.*;
-import java.io.IOException;
 
 public class WindowManager {
     private JFrame inventory;

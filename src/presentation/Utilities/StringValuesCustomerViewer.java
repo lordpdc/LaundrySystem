@@ -1,9 +1,9 @@
-package presentation.gui;
+package presentation.Utilities;
 
 /**
  * Created by raoman on 12/11/2016.
  */
-public class CustomerStringViewer {
+public class StringValuesCustomerViewer {
     public static String title="Cliente";
     public static String newCustomer="Nuevo Cliente";
     public static String deleteCustomer="Borrar Cliente";

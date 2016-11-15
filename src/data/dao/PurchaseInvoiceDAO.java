@@ -7,7 +7,7 @@ import business.entities.PurchaseInvoice;
  */
 
 public class PurchaseInvoiceDAO extends GenericDao<PurchaseInvoice>{
-    private static final String entityClassName = "business.entities.InvoicePurchaseViews";
+    private static final String entityClassName = "business.entities.DetailsViews";
     private static final String tableName = "invoicepurchasetable";
 
     public PurchaseInvoiceDAO(){
