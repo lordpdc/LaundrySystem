@@ -1,6 +1,6 @@
 package presentation.inventory;
 
-import business.entities.Supplier;
+import Business.Entities.Supplier;
 import data.dao.SupplierDao;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;

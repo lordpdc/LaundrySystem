@@ -1,7 +1,7 @@
 package data.dao;
 
 
-import business.entities.Supplier;
+import Business.Entities.Supplier;
 import data.db.Table;
 
 /**

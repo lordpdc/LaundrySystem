@@ -1,6 +1,6 @@
 package presentation.inventory;
 
-import business.entities.Supplier;
+import Business.Entities.Supplier;
 import data.dao.ProviderDao;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

@@ -1,11 +1,12 @@
-package business.Administrator;
+package Business.Administrator;
 
-import business.entities.Report;
-import business.utilities.DefaultValues;
-import business.utilities.MsgErrorReport;
+import Business.Entities.Report;
+import Business.Utilities.DefaultValues;
+import Business.Utilities.MsgErrorReport;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by raoman on 11/11/2016.
@@ -14,13 +15,18 @@ public abstract class ReportManager<T> {
     protected Date initialDate;
     protected Date finalDate;
     protected Report report;
-    protected ArrayList<T> data;
+    protected List< T > data;
 
     public void ReportManager() {
         initialDate = DefaultValues.DATE;
         finalDate = DefaultValues.DATE;
         report = DefaultValues.REPORT;
         data= DefaultValues.ARRAY_LIST;
+    }
+
+    public ReportManager( Date initialDate, Date finalDate ) throws Exception {
+        setInitialDate( initialDate );
+        setFinalDate( finalDate );
     }
 
     public Date getInitialDate() {
@@ -67,5 +73,9 @@ public abstract class ReportManager<T> {
 
     private boolean isValidFinalDate(Date date) {
         return date != null && date.after(initialDate);
+    }
+
+    public boolean isDateWithinPeriod(Date date){
+        return date.before( finalDate )&& date.after( initialDate );
     }
 }

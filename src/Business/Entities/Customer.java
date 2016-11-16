@@ -1,6 +1,6 @@
-package business.entities;
+package Business.Entities;
 
-import business.utilities.DefaultValues;
+import Business.Utilities.DefaultValues;
 
 /**
  * Created by raoman on 21/09/2016.
