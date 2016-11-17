@@ -1,7 +1,7 @@
 package presentation.inventory;
 
 import Business.Entities.Supplier;
-import data.dao.ProviderDao;
+import data.dao.SupplierDao;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -27,7 +27,7 @@ import java.util.*;
  */
 public class Inventory implements Initializable{
 
-    private ProviderDao dao;
+    private SupplierDao dao;
 
     private JFrame registerProvider;
     private JFrame invoiceCaptureF;
@@ -51,7 +51,7 @@ public class Inventory implements Initializable{
 
     public Inventory(){
         System.out.println(this.toString());
-        dao = new ProviderDao();
+        dao = new SupplierDao();
         data = FXCollections.observableArrayList(dao.readAll());
     }
 

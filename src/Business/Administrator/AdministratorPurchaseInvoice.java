@@ -29,10 +29,7 @@ public class AdministratorPurchaseInvoice extends Administrator<PurchaseInvoice>
 
     public List<PurchaseDetails> getDetailPurchase( PurchaseInvoice invoice){
         List<PurchaseDetails> detailsList;
-
-        //**********************falta implementacion de DetailPurchaseDAO
-        Dao accesDetails=new GenericDao("SaleDetails","SaleDetailsTable"  );
-        //**********************falta implementacion de DetailPurchaseDAO
+        PurchaseDetailDAO accesDetails=new PurchaseDetailDAO(  );
 
         detailsList=accesDetails.readAll();
 
