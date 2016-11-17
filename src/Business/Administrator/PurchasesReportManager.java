@@ -12,6 +12,11 @@ import java.util.List;
  */
 public class PurchasesReportManager extends ReportManager<PurchaseInvoice> {
     AdministratorPurchaseInvoice accesData;
+    public PurchasesReportManager(){
+        super();
+        accesData=new AdministratorPurchaseInvoice();
+
+    }
 
     public PurchasesReportManager( Date initialDate, Date finalDate) throws Exception {
         super(initialDate,finalDate);
@@ -37,6 +42,7 @@ public class PurchasesReportManager extends ReportManager<PurchaseInvoice> {
 
     @Override
     void fillReport( ) {
+
 
     }
 }

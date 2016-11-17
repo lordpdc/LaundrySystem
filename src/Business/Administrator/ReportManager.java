@@ -17,7 +17,7 @@ public abstract class ReportManager<T> {
     protected Report report;
     protected List< T > data;
 
-    public void ReportManager() {
+    public ReportManager() {
         initialDate = DefaultValues.DATE;
         finalDate = DefaultValues.DATE;
         report = DefaultValues.REPORT;
