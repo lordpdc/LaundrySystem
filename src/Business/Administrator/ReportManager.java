@@ -1,8 +1,8 @@
-package Business.Administrator;
+package business.Administrator;
 
-import Business.Entities.Report;
-import Business.Utilities.DefaultValues;
-import Business.Utilities.MsgErrorReport;
+import business.entities.Report;
+import business.utilities.DefaultValues;
+import business.utilities.MsgErrorReport;
 
 import java.sql.Date;
 import java.util.ArrayList;

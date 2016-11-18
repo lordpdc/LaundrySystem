@@ -1,4 +1,4 @@
-package Business.Utilities;
+package business.utilities;
 
 /**
  * Created by raoman on 11/11/2016.

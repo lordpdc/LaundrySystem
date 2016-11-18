@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Business.Administrator;
+package business.Administrator;
 
 import data.dao.GenericDao;
 
@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * @author Luis
  */
-public abstract class Administrator< T > {
+public abstract class DataAdministrator< T > {
     protected GenericDao< T > accessData;
 
     public abstract void addNew( T t );
@@ -22,6 +22,8 @@ public abstract class Administrator< T > {
     public void remove( int id ) {
         this.accessData.delete( id );
     }
+
+    abstract public T search(String name);
 
     public T search( int id ) {
         return accessData.read( id );

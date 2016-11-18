@@ -1,4 +1,4 @@
-package Business.Entities;
+package business.entities;
 
 /**
  * Created by raoman on 11/11/2016.

@@ -1,7 +1,7 @@
-package Business.Administrator;
+package business.Administrator;
 
-import Business.Entities.PurchaseDetails;
-import Business.Entities.PurchaseInvoice;
+import business.entities.PurchaseDetails;
+import business.entities.PurchaseInvoice;
 import data.dao.*;
 
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by raoman on 16/11/2016.
  */
-public class AdministratorPurchaseInvoice extends Administrator<PurchaseInvoice>{
+public class AdministratorPurchaseInvoice extends DataAdministrator<PurchaseInvoice>{
 
     public AdministratorPurchaseInvoice( ) {
         super();

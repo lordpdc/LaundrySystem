@@ -11,7 +11,7 @@ import java.util.ResourceBundle;
 /**
  * Created by raoman on 12/11/2016.
  */
-public abstract class TabAdministrator implements Initializable{
+public abstract class TabGenerator implements Initializable{
 
     @FXML protected Tab genericTab;
     @FXML protected Button createButton;
@@ -23,7 +23,7 @@ public abstract class TabAdministrator implements Initializable{
 
 
 
-    public void TabAdministrator(){
+    public void TabGenerator(){
 
     }
 

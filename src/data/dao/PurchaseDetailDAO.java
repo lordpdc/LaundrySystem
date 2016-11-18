@@ -1,6 +1,6 @@
 package data.dao;
 
-import Business.Entities.PurchaseDetails;
+import business.entities.PurchaseDetails;
 
 /**
  * Created by raoman on 17/11/2016.

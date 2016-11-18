@@ -1,6 +1,6 @@
-package Business.Administrator;
+package business.Administrator;
 
-import Business.Entities.PurchaseInvoice;
+import business.entities.PurchaseInvoice;
 import data.dao.PurchaseInvoiceDAO;
 
 import java.sql.Date;

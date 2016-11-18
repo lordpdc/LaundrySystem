@@ -1,6 +1,6 @@
 package data.dao;
 
-import Business.Entities.Consumable;
+import business.entities.Consumable;
 
 /**
  * Created by cesar on 03/09/16.

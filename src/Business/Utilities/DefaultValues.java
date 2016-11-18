@@ -1,6 +1,6 @@
-package Business.Utilities;
+package business.utilities;
 
-import Business.Entities.Report;
+import business.entities.Report;
 
 import java.sql.Date;
 import java.util.ArrayList;

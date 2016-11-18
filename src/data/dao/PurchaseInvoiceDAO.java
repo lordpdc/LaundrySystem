@@ -1,6 +1,6 @@
 package data.dao;
 
-import Business.Entities.PurchaseInvoice;
+import business.entities.PurchaseInvoice;
 
 /**
  * Created by raoman on 02/10/2016.

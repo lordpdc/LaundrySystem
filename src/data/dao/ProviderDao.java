@@ -1,6 +1,6 @@
 package data.dao;
 
-import Business.Entities.Supplier;
+import business.entities.Supplier;
 
 /**
  * Created by cesar on 02/10/16.
