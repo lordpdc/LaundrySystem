@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package business.entities;
+package Business.Entities;
 
-import business.utilities.DefaultValues;
+import Business.Utilities.DefaultValues;
 
 /**
  *

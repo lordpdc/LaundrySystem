@@ -1,20 +1,17 @@
 package data.dao;
 
-
-import business.entities.Supplier;
-import data.db.Table;
+import Business.Entities.Supplier;
 
 /**
- *
- * @author Luis
+ * Created by cesar on 02/10/16.
  */
-public class SupplierDao extends GenericDao<Supplier>{
-    private Table supplierTable;
-    
+public class SupplierDao extends GenericDao<Supplier> {
+    private static final String entityClassName = "Business.Entities.Supplier";
+    private static final String tableName = "Provider";
+
     public SupplierDao(){
-        super("","");
-        supplierTable = new Table("supplier");
+        super(entityClassName,tableName);
+        System.out.println(this.toString());
     }
-    
 
 }

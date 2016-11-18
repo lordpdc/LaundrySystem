@@ -1,37 +1,42 @@
-package business.entities;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Business.Entities;
 
-import business.utilities.DefaultValues;
+import Business.Utilities.DefaultValues;
 import java.sql.Date;
 
 /**
- * Created by raoman on 01/10/2016.
+ *
+ * @author Luis
  */
-public class PurchaseInvoice {
+public class SaleInvoice {
     private int id;
-    private int idSupplier;
+    private int idCustomer;
     private Date date;
     private double totalPrice;
-
-    public PurchaseInvoice(){
+    
+    public SaleInvoice(){
         this.id = DefaultValues.INTEGER;
-        this.idSupplier = DefaultValues.INTEGER;
+        this.idCustomer = DefaultValues.INTEGER;
         this.date = DefaultValues.DATE;
         this.totalPrice = DefaultValues.DOUBLE;
     }
-    
-    public PurchaseInvoice(Date date, double totalPrice){
+
+    public SaleInvoice(Date date, double totalPrice) {
         this.date = date;
         this.totalPrice = totalPrice;
     }
 
-    public PurchaseInvoice(int id, int idSupplier, Date date, double totalPrice) {
+    public SaleInvoice(int id, int idCustomer, Date date, double totalPrice) {
         this.id = id;
-        this.idSupplier = idSupplier;
+        this.idCustomer = idCustomer;
         this.date = date;
         this.totalPrice = totalPrice;
     }
-    
-    
+
     public int getId() {
         return id;
     }
@@ -40,12 +45,12 @@ public class PurchaseInvoice {
         this.id = id;
     }
 
-    public int getIdSupplier() {
-        return idSupplier;
+    public int getIdCustomer() {
+        return idCustomer;
     }
 
-    public void setIdSupplier(int idSupplier) {
-        this.idSupplier = idSupplier;
+    public void setIdCustomer(int idCustomer) {
+        this.idCustomer = idCustomer;
     }
 
     public Date getDate() {
@@ -63,5 +68,6 @@ public class PurchaseInvoice {
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
     }
-
+    
+    
 }

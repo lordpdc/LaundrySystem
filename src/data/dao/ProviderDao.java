@@ -1,12 +1,12 @@
 package data.dao;
 
-import business.entities.Supplier;
+import Business.Entities.Supplier;
 
 /**
  * Created by cesar on 02/10/16.
  */
 public class ProviderDao extends GenericDao<Supplier> {
-    private static final String entityClassName = "business.entities.Supplier";
+    private static final String entityClassName = "Business.Entities.Supplier";
     private static final String tableName = "Provider";
 
     public ProviderDao(){
