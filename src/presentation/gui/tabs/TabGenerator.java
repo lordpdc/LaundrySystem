@@ -1,9 +1,8 @@
-package presentation.gui.Tabs;
+package presentation.gui.tabs;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import presentation.Utilities.StringValuesCustomerViewer;
 
 import java.net.URL;
 import java.util.ResourceBundle;

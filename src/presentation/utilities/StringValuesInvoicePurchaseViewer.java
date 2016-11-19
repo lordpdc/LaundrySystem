@@ -1,4 +1,4 @@
-package presentation.Utilities;
+package presentation.utilities;
 
 /**
  * Created by raoman on 09/10/2016.

@@ -1,8 +1,7 @@
-package presentation.gui.Tabs;
+package presentation.gui.tabs;
 
-import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import presentation.Utilities.StringValuesCustomerViewer;
+import presentation.utilities.StringValuesCustomerViewer;
 
 /**
  * Created by raoman on 12/11/2016.

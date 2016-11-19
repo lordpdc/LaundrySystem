@@ -1,4 +1,4 @@
-package presentation.gui.Tabs;
+package presentation.gui.tabs;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

@@ -1,6 +1,6 @@
-package presentation.gui.DetailsViews;
+package presentation.gui.detailsViews;
 
-import presentation.Utilities.StringValuesInvoicePurchaseViewer;
+import presentation.utilities.StringValuesInvoicePurchaseViewer;
 
 import javax.swing.*;
 

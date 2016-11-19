@@ -1,6 +1,6 @@
 package tests;
 
-import Business.administrator.PurchasesReportManager;
+import business.administrator.PurchasesReportManager;
 
 import java.sql.Date;
 

@@ -2,7 +2,7 @@ package presentation.gui;
 
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
-import presentation.gui.Tabs.TabContainer;
+import presentation.gui.tabs.TabContainer;
 
 import javax.swing.*;
 

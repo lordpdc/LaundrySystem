@@ -1,4 +1,4 @@
-package presentation.gui.DetailsViews;
+package presentation.gui.detailsViews;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
