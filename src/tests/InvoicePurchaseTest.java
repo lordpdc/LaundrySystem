@@ -1,7 +1,6 @@
 package tests;
 
-import Business.Administrator.PurchasesReportManager;
-import presentation.gui.DetailsViews.ListInvoicePurchase;
+import Business.administrator.PurchasesReportManager;
 
 import java.sql.Date;
 
