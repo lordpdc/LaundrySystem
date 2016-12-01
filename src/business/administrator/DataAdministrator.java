@@ -5,6 +5,7 @@
  */
 package business.administrator;
 
+import business.utilities.DefaultValues;
 import data.dao.GenericDAO;
 
 import java.util.List;
@@ -15,23 +16,20 @@ import java.util.List;
 public abstract class DataAdministrator< T > {
     private GenericDAO< T > accessData;
 
-    public  void addNew( T t ){
+      public  void addNew( T t ){
+
         this.accessData.create(t);
     }
 
-    public void update( int id, T t ){
-        this.accessData.update(id,t);
-    }
+    public abstract void update( int id, T t );
 
     public void remove( int id ) {
         this.accessData.delete( id );
     }
 
-    public List<T> searchByAttribute(String value){
-        return null;
-    }
+    abstract public T search(String name);
 
-    public T searchById( int id ) {
+    public T search( int id ) {
         return accessData.read( id );
     }
 
