@@ -23,16 +23,7 @@ public class GenericDAO<T> implements DAO<T> {
     @SuppressWarnings("unchecked")
     @Override
     public <V> int create(T t) {
-        List<Tuple> tuples = new ArrayList<>();
-        Class<?> clazz = t.getClass();
-        for(Field field : getAllFields(t)){
-            field.setAccessible(true);
-            try {
-                tuples.add(new Tuple<V>(field.getName(),(V)field.get(t)));
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
-        }
+        List< Tuple > tuples = getTuples( t );
         return table.addRow(tuples);
     }
 
@@ -92,7 +83,12 @@ public class GenericDAO<T> implements DAO<T> {
     }
 
     @Override
-    public <V> int update(int id, T t) {
+    public <V> int  update(int index, T t) {
+        List< Tuple > tuples = getTuples( t );
+        return table.updateRow(index,tuples);
+    }
+
+    private < V > List< Tuple > getTuples( T t ) {
         List<Tuple> tuples = new ArrayList<>();
         Class<?> clazz = t.getClass();
         for(Field field : getAllFields(t)){
@@ -103,12 +99,12 @@ public class GenericDAO<T> implements DAO<T> {
                 e.printStackTrace();
             }
         }
-        return table.updateRow(tuples,id);
+        return tuples;
     }
 
     @Override
-    public int delete(int id) {
-        return table.deleteRow(id);
+    public int delete(int index) {
+        return 0;
     }
 
     private boolean setField(T object, String fieldName, Object fieldValue) {
