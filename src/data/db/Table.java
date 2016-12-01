@@ -76,12 +76,25 @@ public class Table {
         return db.executeStatement("INSERT INTO "+name+" ("+strKeys+") VALUES ("+strValues+")");
     }
 
-    public void updateRow(){
+    public int updateRow(List<Tuple> params, int id){
+        String strKeys = "";
+        String strValues = "";
+        for(Tuple param: params){
+            strKeys += param.getKey()+",";
+            strValues +="'"+param.getValue()+"',";
+        }
+        if (strKeys.charAt(strKeys.length() - 1)==','){
+            strKeys = strKeys.substring(0, strKeys.length()-1);
+        }
+        if (strValues.charAt(strValues.length() - 1)==','){
+            strValues = strValues.substring(0, strValues.length()-1);
+        }
 
+        return db.executeStatement("UPDATE "+name+" ("+strKeys+") VALUES ("+strValues+") WHERE "+name+".id = "+id);
     }
 
-    public void deleteRow(){
-
+    public int deleteRow(int id){
+        return db.executeStatement("DELETE FROM "+name+" WHERE "+name+".id = "+id);
     }
 
 }

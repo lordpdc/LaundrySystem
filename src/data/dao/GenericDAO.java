@@ -92,13 +92,23 @@ public class GenericDAO<T> implements DAO<T> {
     }
 
     @Override
-    public int update(int index, T t) {
-        return 0;
+    public <V> int update(int id, T t) {
+        List<Tuple> tuples = new ArrayList<>();
+        Class<?> clazz = t.getClass();
+        for(Field field : getAllFields(t)){
+            field.setAccessible(true);
+            try {
+                tuples.add(new Tuple<V>(field.getName(),(V)field.get(t)));
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+        return table.updateRow(tuples,id);
     }
 
     @Override
-    public int delete(int index) {
-        return 0;
+    public int delete(int id) {
+        return table.deleteRow(id);
     }
 
     private boolean setField(T object, String fieldName, Object fieldValue) {
