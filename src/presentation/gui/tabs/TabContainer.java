@@ -27,22 +27,20 @@ public class TabContainer {
         }
     }
 
-    public Scene getMainContanier(){
+    public Scene getScene(){
         return MainContanier;
     }
 
     private void addTabs(){
-
-        /*tabPane = (TabPane) MainContanier.lookup("#tabPanel");
+        tabPane = (TabPane) MainContanier.lookup("#tabPanel");
 
         Tab genTab = null;
         try {
             genTab = (Tab) new FXMLLoader().load(getClass().getResource("TabDesign.fxml").openStream());
-
             tabPane.getTabs().add(genTab);
         } catch (IOException e) {
             e.printStackTrace();
         }
-*/
+
     }
 }

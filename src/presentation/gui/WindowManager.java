@@ -27,7 +27,7 @@ public class WindowManager {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                    fxPanel.setScene(new TabContainer().getMainContanier());
+                fxPanel.setScene(new TabContainer().getScene());
             }
         });
 

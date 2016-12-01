@@ -12,9 +12,9 @@ public class Accountant {
     private List shoppingBook;
 
     public Accountant( ) {
-        SalesInvoiceAdministrator salesAdministrator=new SalesInvoiceAdministrator();
+        SaleInvoiceAdministrator salesAdministrator=new SaleInvoiceAdministrator();
 
-            }
+    }
 
     public List getSalesBook( ) {
 
