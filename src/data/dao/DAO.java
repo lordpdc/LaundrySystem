@@ -9,6 +9,6 @@ public interface DAO<T> {
     <V> int create(T t);
     T read(int id);
     List<T> readAll();
-    int update(int index, T t);
+    <V> int update(int index, T t);
     int delete(int index);
 }

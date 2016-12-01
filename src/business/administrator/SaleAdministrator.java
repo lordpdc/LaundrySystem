@@ -34,9 +34,9 @@ public class SaleAdministrator {
     }
 
     private void recordSaleDetails(){
-        sale.setAmount();
-        sale.setIdService();
-        sale.setPrice();
-        sale.setIdSaleInvoice();
+        sale.setAmount(DefaultValues.DOUBLE);
+        sale.setIdService(DefaultValues.INTEGER);
+        sale.setPrice(DefaultValues.DOUBLE);
+        sale.setIdSaleInvoice(DefaultValues.INTEGER);
     }
 }

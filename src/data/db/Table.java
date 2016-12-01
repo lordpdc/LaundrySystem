@@ -76,8 +76,15 @@ public class Table {
         return db.executeStatement("INSERT INTO "+name+" ("+strKeys+") VALUES ("+strValues+")");
     }
 
-    public void updateRow(){
-
+    public int updateRow(int id, List<Tuple> params){
+        String strUpdate = "";
+        for(Tuple param: params){
+            strUpdate += param.getKey()+"='"+param.getValue()+"',";
+        }
+        if (strUpdate.charAt(strUpdate.length() - 1)==','){
+            strUpdate = strUpdate.substring(0, strUpdate.length()-1);
+        }
+        return db.executeStatement("UPDATE "+name+" SET "+strUpdate+" WHERE id="+id);
     }
 
     public void deleteRow(){
