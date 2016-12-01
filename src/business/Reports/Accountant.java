@@ -1,8 +1,7 @@
 package business.Reports;
 
-import business.administrator.SaleInvoiceAdministrator;
+import business.administrator.PurchaseInvoiceAdministrator;
 import business.administrator.SalesInvoiceAdministrator;
-import business.entities.Report;
 
 import java.util.List;
 
@@ -14,9 +13,11 @@ public class Accountant {
     private List shoppingBook;
 
     public Accountant( ) {
-        SaleInvoiceAdministrator salesAdministrator=new SaleInvoiceAdministrator();
-
-    }
+        SalesInvoiceAdministrator salesAdministrator=new SalesInvoiceAdministrator();
+        salesBook=salesAdministrator.getAllData();
+        PurchaseInvoiceAdministrator purchasAdministrator=new PurchaseInvoiceAdministrator();
+        shoppingBook=purchasAdministrator.getAllData();
+         }
 
     public List getSalesBook( ) {
 

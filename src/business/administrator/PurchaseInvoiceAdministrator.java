@@ -37,6 +37,7 @@ public class PurchaseInvoiceAdministrator extends DataAdministrator<PurchaseInvo
         accessData.update( id,invoice );
     }
 
+
     public PurchaseInvoice search( String name ) {
         return null;
     }

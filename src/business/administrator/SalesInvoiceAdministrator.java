@@ -23,6 +23,7 @@ public class SalesInvoiceAdministrator extends DataAdministrator<SaleInvoice> {
 
     }
 
+
     public SaleInvoice search( String name ) {
         return null;
     }
