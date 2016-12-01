@@ -8,7 +8,6 @@ import java.sql.*;
 public class Connector {
     private static String DB_NAME = "laundrysys";
     private static String URL = "jdbc:mysql://localhost:3306/"+ DB_NAME;
-    private static String URL_WINDOWS=""+DB_NAME;
     private static String USERNAME = "root";
     private static String PASSWORD = "juancmonhey";
     private Connection conn = null;
@@ -16,14 +15,10 @@ public class Connector {
     public Connector(){
         System.out.println("Connecting database...");
         try {
-
             conn = DriverManager.getConnection(URL,USERNAME,PASSWORD);
             conn.createStatement();
         } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        catch( Exception e ){
-            e.printStackTrace();
+            e.printStackTrace( );
         }
     }
 
