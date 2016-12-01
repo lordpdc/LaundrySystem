@@ -26,7 +26,6 @@ import java.util.*;
  * Created by cesar on 01/10/16.
  */
 public class Inventory implements Initializable{
-
     private SupplierDAO dao;
 
     private JFrame registerProvider;

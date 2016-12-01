@@ -1,5 +1,6 @@
 package business.Reports;
 
+import business.administrator.SaleInvoiceAdministrator;
 import business.administrator.SalesInvoiceAdministrator;
 import business.entities.Report;
 

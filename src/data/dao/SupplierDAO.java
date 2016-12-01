@@ -7,7 +7,7 @@ import business.entities.Supplier;
  */
 public class SupplierDAO extends GenericDAO<Supplier> {
     private static final String entityClassName = "business.entities.Supplier";
-    private static final String tableName = "suppliertable";
+    private static final String tableName = "provider";
 
     public SupplierDAO(){
         super(entityClassName,tableName);

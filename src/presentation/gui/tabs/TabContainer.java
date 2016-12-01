@@ -38,7 +38,7 @@ public class TabContainer {
 
         View view1 = new InventoryView();
 
-        tabPane.getTabs().add(view1.getTab());
+        tabPane.getTabs().add(view1.tab);
     }
 
     private Tab generateEmptyTab(){

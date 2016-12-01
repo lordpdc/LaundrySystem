@@ -1,5 +1,6 @@
 package presentation.gui;
 
+import javafx.collections.FXCollections;
 import presentation.gui.tabs.View;
 
 /**
@@ -9,7 +10,13 @@ public class InventoryView extends View {
 
     public InventoryView(){
         super();
-        this.getTab().setText("Inventario");
+        this.tab.setText("Inventario");
     }
+
+
+    private void initComponents(){
+        table.setItems(data);
+    }
+
 
 }

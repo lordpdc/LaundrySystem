@@ -23,7 +23,6 @@ public class SalesInvoiceAdministrator extends DataAdministrator<SaleInvoice> {
 
     }
 
-    @Override
     public SaleInvoice search( String name ) {
         return null;
     }
