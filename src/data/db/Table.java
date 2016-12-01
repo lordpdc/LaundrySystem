@@ -87,8 +87,8 @@ public class Table {
         return db.executeStatement("UPDATE "+name+" SET "+strUpdate+" WHERE id="+id);
     }
 
-    public void deleteRow(){
-
+    public int deleteRow(int id){
+        return db.executeStatement("DELETE FROM "+name+" WHERE "+name+".id = "+id);
     }
 
 }
