@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
  */
 public abstract class TabGenerator implements Initializable{
 
-    @FXML protected Tab genericTab;
+    @FXML protected View genericTab;
     @FXML protected Button createButton;
     @FXML protected Button editButton;
     @FXML protected Button deleteButton;

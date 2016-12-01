@@ -5,6 +5,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import presentation.gui.InventoryView;
+import presentation.inventory.Inventory;
 
 import java.io.IOException;
 
@@ -32,15 +34,21 @@ public class TabContainer {
     }
 
     private void addTabs(){
-        tabPane = (TabPane) MainContanier.lookup("#tabPanel");
+        tabPane = (TabPane) MainContanier.lookup("#tabContainer");
 
-        Tab genTab = null;
+        View view1 = new InventoryView();
+
+        tabPane.getTabs().add(view1.getTab());
+    }
+
+    private Tab generateEmptyTab(){
+        Tab newTab = null;
         try {
-            genTab = (Tab) new FXMLLoader().load(getClass().getResource("TabDesign.fxml").openStream());
-            tabPane.getTabs().add(genTab);
+            newTab = (Tab) new FXMLLoader().load(getClass().getResource("TabDesign.fxml").openStream());
+            //tabPane.getTabs().add(newTab);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        return newTab;
     }
 }

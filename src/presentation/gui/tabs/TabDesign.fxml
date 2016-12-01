@@ -9,20 +9,22 @@
 <?import javafx.scene.control.TextField?>
 
 <Tab fx:id="genericTab" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1">
-   <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                 <children>
-                    <Button fx:id="createButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Nuevo" />
-                    <Button fx:id="searchButton" layoutX="806.0" layoutY="14.0" mnemonicParsing="false" text="buscar" />
-                    <TextField fx:id="searchField" layoutX="493.0" layoutY="14.0" prefHeight="27.0" prefWidth="305.0" promptText="dato a buscar" />
-                    <TableView fx:id="dataTable" layoutX="14.0" layoutY="50.0" prefHeight="456.0" prefWidth="862.0">
+    <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <children>
+                <Button fx:id="createButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Nuevo"/>
+                <Button fx:id="searchButton" layoutX="806.0" layoutY="14.0" mnemonicParsing="false" text="buscar"/>
+                <TextField fx:id="searchField" layoutX="493.0" layoutY="14.0" prefHeight="27.0" prefWidth="305.0"
+                           promptText="dato a buscar"/>
+                <TableView fx:id="dataTable" layoutX="14.0" layoutY="50.0" prefHeight="456.0" prefWidth="862.0">
                     <columns>
 
                     </columns>
-                    </TableView>
-                    <Button fx:id="editButton" layoutX="32.0" layoutY="519.0" mnemonicParsing="false" text="editar" />
-                    <Button fx:id="deleteButton" layoutX="97.0" layoutY="519.0" mnemonicParsing="false" text="borrar" />
-                 </children></AnchorPane>
-        </content>
+                </TableView>
+                <Button fx:id="editButton" layoutX="32.0" layoutY="519.0" mnemonicParsing="false" text="editar"/>
+                <Button fx:id="deleteButton" layoutX="97.0" layoutY="519.0" mnemonicParsing="false" text="borrar"/>
+            </children>
+        </AnchorPane>
+    </content>
 </Tab>
 
