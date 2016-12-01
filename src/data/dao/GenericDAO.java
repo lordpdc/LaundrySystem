@@ -11,11 +11,11 @@ import java.util.List;
 /**
  * Created by cesar on 04/10/16.
  */
-public class GenericDao<T> implements Dao<T> {
+public class GenericDAO<T> implements DAO<T> {
     private String className;
     private Table table;
 
-    public GenericDao(String className, String tableName){
+    public GenericDAO( String className, String tableName){
         this.className = className;
         table = new Table(tableName);
     }

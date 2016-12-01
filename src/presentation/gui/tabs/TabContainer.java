@@ -32,9 +32,7 @@ public class TabContainer {
     }
 
     private void addTabs(){
-        CustomerTabAministrator customerTabAministrator=new CustomerTabAministrator();
 
-        tabPane.getTabs().addAll(customerTabAministrator.getTab());
         /*tabPane = (TabPane) MainContanier.lookup("#tabPanel");
 
         Tab genTab = null;

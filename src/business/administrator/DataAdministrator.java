@@ -5,7 +5,7 @@
  */
 package business.administrator;
 
-import data.dao.GenericDao;
+import data.dao.GenericDAO;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
  * @author Luis
  */
 public abstract class DataAdministrator< T > {
-    protected GenericDao< T > accessData;
+    protected GenericDAO< T > accessData;
 
     public  void addNew( T t ){
         this.accessData.create(t);
@@ -35,7 +35,7 @@ public abstract class DataAdministrator< T > {
         return accessData.readAll( );
     }
 
-    protected void setAccessData( GenericDao Data ) {
+    protected void setAccessData( GenericDAO Data ) {
         this.accessData = Data;
     }
 

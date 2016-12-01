@@ -1,7 +1,8 @@
-package business.Administrator;
+package business.administrator;
 
 import business.entities.PurchaseDetails;
 import business.entities.PurchaseInvoice;
+import business.administrator.DataAdministrator;
 import data.dao.*;
 
 import java.util.ArrayList;
@@ -10,7 +11,17 @@ import java.util.List;
 /**
  * Created by raoman on 16/11/2016.
  */
-public class AdministratorPurchaseInvoice extends DataAdministrator<PurchaseInvoice>{
+
+public class AdministratorPurchaseInvoice extends DataAdministrator<PurchaseInvoice> {
+    private List listDetailPurchase;
+
+    public List getListDetailPurchase( ) {
+        return listDetailPurchase;
+    }
+
+    public void setListDetailPurchase( List listDetailPurchase ) {
+        this.listDetailPurchase = listDetailPurchase;
+    }
 
     public AdministratorPurchaseInvoice( ) {
         super();
@@ -25,6 +36,11 @@ public class AdministratorPurchaseInvoice extends DataAdministrator<PurchaseInvo
     @Override
     public void update( int id, PurchaseInvoice invoice ) {
         accessData.update( id,invoice );
+    }
+
+    @Override
+    public PurchaseInvoice search( String name ) {
+        return null;
     }
 
     public List<PurchaseDetails> getDetailPurchase( PurchaseInvoice invoice){

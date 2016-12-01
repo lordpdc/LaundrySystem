@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by cesar on 20/09/16.
  */
-public interface Dao<T> {
+public interface DAO<T> {
     <V> int create(T t);
     T read(int id);
     List<T> readAll();

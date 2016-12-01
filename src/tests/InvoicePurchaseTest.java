@@ -1,6 +1,7 @@
 package tests;
-
-import business.administrator.PurchasesReportManager;
+import presentation.gui.ReportGeneratorWindow;
+import presentation.gui.detailsViews.ListInvoicePurchase;
+import presentation.gui.tabs.TabManager;
 
 import java.sql.Date;
 
@@ -9,13 +10,6 @@ import java.sql.Date;
  */
 public class InvoicePurchaseTest {
     public static void main(String[] args) throws Exception {
-        PurchasesReportManager report= new PurchasesReportManager(  );
-        Date d = report.getInitialDate();
-        d.setDate( 16 );
-        //d.setMonth( 11 );
-        report.setInitialDate( d );
-        System.out.println(report.getInitialDate()+"\n"+report.getFinalDate() );
-        //report.setInitialDate(  );
-
+        new ReportGeneratorWindow().setVisible( true );
     }
 }

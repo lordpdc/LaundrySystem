@@ -11,20 +11,20 @@ import java.util.List;
 /**
  * Created by raoman on 11/11/2016.
  */
-public abstract class ReportManager<T> {
+public abstract class ReportGenerator<T> {
     protected Date initialDate;
     protected Date finalDate;
     protected Report report;
     protected List< T > data;
 
-    public ReportManager() {
+    public ReportGenerator() {
         initialDate = DefaultValues.DATE;
         finalDate = DefaultValues.DATE;
         report = DefaultValues.REPORT;
         data= DefaultValues.ARRAY_LIST;
     }
 
-    public ReportManager( Date initialDate, Date finalDate ) throws Exception {
+    public ReportGenerator( Date initialDate, Date finalDate ) throws Exception {
         setInitialDate( initialDate );
         setFinalDate( finalDate );
     }

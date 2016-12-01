@@ -22,7 +22,7 @@ public class ListInvoicePurchase extends JFrame{
     }
 
     private void createUIComponents() {
-        // TODO: place custom component creation code here
+
     }
     private void setTextComponents(){
         lbTitle.setText(StringValuesInvoicePurchaseViewer.TITLE);
@@ -31,6 +31,7 @@ public class ListInvoicePurchase extends JFrame{
         btDelete.setText(StringValuesInvoicePurchaseViewer.DELETE);
     }
     private void setCustomPropertyComponent(){
+        this.setVisible( true );
 
     }
 }
