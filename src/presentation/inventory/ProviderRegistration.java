@@ -1,7 +1,7 @@
 package presentation.inventory;
 
 import business.entities.Supplier;
-import data.dao.SupplierDao;
+import data.dao.SupplierDAO;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
  */
 public class ProviderRegistration implements Initializable {
     private JFrame frame;
-    private SupplierDao supplierDao;
+    private SupplierDAO supplierDao;
     private Inventory mainCtrl;
 
     @FXML private TextField nameField;
@@ -32,7 +32,7 @@ public class ProviderRegistration implements Initializable {
 
     public ProviderRegistration(){
         System.out.println(this.toString());
-        supplierDao = new SupplierDao();
+        supplierDao = new SupplierDAO();
     }
 
     void setFrame(JFrame frame){

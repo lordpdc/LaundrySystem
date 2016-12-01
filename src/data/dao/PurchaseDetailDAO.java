@@ -5,7 +5,7 @@ import business.entities.PurchaseDetails;
 /**
  * Created by raoman on 17/11/2016.
  */
-public class PurchaseDetailDAO extends GenericDao<PurchaseDetails>{
+public class PurchaseDetailDAO extends GenericDAO<PurchaseDetails> {
     private static final String entityClassName = "business.entities.PurchaseDetails";
     private static final String tableName = "purchasedetailstable";
 
