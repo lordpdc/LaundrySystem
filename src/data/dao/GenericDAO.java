@@ -79,8 +79,6 @@ public class GenericDAO<T> implements DAO<T> {
             }
                 entities.add(entity);
 
-
-
         }
 
 

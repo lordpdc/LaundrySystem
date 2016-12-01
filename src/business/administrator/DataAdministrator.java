@@ -14,7 +14,7 @@ import java.util.List;
  * @author Luis
  */
 public abstract class DataAdministrator< T > {
-    private GenericDAO< T > accessData;
+    protected GenericDAO< T > accessData;
 
       public  void addNew( T t ){
 
