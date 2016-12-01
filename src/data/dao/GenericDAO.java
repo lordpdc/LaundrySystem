@@ -103,8 +103,8 @@ public class GenericDAO<T> implements DAO<T> {
     }
 
     @Override
-    public int delete(int index) {
-        return 0;
+    public int delete(int id) {
+        return table.deleteRow(id);
     }
 
     private boolean setField(T object, String fieldName, Object fieldValue) {
