@@ -13,25 +13,29 @@ import java.util.List;
  * @author Luis
  */
 public abstract class DataAdministrator< T > {
-    protected GenericDAO< T > accessData;
+    private GenericDAO< T > accessData;
 
     public  void addNew( T t ){
         this.accessData.create(t);
     }
 
-    public abstract void update( int id, T t );
+    public void update( int id, T t ){
+        this.accessData.update(id,t);
+    }
 
     public void remove( int id ) {
         this.accessData.delete( id );
     }
 
-    abstract public T search(String name);
+    public List<T> searchByAttribute(String value){
+        return null;
+    }
 
-    public T search( int id ) {
+    public T searchById( int id ) {
         return accessData.read( id );
     }
 
-    public List<T> readAll( ) {
+    public List<T> getAllData( ) {
         return accessData.readAll( );
     }
 
