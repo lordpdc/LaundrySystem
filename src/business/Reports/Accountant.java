@@ -1,5 +1,6 @@
-package business.administrator;
+package business.Reports;
 
+import business.administrator.SalesInvoiceAdministrator;
 import business.entities.Report;
 
 import java.util.List;

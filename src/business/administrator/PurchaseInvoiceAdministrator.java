@@ -27,6 +27,20 @@ public class PurchaseInvoiceAdministrator extends DataAdministrator<PurchaseInvo
         this.setAccessData(new PurchaseInvoiceDAO());
     }
 
+    @Override
+    public void addNew( PurchaseInvoice invoice ) {
+        accessData.create( invoice );
+    }
+
+    @Override
+    public void update( int id, PurchaseInvoice invoice ) {
+        accessData.update( id,invoice );
+    }
+
+    @Override
+    public PurchaseInvoice search( String name ) {
+        return null;
+    }
 
     public List<PurchaseDetails> getDetailPurchase( PurchaseInvoice invoice){
         List<PurchaseDetails> detailsList;

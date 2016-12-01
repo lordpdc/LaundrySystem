@@ -49,6 +49,44 @@ public class GenericDAO<T> implements DAO<T> {
         }
         return entity;
     }
+    public List<T> readByAtrr(String value) {
+        Class<?> clazz = null;
+        try {
+            clazz = clazz = Class.forName(className);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        T entity = null;
+        try {
+            assert clazz != null;
+            entity = (T)clazz.newInstance();
+        } catch (InstantiationException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+        List<Row> rows = table.getRowByAttr(value, getAllFields(entity ));
+        List<T> entities = new ArrayList<>();
+        for (Row row : rows) {
+            entity=null;
+            try {
+                assert clazz != null;
+                entity = (T)clazz.newInstance();
+            } catch (InstantiationException | IllegalAccessException e) {
+                e.printStackTrace();
+            }
+              for (Tuple tup : row.getRow()) {
+                setField(entity,tup.getKey(),tup.getValue());
+            }
+                entities.add(entity);
+
+
+
+        }
+
+
+
+        return entities;
+    }
 
     @Override
     public List<T> readAll() {

@@ -1,4 +1,4 @@
-package business.Administrator;
+package business.Reports;
 
 import business.entities.Report;
 import business.utilities.DefaultValues;
