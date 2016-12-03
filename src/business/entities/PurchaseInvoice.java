@@ -6,17 +6,12 @@ import java.sql.Date;
 /**
  * Created by raoman on 01/10/2016.
  */
-public class PurchaseInvoice {
-    private int id;
+public class PurchaseInvoice extends Invoice {
     private int idSupplier;
-    private Date date;
-    private double totalPrice;
 
     public PurchaseInvoice(){
-        this.id = DefaultValues.INTEGER;
+        super();
         this.idSupplier = DefaultValues.INTEGER;
-        this.date = DefaultValues.DATE;
-        this.totalPrice = DefaultValues.DOUBLE;
     }
     
     public PurchaseInvoice(Date date, double totalPrice){
@@ -30,15 +25,6 @@ public class PurchaseInvoice {
         this.date = date;
         this.totalPrice = totalPrice;
     }
-    
-    
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public int getIdSupplier() {
         return idSupplier;
@@ -46,22 +32,6 @@ public class PurchaseInvoice {
 
     public void setIdSupplier(int idSupplier) {
         this.idSupplier = idSupplier;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
     }
 
 }

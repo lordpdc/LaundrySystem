@@ -12,17 +12,12 @@ import java.sql.Date;
  *
  * @author Luis
  */
-public class SaleInvoice {
-    private int id;
+public class SaleInvoice extends Invoice {
     private int idCustomer;
-    private Date date;
-    private double totalPrice;
-    
-    public SaleInvoice(){
-        this.id = DefaultValues.INTEGER;
+
+    public SaleInvoice() {
+        super( );
         this.idCustomer = DefaultValues.INTEGER;
-        this.date = DefaultValues.DATE;
-        this.totalPrice = DefaultValues.DOUBLE;
     }
 
     public SaleInvoice(Date date, double totalPrice) {
@@ -37,13 +32,6 @@ public class SaleInvoice {
         this.totalPrice = totalPrice;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public int getIdCustomer() {
         return idCustomer;
@@ -53,21 +41,5 @@ public class SaleInvoice {
         this.idCustomer = idCustomer;
     }
 
-    public Date getDate() {
-        return date;
-    }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-    
-    
 }

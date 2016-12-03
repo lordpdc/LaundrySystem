@@ -1,12 +1,12 @@
 package data.dao;
 
-import business.entities.PurchaseInvoice;
+import business.entities.Invoice;
 
 /**
  * Created by raoman on 02/10/2016.
  */
 
-public class PurchaseInvoiceDAO extends GenericDAO<PurchaseInvoice> {
+public class PurchaseInvoiceDAO extends GenericDAO<Invoice > {
     private static final String entityClassName = "business.entities.detailsViews";
     private static final String tableName = "purchaseinvoicetable";
 
