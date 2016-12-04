@@ -40,8 +40,8 @@ public class PurchaseInvoiceAdministrator extends DataAdministrator<PurchaseInvo
         return null;
     }
 
-    public List<PurchaseDetails> getDetailPurchase( PurchaseInvoice invoice){
-        List<PurchaseDetails> detailsList;
+    public List<PurchaseDetail> getDetailPurchase(PurchaseInvoice invoice){
+        List<PurchaseDetail> detailsList;
         PurchaseDetailDAO accesDetails=new PurchaseDetailDAO(  );
 
         detailsList=accesDetails.readAll();
@@ -50,9 +50,9 @@ public class PurchaseInvoiceAdministrator extends DataAdministrator<PurchaseInvo
 
 
     }
-    private List<PurchaseDetails> filterDetailsList(int idInvoice,List<PurchaseDetails> detailsList){
-        List<PurchaseDetails> detailsListFilter=new ArrayList<>(  );
-        for( PurchaseDetails detail: detailsList ) {
+    private List<PurchaseDetail> filterDetailsList(int idInvoice, List<PurchaseDetail> detailsList){
+        List<PurchaseDetail> detailsListFilter=new ArrayList<>(  );
+        for( PurchaseDetail detail: detailsList ) {
             if(detail.getIdPurchaseInvoice()==idInvoice){
                 detailsListFilter.add( detail );
             }

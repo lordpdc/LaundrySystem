@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="607.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.window.PurchaseInvoiceWindow">
+    <children>
+        <MenuButton fx:id="supplierSelect" layoutX="16.0" layoutY="14.0" maxWidth="200" mnemonicParsing="false" text="Proveedor">
+            <items>
+            </items>
+        </MenuButton>
+        <TableView fx:id="detailsTable" layoutX="16.0" layoutY="52.0" prefHeight="321.0" prefWidth="582.0">
+            <columns>
+                <TableColumn fx:id="nameColumn" prefWidth="270.0" text="Insumo" />
+                <TableColumn fx:id="quantityColumn" prefWidth="119.0" text="cantidad" />
+                <TableColumn fx:id="priceColumn" prefWidth="192.0" text="Precio Unitario" />
+            </columns>
+        </TableView>
+        <DatePicker fx:id="dateSelect" layoutX="280.0" layoutY="14.0" prefHeight="27.0" prefWidth="175.0" />
+        <Button fx:id="newConsumableBtn" layoutX="478.0" layoutY="14.0" mnemonicParsing="false" text="Agregar Insumo" />
+    </children>
+</Pane>

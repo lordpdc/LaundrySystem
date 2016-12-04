@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextArea;
 
+import javax.swing.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -17,6 +18,7 @@ import java.util.ResourceBundle;
  * Created by Luis on 03/12/2016.
  */
 public class ConsumableWindow implements Initializable {
+    JFrame frame;
 
     @FXML
     protected Button createButton;
@@ -39,9 +41,13 @@ public class ConsumableWindow implements Initializable {
         cancelButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-
+                frame.setVisible(false);
             }
         });
+    }
+
+    public void setFrame(JFrame frame){
+        this.frame = frame;
     }
 
     private Consumable getNewConsumable(){

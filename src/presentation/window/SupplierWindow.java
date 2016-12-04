@@ -46,7 +46,6 @@ public class SupplierWindow implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 if(frame!=null){
-                    System.out.println("awhduawhjdioawhdo");
                     frame.setVisible(false);
                 }else{
                     System.out.println("Err...");

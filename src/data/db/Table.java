@@ -23,67 +23,54 @@ public class Table {
 
     public List<Row> getAllRows(){
         String stmt = "SELECT * FROM "+name;
+
         List<Row> rows = new ArrayList<>();
         ResultSet rs = db.executeQuery(stmt);
+
         ResultSetMetaData rsmd = null;
         try {
             rsmd = rs.getMetaData();
             while (rs.next()) {
-                Row row = new Row();
-                for (int i=1;i<=rsmd.getColumnCount();i++){
-                    row.addTuple(new Tuple<Object>(rsmd.getColumnName(i),rs.getObject(i)));
-                }
-                rows.add(row);
+                rows.add(createRow(rs));
             }
         } catch (SQLException e) {
             e.printStackTrace();
             rows= null;
         }
+
         return rows;
     }
 
-    public List<Row> getRowByAttr(String value,List<Field > fields){
+
+    public List<Row> getRowsByAttr(String value, List<Field > fields){
         String stmt = "SELECT * FROM "+name+" WHERE";
         for(Field field: fields){
             stmt=stmt.concat(" "+ field.getName()+" LIKE '%"+value+"%' OR");
         }
         stmt=stmt.substring( 0,stmt.length()-2 );
-        System.out.println(stmt );
+
         List<Row> rows = new ArrayList<>();
         ResultSet rs = db.executeQuery(stmt);
+
         ResultSetMetaData rsmd = null;
         try {
             rsmd = rs.getMetaData();
             while (rs.next()) {
-                Row row = new Row();
-                for (int i=1;i<=rsmd.getColumnCount();i++){
-                    row.addTuple(new Tuple<Object>(rsmd.getColumnName(i),rs.getObject(i)));
-                }
-                rows.add(row);
+                rows.add(createRow(rs));
             }
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
         }
+
         return rows;
     }
 
     public Row getRow(int id){
         String stmt = "SELECT * FROM "+name+" WHERE id="+id;
         ResultSet rs = db.executeQuery(stmt);
-        ResultSetMetaData rsmd = null;
-        Row row = new Row();
-        try {
-            rsmd = rs.getMetaData();
-            if (rs.next()) {
-                for (int i = 1; i <= rsmd.getColumnCount(); i++) {
-                    row.addTuple(new Tuple<Object>(rsmd.getColumnName(i), rs.getObject(i)));
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return row;
+
+        return createRow(rs);
     }
 
     public int addRow(List<Tuple> params){
@@ -119,6 +106,22 @@ public class Table {
 
     public int deleteRow(int id){
         return db.executeStatement("DELETE FROM "+name+" WHERE "+name+".id = "+id);
+    }
+
+    private Row createRow(ResultSet rs){
+        ResultSetMetaData rsmd = null;
+        Row row = new Row();
+        try {
+            rsmd = rs.getMetaData();
+            if (rs.next()) {
+                for (int i = 1; i <= rsmd.getColumnCount(); i++) {
+                    row.addTuple(new Tuple<Object>(rsmd.getColumnName(i), rs.getObject(i)));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return row;
     }
 
 }
