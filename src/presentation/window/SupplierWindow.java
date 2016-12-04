@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
  * Created by Luis on 03/12/2016.
  */
 public class SupplierWindow implements Initializable {
-    JFrame frame;
+    private JFrame frame;
 
     @FXML protected Button createButton;
     @FXML protected Button cancelButton;
@@ -40,17 +40,13 @@ public class SupplierWindow implements Initializable {
 
                 SupplierAdministrator admin = new SupplierAdministrator();
                 admin.addNew(supplier);
+                frame.setVisible(false);
             }
         });
         cancelButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if(frame!=null){
-                    System.out.println("awhduawhjdioawhdo");
-                    frame.setVisible(false);
-                }else{
-                    System.out.println("Err...");
-                }
+                frame.setVisible(false);
             }
         });
     }

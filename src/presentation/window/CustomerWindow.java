@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
+import javax.swing.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -16,6 +17,7 @@ import java.util.ResourceBundle;
  * Created by Luis on 03/12/2016.
  */
 public class CustomerWindow implements Initializable {
+    private JFrame frame;
 
     @FXML protected Button createButton;
     @FXML protected Button cancelButton;
@@ -32,14 +34,19 @@ public class CustomerWindow implements Initializable {
 
                 CustomerAdministrator admin = new CustomerAdministrator();
                 admin.addNew(customer);
+                frame.setVisible(false);
             }
         });
         cancelButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-
+                frame.setVisible(false);
             }
         });
+    }
+
+    public void setFrame(JFrame frame){
+        this.frame = frame;
     }
 
     private Customer getNewCustomer(){
