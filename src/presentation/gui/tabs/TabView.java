@@ -1,18 +1,13 @@
 package presentation.gui.tabs;
 
-import business.entities.Supplier;
-import data.dao.SupplierDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -31,7 +26,7 @@ public abstract class TabView<T> {
     protected Button editButton;
     protected Button deleteButton;
 
-    protected JFrame myMachine;
+    protected JFrame frame;
 
 
     public TabView() {
@@ -44,22 +39,22 @@ public abstract class TabView<T> {
         table.setTable((TableView) tab.getContent().lookup("#dataTable"));
         registerActionHandlers();
 
-        myMachine = new JFrame();
-        myMachine.setSize(620,560);
-        myMachine.setLocationRelativeTo(null);
-        myMachine.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        frame = new JFrame();
+        frame.setSize(620,560);
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     public void updateObsList(T p){
         data.add(p);
     }
 
-    public JFrame getMyMachine(){
-        if (myMachine==null){
-            myMachine = new JFrame();
+    public JFrame getFrame(){
+        if (frame ==null){
+            frame = new JFrame();
         }
 
-        return myMachine;
+        return frame;
     }
 
     private void registerActionHandlers(){

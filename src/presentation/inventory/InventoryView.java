@@ -2,13 +2,10 @@ package presentation.inventory;
 
 import business.administrator.SupplierAdministrator;
 import business.entities.Supplier;
-import data.dao.SupplierDAO;
 import javafx.embed.swing.JFXPanel;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.cell.PropertyValueFactory;
 import presentation.gui.tabs.TabView;
 import presentation.window.SupplierWindow;
 
@@ -36,12 +33,6 @@ public class InventoryView extends TabView<Supplier> {
 
         table.setData(data);
 
-    }
-
-    @Override
-    protected void createAction(){
-        System.out.println("Creating");
-
         JFXPanel panel = new JFXPanel();
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -49,14 +40,18 @@ public class InventoryView extends TabView<Supplier> {
             Scene scene = new Scene(root);
             panel.setScene(scene);
             SupplierWindow ctrl = (SupplierWindow)loader.getController();
-            ctrl.setAdmin(this);
+            ctrl.setFrame(frame);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        myMachine.add(panel);
+        frame.add(panel);
 
-        myMachine.setVisible(true);
+    }
+
+    @Override
+    protected void createAction(){
+        frame.setVisible(true);
     }
 
     @Override

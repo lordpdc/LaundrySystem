@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
+import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -19,7 +20,7 @@ import java.util.ResourceBundle;
  * Created by Luis on 03/12/2016.
  */
 public class SupplierWindow implements Initializable {
-
+    JFrame frame;
 
     @FXML protected Button createButton;
     @FXML protected Button cancelButton;
@@ -44,13 +45,18 @@ public class SupplierWindow implements Initializable {
         cancelButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-
+                if(frame!=null){
+                    System.out.println("awhduawhjdioawhdo");
+                    frame.setVisible(false);
+                }else{
+                    System.out.println("Err...");
+                }
             }
         });
     }
 
-    public void setData(){
-
+    public void setFrame(JFrame frame){
+        this.frame = frame;
     }
 
     private void setText(){
