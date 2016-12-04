@@ -1,5 +1,7 @@
 package presentation.window;
 
+import business.administrator.ServiceAdministrator;
+import business.entities.Service;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -27,7 +29,10 @@ public class ServiceWindow implements Initializable {
         createButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                Service service = getNewService();
 
+                ServiceAdministrator admin = new ServiceAdministrator();
+                admin.addNew(service);
             }
         });
         cancelButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -36,5 +41,9 @@ public class ServiceWindow implements Initializable {
 
             }
         });
+    }
+
+    private Service getNewService(){
+        return new Service(nameField.getText(),descriptionField.getText(),Double.parseDouble(unitariPriceField.getText()));
     }
 }

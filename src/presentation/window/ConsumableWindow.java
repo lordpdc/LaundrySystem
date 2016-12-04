@@ -1,5 +1,7 @@
 package presentation.window;
 
+import business.administrator.ConsumableAdministrator;
+import business.entities.Consumable;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -28,7 +30,10 @@ public class ConsumableWindow implements Initializable {
         createButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                Consumable consumable = getNewConsumable();
 
+                ConsumableAdministrator admin = new ConsumableAdministrator();
+                admin.addNew(consumable);
             }
         });
         cancelButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -37,5 +42,9 @@ public class ConsumableWindow implements Initializable {
 
             }
         });
+    }
+
+    private Consumable getNewConsumable(){
+        return new Consumable(nameField.getText(),descriptionField.getText());
     }
 }

@@ -1,5 +1,7 @@
 package presentation.window;
 
+import business.administrator.SupplierAdministrator;
+import business.entities.Supplier;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -33,7 +35,10 @@ public class SupplierWindow implements Initializable {
         createButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                Supplier supplier = getNewSupplier();
 
+                SupplierAdministrator admin = new SupplierAdministrator();
+                admin.addNew(supplier);
             }
         });
         cancelButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -50,6 +55,10 @@ public class SupplierWindow implements Initializable {
 
     private void setText(){
 
+    }
+
+    private Supplier getNewSupplier(){
+        return new Supplier(nameField.getText(),addressField.getText(),telephoneField.getText(),emailField.getText());
     }
 
 }

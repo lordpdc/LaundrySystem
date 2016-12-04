@@ -1,5 +1,7 @@
 package presentation.window;
 
+import business.administrator.CustomerAdministrator;
+import business.entities.Customer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -26,7 +28,10 @@ public class CustomerWindow implements Initializable {
         createButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                Customer customer = getNewCustomer();
 
+                CustomerAdministrator admin = new CustomerAdministrator();
+                admin.addNew(customer);
             }
         });
         cancelButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -35,5 +40,9 @@ public class CustomerWindow implements Initializable {
 
             }
         });
+    }
+
+    private Customer getNewCustomer(){
+        return new Customer(nameField.getText(),telephoneField.getText(),emailField.getText());
     }
 }
