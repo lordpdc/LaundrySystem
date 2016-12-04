@@ -29,6 +29,7 @@ public class Accountant {
     public List getPurchasesBook(Period period ) {
         List purchasesForReport = filterBook( period, purchasesBook );
 
+
         return purchasesForReport;
     }
 
