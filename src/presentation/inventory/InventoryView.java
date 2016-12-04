@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import presentation.gui.tabs.TabView;
+import presentation.window.SupplierWindow;
 
 import java.io.IOException;
 
@@ -31,7 +32,7 @@ public class InventoryView extends TabView<Supplier> {
         table.addColumn("nombre","name");
         table.addColumn("dirección","address");
         table.addColumn("telefono","telephone");
-        table.addColumn("correo","mail");
+        table.addColumn("correo","email");
 
         table.setData(data);
 
@@ -43,9 +44,12 @@ public class InventoryView extends TabView<Supplier> {
 
         JFXPanel panel = new JFXPanel();
         try {
-            Parent root = new FXMLLoader().load(getClass().getResourceAsStream("../window/SupplierWindow.fxml"));
+            FXMLLoader loader = new FXMLLoader();
+            Parent root = loader.load(getClass().getResourceAsStream("../window/SupplierWindow.fxml"));
             Scene scene = new Scene(root);
             panel.setScene(scene);
+            SupplierWindow ctrl = (SupplierWindow)loader.getController();
+            ctrl.setAdmin(this);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -68,6 +72,10 @@ public class InventoryView extends TabView<Supplier> {
     @Override
     protected void searchAction() {
 
+    }
+
+    public void awdawd(String i, String s, String o, String g){
+        admin.addNew(i,s,o,g);
     }
 
 }
