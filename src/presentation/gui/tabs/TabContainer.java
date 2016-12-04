@@ -8,7 +8,6 @@ import javafx.scene.control.TabPane;
 import presentation.inventory.InventoryView;
 import presentation.inventory.PurchaseInvoiceView;
 
-import java.io.File;
 import java.io.IOException;
 
 /**
@@ -22,12 +21,13 @@ public class TabContainer {
     public TabContainer(){
         FXMLLoader loader = new FXMLLoader();
         try {
-            Parent root = loader.load(getClass().getResource("resources/layout/TabContainer.fxml").openStream());
+            Parent root = loader.load(getClass().getResourceAsStream("TabContainer.fxml"));
             MainContanier = new Scene(root);
             this.addTabs();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     public Scene getScene(){

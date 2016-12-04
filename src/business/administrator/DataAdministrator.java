@@ -16,7 +16,7 @@ import java.util.List;
 public abstract class DataAdministrator< T > {
     protected GenericDAO< T > accessData;
 
-      public  void addNew( T t ){
+    public void addNew(T t) {
 
         this.accessData.create(t);
     }
@@ -28,7 +28,6 @@ public abstract class DataAdministrator< T > {
     public void remove( int id ) {
         this.accessData.delete( id );
     }
-
 
 
     public T searchById( int id ) {
