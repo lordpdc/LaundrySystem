@@ -33,9 +33,11 @@ public class ConsumableWindow implements Initializable {
             public void handle(ActionEvent event) {
                 Consumable consumable = getNewConsumable();
 
-                ConsumableAdministrator admin = new ConsumableAdministrator();
-                admin.addNew(consumable);
-                frame.setVisible(false);
+                if(consumable != null) {
+                    ConsumableAdministrator admin = new ConsumableAdministrator();
+                    admin.addNew(consumable);
+                    frame.setVisible(false);
+                }
             }
         });
         cancelButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -51,6 +53,19 @@ public class ConsumableWindow implements Initializable {
     }
 
     private Consumable getNewConsumable(){
+        if(isFieldEmty()){
+            return null;
+        }
         return new Consumable(nameField.getText(),descriptionField.getText());
+    }
+
+    private boolean isFieldEmty(){
+        if(nameField.getText().isEmpty()){
+            return true;
+        }
+        if(descriptionField.getText().isEmpty()){
+            return true;
+        }
+        return false;
     }
 }

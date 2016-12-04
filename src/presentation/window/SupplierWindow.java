@@ -38,9 +38,11 @@ public class SupplierWindow implements Initializable {
             public void handle(ActionEvent event) {
                 Supplier supplier = getNewSupplier();
 
-                SupplierAdministrator admin = new SupplierAdministrator();
-                admin.addNew(supplier);
-                frame.setVisible(false);
+                if(supplier !=null) {
+                    SupplierAdministrator admin = new SupplierAdministrator();
+                    admin.addNew(supplier);
+                    frame.setVisible(false);
+                }
             }
         });
         cancelButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -60,7 +62,25 @@ public class SupplierWindow implements Initializable {
     }
 
     private Supplier getNewSupplier(){
+        if(isFieldEmty()){
+            return null;
+        }
         return new Supplier(nameField.getText(),addressField.getText(),telephoneField.getText(),emailField.getText());
     }
 
+    private boolean isFieldEmty(){
+        if(nameField.getText().isEmpty()){
+            return true;
+        }
+        if(addressField.getText().isEmpty()) {
+            return true;
+        }
+        if(telephoneField.getText().isEmpty()){
+            return true;
+        }
+        if(emailField.getText().isEmpty()){
+            return true;
+        }
+        return false;
+    }
 }

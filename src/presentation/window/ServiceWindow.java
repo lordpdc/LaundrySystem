@@ -33,9 +33,13 @@ public class ServiceWindow implements Initializable {
             public void handle(ActionEvent event) {
                 Service service = getNewService();
 
-                ServiceAdministrator admin = new ServiceAdministrator();
-                admin.addNew(service);
-                frame.setVisible(false);
+                if(service != null) {
+                    ServiceAdministrator admin = new ServiceAdministrator();
+                    admin.addNew(service);
+                    frame.setVisible(false);
+                }else{
+                    //mensaje de falta llenar datos
+                }
             }
         });
         cancelButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -51,6 +55,22 @@ public class ServiceWindow implements Initializable {
     }
 
     private Service getNewService(){
+        if(isFieldEmty()){
+            return null;
+        }
         return new Service(nameField.getText(),descriptionField.getText(),Double.parseDouble(unitariPriceField.getText()));
+    }
+
+    private boolean isFieldEmty(){
+        if(nameField.getText().isEmpty()){
+            return true;
+        }
+        if(descriptionField.getText().isEmpty()){
+            return true;
+        }
+        if(unitariPriceField.getText().isEmpty()){
+            return true;
+        }
+        return false;
     }
 }

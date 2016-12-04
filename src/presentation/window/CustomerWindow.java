@@ -32,9 +32,11 @@ public class CustomerWindow implements Initializable {
             public void handle(ActionEvent event) {
                 Customer customer = getNewCustomer();
 
-                CustomerAdministrator admin = new CustomerAdministrator();
-                admin.addNew(customer);
-                frame.setVisible(false);
+                if(customer != null) {
+                    CustomerAdministrator admin = new CustomerAdministrator();
+                    admin.addNew(customer);
+                    frame.setVisible(false);
+                }
             }
         });
         cancelButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -50,6 +52,22 @@ public class CustomerWindow implements Initializable {
     }
 
     private Customer getNewCustomer(){
+        if(isFieldEmty()){
+            return null;
+        }
         return new Customer(nameField.getText(),telephoneField.getText(),emailField.getText());
+    }
+
+    private boolean isFieldEmty(){
+        if(nameField.getText().isEmpty()){
+            return true;
+        }
+        if(telephoneField.getText().isEmpty()){
+            return true;
+        }
+        if(emailField.getText().isEmpty()){
+            return true;
+        }
+        return false;
     }
 }
