@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-10-2016 a las 23:55:43
--- Versión del servidor: 10.1.10-MariaDB
--- Versión de PHP: 7.0.4
+-- Tiempo de generación: 04-12-2016 a las 01:17:19
+-- Versión del servidor: 10.1.19-MariaDB
+-- Versión de PHP: 5.6.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -35,10 +35,30 @@ CREATE TABLE `consumabletable` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `detailpurchasetable`
+-- Estructura de tabla para la tabla `customertable`
 --
 
-CREATE TABLE `detailpurchasetable` (
+CREATE TABLE `customertable` (
+  `id` int(11) NOT NULL,
+  `name` varchar(120) NOT NULL,
+  `telephone` varchar(120) NOT NULL,
+  `email` varchar(120) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `customertable`
+--
+
+INSERT INTO `customertable` (`id`, `name`, `telephone`, `email`) VALUES
+(0, 'Luis gerardo', '999989', 'root@algo.com');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `purchasedetailstable`
+--
+
+CREATE TABLE `purchasedetailstable` (
   `id` int(11) NOT NULL,
   `idInvoicePurchase` int(11) NOT NULL,
   `idConsumable` int(11) NOT NULL,
@@ -49,14 +69,61 @@ CREATE TABLE `detailpurchasetable` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `invoicepurchasetable`
+-- Estructura de tabla para la tabla `purchaseinvoicetable`
 --
 
-CREATE TABLE `invoicepurchasetable` (
+CREATE TABLE `purchaseinvoicetable` (
   `id` int(11) NOT NULL,
   `idSupplier` int(11) NOT NULL,
   `date` date NOT NULL,
   `totalPrice` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `saledetailstable`
+--
+
+CREATE TABLE `saledetailstable` (
+  `id` int(11) NOT NULL,
+  `idSaleInvoice` int(11) NOT NULL,
+  `idService` int(11) NOT NULL,
+  `amount` double NOT NULL,
+  `price` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `saledetailstable`
+--
+
+INSERT INTO `saledetailstable` (`id`, `idSaleInvoice`, `idService`, `amount`, `price`) VALUES
+(1, 1, 2, 5, 270);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `saleinvoicetable`
+--
+
+CREATE TABLE `saleinvoicetable` (
+  `id` int(11) NOT NULL,
+  `idCustomer` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `totalPrice` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `servicetable`
+--
+
+CREATE TABLE `servicetable` (
+  `id` int(11) NOT NULL,
+  `name` varchar(120) NOT NULL,
+  `description` varchar(240) NOT NULL,
+  `unitariPrice` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -69,8 +136,8 @@ CREATE TABLE `suppliertable` (
   `id` int(12) NOT NULL,
   `name` varchar(120) NOT NULL,
   `address` varchar(240) NOT NULL,
-  `telephone` varchar(60) NOT NULL,
-  `mail` varchar(60) NOT NULL
+  `telephone` varchar(120) NOT NULL,
+  `email` varchar(120) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -86,18 +153,46 @@ ALTER TABLE `consumabletable`
   ADD KEY `id_2` (`id`);
 
 --
--- Indices de la tabla `detailpurchasetable`
+-- Indices de la tabla `customertable`
 --
-ALTER TABLE `detailpurchasetable`
-  ADD PRIMARY KEY (`id`,`idInvoicePurchase`,`idConsumable`),
-  ADD KEY `idInvoicePurchase` (`idInvoicePurchase`),
-  ADD KEY `idConsumable` (`idConsumable`);
+ALTER TABLE `customertable`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `invoicepurchasetable`
+-- Indices de la tabla `purchasedetailstable`
 --
-ALTER TABLE `invoicepurchasetable`
-  ADD PRIMARY KEY (`id`,`idSupplier`);
+ALTER TABLE `purchasedetailstable`
+  ADD PRIMARY KEY (`id`,`idInvoicePurchase`,`idConsumable`),
+  ADD KEY `idConsumable` (`idConsumable`),
+  ADD KEY `idInvoicePurchase` (`idInvoicePurchase`) USING BTREE;
+
+--
+-- Indices de la tabla `purchaseinvoicetable`
+--
+ALTER TABLE `purchaseinvoicetable`
+  ADD PRIMARY KEY (`id`,`idSupplier`),
+  ADD KEY `idSupplier` (`idSupplier`);
+
+--
+-- Indices de la tabla `saledetailstable`
+--
+ALTER TABLE `saledetailstable`
+  ADD PRIMARY KEY (`id`,`idSaleInvoice`,`idService`),
+  ADD KEY `idSaleInvoice` (`idSaleInvoice`),
+  ADD KEY `idService` (`idService`);
+
+--
+-- Indices de la tabla `saleinvoicetable`
+--
+ALTER TABLE `saleinvoicetable`
+  ADD PRIMARY KEY (`id`,`idCustomer`),
+  ADD KEY `idCustomer` (`idCustomer`);
+
+--
+-- Indices de la tabla `servicetable`
+--
+ALTER TABLE `servicetable`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `suppliertable`
@@ -107,15 +202,49 @@ ALTER TABLE `suppliertable`
   ADD KEY `id` (`id`);
 
 --
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `customertable`
+--
+ALTER TABLE `customertable`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `purchasedetailstable`
+--
+ALTER TABLE `purchasedetailstable`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `saledetailstable`
+--
+ALTER TABLE `saledetailstable`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT de la tabla `saleinvoicetable`
+--
+ALTER TABLE `saleinvoicetable`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `servicetable`
+--
+ALTER TABLE `servicetable`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `suppliertable`
+--
+ALTER TABLE `suppliertable`
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT;
+--
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `detailpurchasetable`
+-- Filtros para la tabla `purchasedetailstable`
 --
-ALTER TABLE `detailpurchasetable`
-  ADD CONSTRAINT `detailpurchasetable_ibfk_1` FOREIGN KEY (`idInvoicePurchase`) REFERENCES `invoicepurchasetable` (`id`),
-  ADD CONSTRAINT `detailpurchasetable_ibfk_2` FOREIGN KEY (`idConsumable`) REFERENCES `consumabletable` (`id`);
+ALTER TABLE `purchasedetailstable`
+  ADD CONSTRAINT `purchasedetailstable_ibfk_1` FOREIGN KEY (`idInvoicePurchase`) REFERENCES `purchaseinvoicetable` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `purchasedetailstable_ibfk_2` FOREIGN KEY (`idConsumable`) REFERENCES `consumabletable` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

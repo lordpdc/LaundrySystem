@@ -8,27 +8,27 @@ import business.utilities.DefaultValues;
 public class Customer {
     private int id;
     private String name;
-    private String phone;
-    private String mail;
+    private String telephone;
+    private String email;
 
     public Customer() {
         this.id = DefaultValues.INTEGER;
         this.name = DefaultValues.STRING;
-        this.phone = DefaultValues.STRING;
-        this.mail = DefaultValues.STRING;
+        this.telephone = DefaultValues.STRING;
+        this.email = DefaultValues.STRING;
     }
 
     public Customer(String name, String phone, String mail) {
         this.name = name;
-        this.phone = phone;
-        this.mail = mail;
+        this.telephone = phone;
+        this.email = mail;
     }
 
     public Customer(int id, String name, String phone, String mail) {
         this.id = id;
         this.name = name;
-        this.phone = phone;
-        this.mail = mail;
+        this.telephone = phone;
+        this.email = mail;
     }
 
     public int getId() {
@@ -47,19 +47,19 @@ public class Customer {
         this.name = name;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getTelephone() {
+        return telephone;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 
-    public String getMail() {
-        return mail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
