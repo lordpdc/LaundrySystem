@@ -49,7 +49,7 @@ public class InventoryView extends TabView<Supplier> {
             Scene scene = new Scene(root);
             panel.setScene(scene);
             SupplierWindow ctrl = (SupplierWindow)loader.getController();
-            ctrl.setAdmin(this);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
