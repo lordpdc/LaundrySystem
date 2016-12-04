@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.window.SupplierWindow">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.window.SupplierWindow">
    <children>
-      <Button layoutX="400.0" layoutY="450.0" mnemonicParsing="false" text="Button" />
-      <Button layoutX="150.0" layoutY="450.0" mnemonicParsing="false" text="Button" />
-      <Label layoutX="100.0" layoutY="50.0" text="Label" />
+      <Button fx:id="createButton" layoutX="400.0" layoutY="450.0" mnemonicParsing="false" text="Guardar" />
+      <Button fx:id="cancelButton" layoutX="150.0" layoutY="450.0" mnemonicParsing="false" text="Cancelar" />
+      <Label layoutX="100.0" layoutY="50.0" text="Nombre" />
       <Label layoutX="100.0" layoutY="100.0" text="Label" />
       <Label layoutX="100.0" layoutY="320.0" text="Label" />
       <Label layoutX="100.0" layoutY="370.0" text="Label" />
-      <TextField layoutX="350.0" layoutY="50.0" />
-      <TextArea layoutX="350.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" />
-      <TextField layoutX="350.0" layoutY="320.0" />
-      <TextField layoutX="350.0" layoutY="370.0" />
+      <TextField fx:id="nameField" layoutX="154.0" layoutY="50.0" prefHeight="27.0" prefWidth="363.0" />
+      <TextArea fx:id="addressField" layoutX="155.0" layoutY="100.0" prefHeight="200.0" prefWidth="395.0" />
+      <TextField fx:id="telephoneField" layoutX="154.0" layoutY="320.0" prefHeight="27.0" prefWidth="363.0" />
+      <TextField fx:id="emailField" layoutX="154.0" layoutY="370.0" prefHeight="27.0" prefWidth="363.0" />
    </children>
 </Pane>
