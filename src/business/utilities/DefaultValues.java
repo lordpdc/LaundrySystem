@@ -3,8 +3,7 @@ package business.utilities;
 import business.Reports.Report;
 
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.*;
 
 /**
  * Created by raoman on 21/09/2016.
@@ -16,6 +15,7 @@ public class DefaultValues {
     public static final Date DATE = today();
     public static final Object OBJECT = null;
     public static final Report REPORT = null;
+    public static final String TOTAL_SALES="Total Vendido";
     public static final ArrayList ARRAY_LIST=new ArrayList(  );
 
 

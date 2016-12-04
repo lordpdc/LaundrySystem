@@ -22,16 +22,15 @@ public class SupplierWindow implements Initializable {
     @FXML protected TextField telephoneField;
     @FXML protected TextField emailField;
 
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
 
-    public void cancel(){
+    public void setData(){
 
     }
 
-    public void create(){
-
-    }
 }

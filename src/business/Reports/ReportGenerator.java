@@ -9,16 +9,23 @@ import java.util.List;
 /**
  * Created by raoman on 11/11/2016.
  */
-public abstract class ReportGenerator {
-    protected Report report;
+public abstract class ReportGenerator<T> {
+    protected List<T> dataForReport;
+    private Period period;
 
     public ReportGenerator() {
-
+        dataForReport=DefaultValues.ARRAY_LIST;
+        period=new Period();
     }
 
-
-    private  void generateReport() {
-
+    public Period getPeriod( ) {
+        return period;
     }
+
+    public void setPeriod( Period period ) {
+        this.period = period;
+        //updateData();
+    }
+
 
 }
