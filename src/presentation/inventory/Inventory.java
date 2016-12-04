@@ -34,7 +34,7 @@ public class Inventory implements Initializable{
 
     private ObservableList<Supplier> data;
 
-    private ProviderRegistration saveDiag;
+    //private ProviderRegistration saveDiag;
 
     @FXML private TextField providerSearchField;
     @FXML private Button registerButton;
@@ -79,37 +79,6 @@ public class Inventory implements Initializable{
         });
 
         Inventory mua = this;
-        registerButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                if (registerProvider==null){
-                    registerProvider = new JFrame("Registrar Proveedor");
-                    JFXPanel jfxPanel = new JFXPanel();
-                    registerProvider.add(jfxPanel);
-                    registerProvider.setSize(520,300);
-                    registerProvider.setLocationRelativeTo(null);
-                    Platform.runLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            try {
-                                registerProvider.setVisible(true);
-                                FXMLLoader leLoder = new FXMLLoader();
-                                Parent root = leLoder.load(getClass().getResource("ProviderRegistration.fxml").openStream());
-                                Scene scene = new Scene(root, 600, 400);
-                                jfxPanel.setScene(scene);
-                                ProviderRegistration actrl = leLoder.getController();
-                                actrl.setFrame(registerProvider);
-                                actrl.setMainCtrl(mua);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    });
-                }else{
-                    registerProvider.setVisible(true);
-                }
-            }
-        });
 
         registerConsumable.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override

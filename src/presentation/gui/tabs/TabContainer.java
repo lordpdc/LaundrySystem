@@ -5,9 +5,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
-import presentation.gui.InventoryView;
-import presentation.gui.PurchaseInvoiceView;
+import presentation.inventory.InventoryView;
+import presentation.inventory.PurchaseInvoiceView;
 
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -21,7 +22,7 @@ public class TabContainer {
     public TabContainer(){
         FXMLLoader loader = new FXMLLoader();
         try {
-            Parent root = loader.load(getClass().getResource("TabContainer.fxml").openStream());
+            Parent root = loader.load(getClass().getResource("resources/layout/TabContainer.fxml").openStream());
             MainContanier = new Scene(root);
             this.addTabs();
         } catch (IOException e) {

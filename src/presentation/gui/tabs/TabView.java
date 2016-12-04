@@ -23,7 +23,7 @@ public class TabView<T> {
 
     public TabView() {
         try {
-            URL getingsmh = getClass().getResource("tabs/TabDesign.fxml");
+            URL getingsmh = getClass().getResource("resources/layout/TabDesign.fxml");
             tab = (Tab) new FXMLLoader().load(getingsmh.openStream());
         } catch (IOException e) {
             e.printStackTrace();

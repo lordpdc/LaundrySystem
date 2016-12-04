@@ -36,11 +36,11 @@ public class PurchaseInvoiceAdministrator extends DataAdministrator<PurchaseInvo
     }
 
 
-    public Invoice search( String name ) {
+    public PurchaseInvoice search( String name ) {
         return null;
     }
 
-    public List<PurchaseDetails> getDetailPurchase( Invoice invoice){
+    public List<PurchaseDetails> getDetailPurchase( PurchaseInvoice invoice){
         List<PurchaseDetails> detailsList;
         PurchaseDetailDAO accesDetails=new PurchaseDetailDAO(  );
 
