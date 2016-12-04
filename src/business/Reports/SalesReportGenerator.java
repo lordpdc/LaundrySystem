@@ -6,8 +6,7 @@ import business.entities.SaleInvoice;
 import business.utilities.DefaultValues;
 
 import java.sql.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by raoman on 03/12/2016.
@@ -18,7 +17,7 @@ public class SalesReportGenerator  {
     private Double totalSales;
 
     public SalesReportGenerator( ) {
-        salesForReport=DefaultValues.ARRAY_LIST;
+        salesForReport=new ArrayList<>(  );
         period=new Period();
         totalSales= DefaultValues.DOUBLE;
     }
@@ -46,7 +45,7 @@ public class SalesReportGenerator  {
     private Report fillSalesReport(){
         Report reporteFilled=new Report();
         for( SaleInvoice currentSaleInvoice:salesForReport ) {
-            reporteFilled.addData( currentSaleInvoice );
+            reporteFilled.addSales( currentSaleInvoice );
         }
         totalSales=calculateTotalSales();
         reporteFilled.addResult( DefaultValues.TOTAL_SALES ,totalSales);
@@ -60,7 +59,7 @@ public class SalesReportGenerator  {
     }
 
     private List<SaleInvoice> filterSales( List<SaleInvoice> listAllSales ) {
-        List<SaleInvoice> salesFiltered=DefaultValues.ARRAY_LIST;
+        List<SaleInvoice> salesFiltered=new ArrayList<>(  );
         for( SaleInvoice currentSaleInvoice:listAllSales ) {
             Date dateOfCurrentInvoice = currentSaleInvoice.getDate( );
             if( period.isDateIntoPeriod( dateOfCurrentInvoice ) ) {

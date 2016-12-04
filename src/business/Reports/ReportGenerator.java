@@ -4,6 +4,7 @@ import business.utilities.DefaultValues;
 import business.utilities.MsgErrorReport;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ public abstract class ReportGenerator<T> {
     private Period period;
 
     public ReportGenerator() {
-        dataForReport=DefaultValues.ARRAY_LIST;
+        dataForReport=new ArrayList< T >(  );
         period=new Period();
     }
 

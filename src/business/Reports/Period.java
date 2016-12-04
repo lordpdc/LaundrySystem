@@ -51,4 +51,9 @@ public class Period {
     public boolean isDateIntoPeriod(Date date){
         return date.before( finalDate )&& date.after( initialDate );
     }
+
+    @Override
+    public String toString( ) {
+        return "Periodo-"+ initialDate +"-" + finalDate;
+    }
 }
