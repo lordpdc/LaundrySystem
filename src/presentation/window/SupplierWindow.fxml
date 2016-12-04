@@ -8,8 +8,8 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.window.SupplierWindow">
    <children>
-      <Button fx:id="cancelButton" layoutX="400.0" layoutY="450.0" mnemonicParsing="false" text="Button" />
-      <Button fx:id="createButton" layoutX="150.0" layoutY="450.0" mnemonicParsing="false" text="Button" />
+      <Button fx:id="cancelButton" layoutX="400.0" layoutY="450.0" mnemonicParsing="false" text="Cancelar" />
+      <Button fx:id="createButton" layoutX="150.0" layoutY="450.0" mnemonicParsing="false" text="Guardar" />
       <Label layoutX="100.0" layoutY="50.0" text="Nombre: " />
       <Label layoutX="100.0" layoutY="100.0" text="Dirección: " />
       <Label layoutX="100.0" layoutY="320.0" text="Telefono: " />
