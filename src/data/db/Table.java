@@ -41,6 +41,7 @@ public class Table {
         }
         return rows;
     }
+
     public List<Row> getRowByAttr(String value,List<Field > fields){
         String stmt = "SELECT * FROM "+name+" WHERE";
         for(Field field: fields){
@@ -88,16 +89,19 @@ public class Table {
     public int addRow(List<Tuple> params){
         String strKeys = "";
         String strValues = "";
+
         for(Tuple param: params){
             strKeys += param.getKey()+",";
             strValues +="'"+param.getValue()+"',";
         }
+
         if (strKeys.charAt(strKeys.length() - 1)==','){
             strKeys = strKeys.substring(0, strKeys.length()-1);
         }
         if (strValues.charAt(strValues.length() - 1)==','){
             strValues = strValues.substring(0, strValues.length()-1);
         }
+
         System.out.println("INSERT INTO "+name+" ("+strKeys+") VALUES ("+strValues+")");
         return db.executeStatement("INSERT INTO "+name+" ("+strKeys+") VALUES ("+strValues+")");
     }

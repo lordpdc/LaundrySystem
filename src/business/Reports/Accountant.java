@@ -3,6 +3,7 @@ package business.Reports;
 import business.administrator.PurchaseInvoiceAdministrator;
 import business.administrator.SalesInvoiceAdministrator;
 import business.entities.Invoice;
+import business.utilities.DefaultValues;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -27,13 +28,13 @@ public class Accountant {
     }
 
     public List getPurchasesBook(Period period ) {
-        List purchasesForReport = filterBook( period, purchasesBook );
-
-        return purchasesForReport;
+        return purchasesBook;
     }
 
     public Report getSalesReport(Period period){
         List salesForReport=filterBook( period,salesBook );
+        double totalOfReport=calculeTotals( salesForReport );
+        //ReportGenerator reportGenerator=new ReportGenerator( );
 
         return new Report();
     }
@@ -47,6 +48,13 @@ public class Accountant {
             }
         }
         return bookFiltered;
+    }
+    private double calculeTotals(List<Invoice> listInvoiceForReport){
+        Double totalCalculated= DefaultValues.DOUBLE;
+        for( Invoice invoice:listInvoiceForReport ){
+            totalCalculated+=totalCalculated+invoice.getTotalPrice();
+        }
+        return totalCalculated;
     }
 
 
