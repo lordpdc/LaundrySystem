@@ -23,6 +23,21 @@ public class PurchaseInvoiceView extends TabView {
 
     }
 
+    @Override
+    protected void editAction() {
+
+    }
+
+    @Override
+    protected void deleteAction() {
+
+    }
+
+    @Override
+    protected void searchAction() {
+
+    }
+
     private void initComponents(){
 
     }
