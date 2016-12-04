@@ -1,5 +1,6 @@
 package presentation.inventory;
 
+import business.administrator.SupplierAdministrator;
 import business.entities.Supplier;
 import data.dao.SupplierDAO;
 import javafx.scene.control.TableColumn;
@@ -10,7 +11,7 @@ import presentation.gui.tabs.TabView;
  * Created by cesar on 01/12/16.
  */
 public class InventoryView extends TabView<Supplier> {
-    private SupplierDAO dao = new SupplierDAO();
+    private SupplierAdministrator admin = new SupplierAdministrator();
 
     public InventoryView(){
         super();
@@ -19,7 +20,7 @@ public class InventoryView extends TabView<Supplier> {
     }
 
     private void initComponents(){
-        data.addAll(dao.readAll());
+        data.addAll(admin.getAllData());
 
         table.addColumn("nombre","name");
         table.addColumn("dirección","address");
@@ -27,6 +28,29 @@ public class InventoryView extends TabView<Supplier> {
         table.addColumn("correo","mail");
 
         table.setData(data);
+
+    }
+
+    @Override
+    protected void createAction(){
+        System.out.println("Creating");
+
+
+
+    }
+
+    @Override
+    protected void editAction() {
+        System.out.println("Editing");
+    }
+
+    @Override
+    protected void deleteAction() {
+
+    }
+
+    @Override
+    protected void searchAction() {
 
     }
 

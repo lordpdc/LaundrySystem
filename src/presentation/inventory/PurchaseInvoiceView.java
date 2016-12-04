@@ -18,6 +18,11 @@ public class PurchaseInvoiceView extends TabView {
         initComponents();
     }
 
+    @Override
+    protected void createAction() {
+
+    }
+
     private void initComponents(){
 
     }
