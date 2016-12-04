@@ -1,4 +1,4 @@
-package presentation.gui;
+package presentation.inventory;
 
 import business.entities.Supplier;
 import data.dao.SupplierDAO;

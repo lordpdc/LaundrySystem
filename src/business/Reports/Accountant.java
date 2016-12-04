@@ -2,7 +2,6 @@ package business.Reports;
 
 import business.administrator.PurchaseInvoiceAdministrator;
 import business.administrator.SalesInvoiceAdministrator;
-import business.entities.Invoice;
 import business.utilities.DefaultValues;
 
 import java.sql.Date;
@@ -12,7 +11,7 @@ import java.util.List;
 /**
  * Created by raoman on 19/11/2016.
  */
-public class Accountant {
+public class Accountant {/*
     private List salesBook;
     private List purchasesBook;
 
@@ -56,7 +55,7 @@ public class Accountant {
         }
         return totalCalculated;
     }
-
+*/
 
 
 }
