@@ -26,6 +26,11 @@ public class PurchaseInvoice extends Invoice {
         this.totalPrice = totalPrice;
     }
 
+    public PurchaseInvoice(int idSupplier, double totalPrice) {
+        this.idSupplier = idSupplier;
+        this.totalPrice = totalPrice;
+    }
+
     public int getIdSupplier() {
         return idSupplier;
     }

@@ -15,7 +15,8 @@ public class Invoice {
     public Invoice( ) {
         this.id = DefaultValues.INTEGER;
         this.date = DefaultValues.DATE;
-        this.totalPrice = DefaultValues.DOUBLE;    }
+        this.totalPrice = DefaultValues.DOUBLE;
+    }
 
     public int getId() {
         return id;

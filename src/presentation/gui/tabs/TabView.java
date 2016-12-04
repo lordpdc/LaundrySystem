@@ -16,24 +16,23 @@ import java.net.URL;
 /**
  * Created by cesar on 01/12/16.
  */
-public class View<T> {
+public class TabView<T> {
     protected Tab tab;
-    protected TableView table;
+    protected Table table = new Table<T>();
     protected ObservableList<T> data = FXCollections.observableArrayList();
 
-    public View() {
+    public TabView() {
         try {
             URL getingsmh = getClass().getResource("tabs/TabDesign.fxml");
             tab = (Tab) new FXMLLoader().load(getingsmh.openStream());
         } catch (IOException e) {
             e.printStackTrace();
         }
-        table = (TableView) tab.getContent().lookup("#dataTable");
+        table.setTable((TableView) tab.getContent().lookup("#dataTable"));
     }
-
-
 
     public void updateObsList(T p){
         data.add(p);
     }
+
 }

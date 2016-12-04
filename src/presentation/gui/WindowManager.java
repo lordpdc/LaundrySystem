@@ -14,7 +14,6 @@ public class WindowManager {
     }
 
     public void showInventory(){
-
         inventory = new JFrame("Inventario");
 
         final JFXPanel fxPanel = new JFXPanel();
