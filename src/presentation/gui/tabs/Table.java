@@ -1,6 +1,5 @@
 package presentation.gui.tabs;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -14,19 +13,25 @@ import java.util.List;
  */
 public class Table<T> {
     private TableView<T> tableView;
-    protected ObservableList data = FXCollections.observableArrayList();
+    protected ObservableList<T> data;
     private List<TableColumn> columns = new ArrayList<TableColumn>();
 
     public Table(){
-        tableView = new TableView();
+        tableView = new TableView<T>();
     }
 
     public void setTable(TableView tableView){
         this.tableView = tableView;
+
+        // TODO if table has cols load 'em
     }
 
     public List<TableColumn> getColumnList(){
         return columns;
+    }
+
+    public void addToData(T item){
+        data.add(item);
     }
 
     public void addColumn(String name, String value){
@@ -35,8 +40,22 @@ public class Table<T> {
         tableView.getColumns().add(column);
     }
 
+    public void addColumn(String name, String value, double d){
+        TableColumn<T, String> column = new TableColumn<T, String>(name);
+        column.setPrefWidth(d);
+        column.setCellValueFactory(new PropertyValueFactory<T,String>(value));
+        tableView.getColumns().add(column);
+    }
+
+    public void setColumnValue(TableColumn<T, String> column, String value){
+        column.setCellValueFactory(new PropertyValueFactory<T,String>(value));
+    }
+
     public void setData(ObservableList items){
         tableView.setItems(items);
     }
 
+    public void toggleEditable(){
+        tableView.setEditable(!tableView.isEditable());
+    }
 }

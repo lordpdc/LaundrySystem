@@ -5,14 +5,14 @@ import business.utilities.DefaultValues;
 /**
  * Created by raoman on 01/10/2016.
  */
-public class PurchaseDetails {
+public class PurchaseDetail {
     private int id;
     private int idPurchaseInvoice;
     private int idConsumable;
     private double priceConsumable;
     private double quantityConsumable;
 
-    public PurchaseDetails(){
+    public PurchaseDetail(){
         this.id = DefaultValues.INTEGER;
         this.idPurchaseInvoice = DefaultValues.INTEGER;
         this.idConsumable = DefaultValues.INTEGER;
@@ -20,13 +20,13 @@ public class PurchaseDetails {
         this.quantityConsumable = DefaultValues.DOUBLE;
     }
     
-    public PurchaseDetails(double priceConsumable, double quantityConsumable){
+    public PurchaseDetail(double priceConsumable, double quantityConsumable){
         this.priceConsumable = priceConsumable;
         this.quantityConsumable = quantityConsumable;
     }
     
-    public PurchaseDetails(int id, int idPurchaseInvoice, int idConsumable, 
-            double priceConsumable, double quantityConsumable){
+    public PurchaseDetail(int id, int idPurchaseInvoice, int idConsumable,
+                          double priceConsumable, double quantityConsumable){
         this.id = id;
         this.idPurchaseInvoice = idPurchaseInvoice;
         this.idConsumable = idConsumable;

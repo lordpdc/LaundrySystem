@@ -64,7 +64,7 @@ public class GenericDAO<T> implements DAO<T> {
             e.printStackTrace();
         }
 
-        List<Row> rows = table.getRowByAttr(value, getAllFields(entity ));
+        List<Row> rows = table.getRowsByAttr(value, getAllFields(entity ));
         List<T> entities = new ArrayList<>();
         for (Row row : rows) {
             entity=null;

@@ -5,7 +5,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TableView;
 import presentation.inventory.InventoryView;
+import presentation.inventory.SuppliersView;
 import presentation.inventory.PurchaseInvoiceView;
 
 import java.io.IOException;
@@ -37,11 +39,13 @@ public class TabContainer {
     private void addTabs(){
         tabPane = (TabPane) MainContanier.lookup("#tabContainer");
 
-        TabView view1 = new InventoryView();
+        TabView view1 = new SuppliersView();
         TabView view2 = new PurchaseInvoiceView();
+        TabView tab3 = new InventoryView();
 
         tabPane.getTabs().add(view1.tab);
         tabPane.getTabs().add(view2.tab);
+        tabPane.getTabs().add(tab3.tab);
     }
 
 }

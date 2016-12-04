@@ -13,10 +13,6 @@ public class DefaultValues {
     public static final String STRING = "";
     public static final double DOUBLE = 0;
     public static final Date DATE = today();
-    public static final Object OBJECT = null;
-    public static final Report REPORT = null;
-    public static final String TOTAL_SALES="Total Vendido";
-    public static final ArrayList ARRAY_LIST=new ArrayList(  );
 
 
     private static Date today(){
