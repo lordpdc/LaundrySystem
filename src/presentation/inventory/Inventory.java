@@ -64,7 +64,7 @@ public class Inventory implements Initializable{
         providerName.setCellValueFactory(new PropertyValueFactory<Supplier,String>("name"));
         providerAddress.setCellValueFactory(new PropertyValueFactory<Supplier,String>("address"));
         providerPhone.setCellValueFactory(new PropertyValueFactory<Supplier,String>("phoneNumber"));
-        providerEmail.setCellValueFactory(new PropertyValueFactory<Supplier,String>("email"));
+        providerEmail.setCellValueFactory(new PropertyValueFactory<Supplier,String>("mail"));
 
         providersTable.setItems(data);
 

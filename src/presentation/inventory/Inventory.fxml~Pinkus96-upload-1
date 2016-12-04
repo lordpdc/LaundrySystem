@@ -18,7 +18,7 @@
                       <TableColumn id="provider_name" fx:id="providerName" prefWidth="167.0" text="nombre" />
                         <TableColumn id="provider_phone" fx:id="providerPhone" prefWidth="104.0" text="teléfono" />
                         <TableColumn id="provider_address" fx:id="providerAddress" prefWidth="351.0" text="dirección" />
-                        <TableColumn fx:id="providerEmail" prefWidth="195.0" text="email" />
+                        <TableColumn fx:id="providerEmail" prefWidth="195.0" text="mail" />
                     </columns>
                   </TableView>
                   <Button fx:id="registerButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="registrar" />

@@ -1,5 +1,6 @@
 package presentation.gui.tabs;
 
+import business.entities.Supplier;
 import data.dao.SupplierDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -7,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
 import java.net.URL;
@@ -14,11 +16,10 @@ import java.net.URL;
 /**
  * Created by cesar on 01/12/16.
  */
-public class View {
+public class View<T> {
     protected Tab tab;
     protected TableView table;
-    private SupplierDAO dao = new SupplierDAO();
-    protected ObservableList<Object> data = FXCollections.observableArrayList(dao.readAll());
+    protected ObservableList<T> data = FXCollections.observableArrayList();
 
     public View() {
         try {
@@ -28,11 +29,11 @@ public class View {
             e.printStackTrace();
         }
         table = (TableView) tab.getContent().lookup("#dataTable");
-
-        table.getColumns().add(new TableColumn("hola"));
     }
 
-    public void updateObsList(Object p){
+
+
+    public void updateObsList(T p){
         data.add(p);
     }
 }
