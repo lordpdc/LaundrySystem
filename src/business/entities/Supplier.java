@@ -16,21 +16,21 @@ public class Supplier {
     protected String name;
     protected String address;
     protected String telephone;
-    protected String mail;
+    protected String email;
     
     public Supplier(){
         this.id= DefaultValues.INTEGER;
         this.name= DefaultValues.STRING;
         this.address = DefaultValues.STRING;
         this.telephone = DefaultValues.STRING;
-        this.mail = DefaultValues.STRING;
+        this.email = DefaultValues.STRING;
     }
 
     public Supplier(String name, String address, String phone, String email){
         this.name = name;
         this.address = address;
         this.telephone = phone;
-        this.mail = email;
+        this.email = email;
     }
     
     public Supplier(int id, String name, String address, String phone, String email){
@@ -38,7 +38,7 @@ public class Supplier {
         this.name = name;
         this.address = address;
         this.telephone = phone;
-        this.mail = email;
+        this.email = email;
     }
     
     /**
@@ -98,17 +98,17 @@ public class Supplier {
     }
 
     /**
-     * @return the mail
+     * @return the email
      */
-    public String getMail() {
-        return mail;
+    public String getEmail() {
+        return email;
     }
 
     /**
-     * @param mail the mail to set
+     * @param email the email to set
      */
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setEmail(String email) {
+        this.email = email;
     }
     
     
