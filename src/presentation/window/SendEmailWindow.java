@@ -44,7 +44,7 @@ public class SendEmailWindow implements Initializable {
 
     private void sendEmail( ) {
         String addressee=addresseeField.getText();
-        String subject=addresseeField.getText();
+        String subject=subjectField.getText();
         String msg= msgTextArea.getText();
         if(!(addressee.isEmpty()||subject.isEmpty()||msg.isEmpty())){
             try {
