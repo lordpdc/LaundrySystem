@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import presentation.gui.tabs.TabView;
+import presentation.utilities.StringValuesMessage;
 import presentation.window.ServiceWindow;
 
 import javax.swing.*;
@@ -82,25 +83,25 @@ public class ServiceView extends TabView<Service>{
                 Service searchItem = administrator.searchById(Integer.parseInt(searchField.getText()));
 
                 if(searchItem.getName().isEmpty()){
-                    JOptionPane.showMessageDialog(null,"Elemento no existente",
-                            "Mensaje Informativo",JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null,StringValuesMessage.elementNotExistMessage,
+                            StringValuesMessage.informationTitle,JOptionPane.INFORMATION_MESSAGE);
                 }else {
-                    JOptionPane.showMessageDialog(null,"Elemento encontrado",
-                            "Mensaje Informativo",JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null,StringValuesMessage.elementExistMessage,
+                            StringValuesMessage.informationTitle,JOptionPane.INFORMATION_MESSAGE);
                 }
             }else {
                 List<Service> searchItem = administrator.searchByAtribute(searchField.getText());
                 if(searchItem.isEmpty()){
-                    JOptionPane.showMessageDialog(null,"Elemento no existente",
-                            "Mensaje Informativo",JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null,StringValuesMessage.elementNotExistMessage,
+                            StringValuesMessage.informationTitle,JOptionPane.INFORMATION_MESSAGE);
                 }else {
-                    JOptionPane.showMessageDialog(null,"Elemento encontrado",
-                            "Mensaje Informativo",JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null,StringValuesMessage.elementExistMessage,
+                            StringValuesMessage.informationTitle,JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         }else{
-            JOptionPane.showMessageDialog(null,"No a introducido nada para buscar.",
-                    "Mensaje de Advertencia",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null,StringValuesMessage.missingSearchFieldMessage,
+                    StringValuesMessage.warningTitle,JOptionPane.WARNING_MESSAGE);
         }
     }
 }
