@@ -8,9 +8,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import presentation.gui.tabs.TabView;
 import presentation.window.ConsumableWindow;
-import presentation.window.SupplierWindow;
 
+import javax.swing.*;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by cesar on 04/12/16.
@@ -26,12 +27,12 @@ public class InventoryView extends TabView<Consumable> {
     }
 
     private void initComponents(){
-        data.addAll(administrator.getAllData());
+        getData().addAll(administrator.getAllData());
 
         table.addColumn("nombre","name",100);
         table.addColumn("descripción","description",100);
 
-        table.setData(data);
+        table.setData(getData());
 
         JFXPanel panel = new JFXPanel();
         try {
@@ -76,7 +77,31 @@ public class InventoryView extends TabView<Consumable> {
 
     @Override
     protected void searchAction() {
+        if(isFieldEmpty()){
+            if(isSearchFieldNumeric()){
+                Consumable searchItem = administrator.searchById(Integer.parseInt(searchField.getText()));
 
+                if(searchItem.getName().isEmpty()){
+                    JOptionPane.showMessageDialog(null,"Elemento no existente",
+                            "Mensaje Informativo",JOptionPane.INFORMATION_MESSAGE);
+                }else {
+                    JOptionPane.showMessageDialog(null,"Elemento encontrado",
+                            "Mensaje Informativo",JOptionPane.INFORMATION_MESSAGE);
+                }
+            }else {
+                List<Consumable> searchItem = administrator.searchByAtribute(searchField.getText());
+                if(searchItem.isEmpty()){
+                    JOptionPane.showMessageDialog(null,"Elemento no existente",
+                            "Mensaje Informativo",JOptionPane.INFORMATION_MESSAGE);
+                }else {
+                    JOptionPane.showMessageDialog(null,"Elemento encontrado",
+                            "Mensaje Informativo",JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"No a introducido nada para buscar.",
+                    "Mensaje de Advertencia",JOptionPane.WARNING_MESSAGE);
+        }
     }
 
 }

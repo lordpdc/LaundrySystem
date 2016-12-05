@@ -27,14 +27,14 @@ public class SuppliersView extends TabView<Supplier> {
     }
 
     private void initComponents(){
-        data.addAll(administrator.getAllData());
+        getData().addAll(administrator.getAllData());
 
         table.addColumn("nombre","name");
         table.addColumn("dirección","address");
         table.addColumn("telefono","telephone");
         table.addColumn("correo","email");
 
-        table.setData(data);
+        table.setData(getData());
 
         JFXPanel panel = new JFXPanel();
         try {
@@ -82,20 +82,21 @@ public class SuppliersView extends TabView<Supplier> {
         if(isFieldEmpty()){
             if(isSearchFieldNumeric()){
                 Supplier searchItem = administrator.searchById(Integer.parseInt(searchField.getText()));
-                if(searchItem != null){
-                    JOptionPane.showMessageDialog(null,"Elemento elemento encontrado",
+
+                if(searchItem.getName().isEmpty()){
+                    JOptionPane.showMessageDialog(null,"Elemento no existente",
                             "Mensaje Informativo",JOptionPane.INFORMATION_MESSAGE);
                 }else {
-                    JOptionPane.showMessageDialog(null,"Elemento no existente",
+                    JOptionPane.showMessageDialog(null,"Elemento encontrado",
                             "Mensaje Informativo",JOptionPane.INFORMATION_MESSAGE);
                 }
             }else {
                 List<Supplier> searchItem = administrator.searchByAtribute(searchField.getText());
-                if(searchItem != null){
-                    JOptionPane.showMessageDialog(null,"Elemento elemento encontrado",
+                if(searchItem.isEmpty()){
+                    JOptionPane.showMessageDialog(null,"Elemento no existente",
                             "Mensaje Informativo",JOptionPane.INFORMATION_MESSAGE);
                 }else {
-                    JOptionPane.showMessageDialog(null,"Elemento no existente",
+                    JOptionPane.showMessageDialog(null,"Elemento encontrado",
                             "Mensaje Informativo",JOptionPane.INFORMATION_MESSAGE);
                 }
             }

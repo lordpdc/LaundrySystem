@@ -102,15 +102,13 @@ public class ServiceWindow implements Initializable {
 
     private boolean isFieldEmty(){
         if(nameField.getText().isEmpty()){
-            return true;
+            return false;
+        }else if(descriptionField.getText().isEmpty()) {
+            return false;
+        }else if(unitariPriceField.getText().isEmpty()){
+            return false;
         }
-        if(descriptionField.getText().isEmpty()){
-            return true;
-        }
-        if(unitariPriceField.getText().isEmpty()){
-            return true;
-        }
-        return false;
+        return true;
     }
 
     private boolean isUnitariPriceNumeric(){

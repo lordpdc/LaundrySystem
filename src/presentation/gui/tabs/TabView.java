@@ -47,7 +47,7 @@ public abstract class TabView<T> {
     }
 
     public void updateObsList(T p){
-        data.add(p);
+        getData().add(p);
     }
 
     public JFrame getFrame(){
@@ -62,6 +62,7 @@ public abstract class TabView<T> {
         searchButton = (Button) tab.getContent().lookup("#searchButton");
         editButton = (Button) tab.getContent().lookup("#editButton");
         deleteButton = (Button) tab.getContent().lookup("#deleteButton");
+        searchField = (TextField) tab.getContent().lookup("#searchField");
 
         createButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -108,19 +109,29 @@ public abstract class TabView<T> {
     }
 
     protected boolean isFieldEmpty(){
-        if(searchField.getText() == null){
-            return true;
-        }else {
+        if(searchField.getText().isEmpty()){
+            System.out.println("entra a crear");
             return false;
+        }else {
+            return true;
         }
     }
 
     protected boolean isSearchFieldNumeric(){
         try{
             Integer.parseInt(searchField.getText());
-            return false;
-        }catch (NumberFormatException exception){
             return true;
+        }catch (NumberFormatException exception){
+            return false;
         }
     }
+
+    public ObservableList<T> getData() {
+        return data;
+    }
+
+    public void setData(ObservableList<T> data) {
+        this.data = data;
+    }
+
 }
