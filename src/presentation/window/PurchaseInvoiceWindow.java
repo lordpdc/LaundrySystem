@@ -4,6 +4,7 @@ import business.administrator.ConsumableAdministrator;
 import business.administrator.PurchaseInvoiceAdministrator;
 import business.administrator.SupplierAdministrator;
 import business.entities.Consumable;
+import business.entities.PurchaseDetail;
 import business.entities.PurchaseInvoice;
 import business.entities.Supplier;
 import business.utilities.DefaultValues;
@@ -34,13 +35,13 @@ public class PurchaseInvoiceWindow implements Initializable {
 
     private JFrame frame;
 
-    private ObservableList<PurchaseDetailObj> data;
+    private ObservableList<PurchaseDetail> data;
     private PurchaseInvoice invoice = new PurchaseInvoice();
 
     @FXML private MenuButton supplierSelect;
     @FXML private Button newConsumableBtn;
     @FXML private DatePicker dateSelect;
-    @FXML private TableView<PurchaseDetailObj> detailsTable;
+    @FXML private TableView<PurchaseDetail> detailsTable;
     @FXML private TableColumn nameColumn;
     @FXML private TableColumn quantityColumn;
     @FXML private TableColumn priceColumn;
@@ -58,9 +59,9 @@ public class PurchaseInvoiceWindow implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         data = FXCollections.observableArrayList();
 
-        nameColumn.setCellValueFactory(new PropertyValueFactory<PurchaseDetailObj,String>("idConsumable"));
-        quantityColumn.setCellValueFactory(new PropertyValueFactory<PurchaseDetailObj,String>("quantityConsumable"));
-        priceColumn.setCellValueFactory(new PropertyValueFactory<PurchaseDetailObj,String>("priceConsumable"));
+        nameColumn.setCellValueFactory(new PropertyValueFactory<PurchaseDetail,String>("consumableName"));
+        quantityColumn.setCellValueFactory(new PropertyValueFactory<PurchaseDetail,String>("quantityConsumable"));
+        priceColumn.setCellValueFactory(new PropertyValueFactory<PurchaseDetail,String>("priceConsumable"));
 
         detailsTable.setItems(data);
 
@@ -98,6 +99,7 @@ public class PurchaseInvoiceWindow implements Initializable {
                 public void handle(ActionEvent event) {
                     System.out.println(c.getId());
                     consumableSelect.setText(c.getName());
+                    consumableSelect.setId(Integer.toString(c.getId()));
                 }
             });
             consumableSelect.getItems().add(menu);
@@ -136,7 +138,9 @@ public class PurchaseInvoiceWindow implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println(consumableSelect.getText()+", "+priceInput.getText()+", "+quantityInput.getText());
-                PurchaseDetailObj pdobj = new PurchaseDetailObj(consumableSelect.getText(),"$"+priceInput.getText(),quantityInput.getText());
+                PurchaseDetail pdobj = new PurchaseDetail(new Double(priceInput.getText()),new Double(quantityInput.getText()));
+                pdobj.setConsumableName(consumableSelect.getText());
+                pdobj.setIdConsumable(parseInt(consumableSelect.getId()));
                 data.add(pdobj);
             }
         };
@@ -151,8 +155,8 @@ public class PurchaseInvoiceWindow implements Initializable {
 
                 System.out.println(dateSelect.getValue());
 
-                for(PurchaseDetailObj detail: data){
-                    System.out.println(detail.toString());
+                for(PurchaseDetail detail: data){
+                    System.out.println(detail.getIdConsumable()+", "+detail.getPriceConsumable());
                 }
             }
         };

@@ -78,8 +78,10 @@ public class Table {
         String strValues = "";
 
         for(Tuple param: params){
-            strKeys += param.getKey()+",";
-            strValues +="'"+param.getValue()+"',";
+            if (!param.getKey().equals("id")){
+                strKeys += param.getKey()+",";
+                strValues +="'"+param.getValue()+"',";
+            }
         }
 
         if (strKeys.charAt(strKeys.length() - 1)==','){

@@ -1,14 +1,15 @@
 package business.entities;
 
 import business.utilities.DefaultValues;
+import data.dao.DataField;
 
 /**
  * Created by cesar on 03/09/16.
  */
 public class Consumable {
-    private int id;
-    private String name;
-    private String description;
+    @DataField private int id;
+    @DataField private String name;
+    @DataField private String description;
 
     public Consumable(){
         this.id = DefaultValues.INTEGER;

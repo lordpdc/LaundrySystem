@@ -1,15 +1,16 @@
 package business.entities;
 
 import business.utilities.DefaultValues;
+import data.dao.DataField;
 
 /**
  * Created by raoman on 21/09/2016.
  */
 public class Customer {
-    private int id;
-    private String name;
-    private String telephone;
-    private String email;
+    @DataField private int id;
+    @DataField private String name;
+    @DataField private String telephone;
+    @DataField private String email;
 
     public Customer() {
         this.id = DefaultValues.INTEGER;
