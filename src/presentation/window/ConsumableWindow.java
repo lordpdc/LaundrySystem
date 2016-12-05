@@ -20,6 +20,9 @@ import java.util.ResourceBundle;
  */
 public class ConsumableWindow implements Initializable {
     private InventoryView root;
+    private boolean isUpdate = false;
+    private Consumable consumable;
+    private ConsumableAdministrator administrator = new ConsumableAdministrator();
 
     @FXML protected Button createButton;
     @FXML protected Button cancelButton;
@@ -32,18 +35,36 @@ public class ConsumableWindow implements Initializable {
         createButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                Consumable consumable = getNewConsumable();
+                if(isUpdate){
+                    if (isFieldEmty()) {
+                        Consumable consumablefromWindow = getConsumablefromWindow();
+                        administrator.update(consumable.getId(),consumablefromWindow);
 
-                if(consumable != null) {
-                    ConsumableAdministrator admin = new ConsumableAdministrator();
-                    admin.addNew(consumable);
-                    root.getFrame().setVisible(false);
+                        setIsUpdate(false);
+                        cleanWindow();
+                        root.getFrame().setVisible(false);
+                    }else{
+                        FieldEmptyMessage();
+                    }
+                }else {
+                    if (isFieldEmty()) {
+                        consumable = getConsumablefromWindow();
+                        administrator.addNew(consumable);
+
+                        root.updateObsList(consumable);
+                        cleanWindow();
+                        root.getFrame().setVisible(false);
+                    }else {
+                        FieldEmptyMessage();
+                    }
                 }
             }
         });
         cancelButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                cleanWindow();
+                setIsUpdate(false);
                 root.getFrame().setVisible(false);
             }
         });
@@ -53,11 +74,26 @@ public class ConsumableWindow implements Initializable {
         this.root = root;
     }
 
-    private Consumable getNewConsumable(){
-        if(isFieldEmty()){
-            return null;
-        }
+    public void setIsUpdate(boolean isUpdate){
+        this.isUpdate = isUpdate;
+    }
+
+    public void setWindowtoUpdate(int id){
+        consumable = administrator.searchById(id);
+
+        nameField.setText(consumable.getName());
+        descriptionField.setText(consumable.getDescription());
+
+        setIsUpdate(true);
+    }
+
+    private Consumable getConsumablefromWindow(){
         return new Consumable(nameField.getText(),descriptionField.getText());
+    }
+
+    private void cleanWindow(){
+        nameField.setText(null);
+        descriptionField.setText(null);
     }
 
     private boolean isFieldEmty(){
@@ -68,5 +104,9 @@ public class ConsumableWindow implements Initializable {
             return true;
         }
         return false;
+    }
+
+    private void FieldEmptyMessage(){
+        JOptionPane.showMessageDialog(null,"Falta llenar campos",  "Mensaje de Advertencia",JOptionPane.WARNING_MESSAGE);
     }
 }
