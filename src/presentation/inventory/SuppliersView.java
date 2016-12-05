@@ -15,7 +15,7 @@ import java.io.IOException;
  * Created by cesar on 01/12/16.
  */
 public class SuppliersView extends TabView<Supplier> {
-    private SupplierAdministrator admin = new SupplierAdministrator();
+    private SupplierAdministrator administrator = new SupplierAdministrator();
     private SupplierWindow ctrl;
 
     public SuppliersView(){
@@ -25,7 +25,7 @@ public class SuppliersView extends TabView<Supplier> {
     }
 
     private void initComponents(){
-        data.addAll(admin.getAllData());
+        data.addAll(administrator.getAllData());
 
         table.addColumn("nombre","name");
         table.addColumn("dirección","address");
@@ -58,26 +58,28 @@ public class SuppliersView extends TabView<Supplier> {
     protected void editAction() {
         if (table.getSelectedItem()!=null){
             int id = ((Supplier) table.getSelectedItem()).getId();
-            System.out.println(id);
             ctrl.setWindowtoUpdate(id);
             frame.setVisible(true);
         }else{
-            System.out.println("Debe seleccionar un proveedor");
+            message();
         }
     }
 
     @Override
     protected void deleteAction() {
-
+        if (table.getSelectedItem()!=null){
+            int id = ((Supplier) table.getSelectedItem()).getId();
+            administrator.remove(id);
+        }else{
+            message();
+        }
     }
 
     @Override
     protected void searchAction() {
 
+
     }
 
-    public void awdawd(String i, String s, String o, String g){
-        admin.addNew(i,s,o,g);
-    }
 
 }
