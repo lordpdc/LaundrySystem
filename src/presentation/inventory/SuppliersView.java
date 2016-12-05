@@ -40,7 +40,7 @@ public class SuppliersView extends TabView<Supplier> {
             Scene scene = new Scene(root);
             panel.setScene(scene);
             SupplierWindow ctrl = (SupplierWindow)loader.getController();
-            ctrl.setFrame(frame);
+            ctrl.setParent(this);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -49,6 +49,7 @@ public class GenericDAO<T> implements DAO<T> {
         }
         return entity;
     }
+
     public List<T> readByAtrr(String value) {
         Class<?> clazz = null;
         try {
@@ -80,9 +81,7 @@ public class GenericDAO<T> implements DAO<T> {
                 entities.add(entity);
 
 
-
         }
-
 
 
         return entities;

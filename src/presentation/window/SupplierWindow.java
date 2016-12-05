@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import presentation.inventory.SuppliersView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,7 +21,7 @@ import java.util.ResourceBundle;
  * Created by Luis on 03/12/2016.
  */
 public class SupplierWindow implements Initializable {
-    private JFrame frame;
+    SuppliersView root;
 
     @FXML protected Button createButton;
     @FXML protected Button cancelButton;
@@ -28,8 +29,6 @@ public class SupplierWindow implements Initializable {
     @FXML protected TextArea addressField;
     @FXML protected TextField telephoneField;
     @FXML protected TextField emailField;
-
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -41,20 +40,21 @@ public class SupplierWindow implements Initializable {
                 if(supplier !=null) {
                     SupplierAdministrator admin = new SupplierAdministrator();
                     admin.addNew(supplier);
-                    frame.setVisible(false);
+                    root.updateObsList(supplier);
+                    root.getFrame().setVisible(false);
                 }
             }
         });
         cancelButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                frame.setVisible(false);
+                root.getFrame().setVisible(false);
             }
         });
     }
 
-    public void setFrame(JFrame frame){
-        this.frame = frame;
+    public void setParent(SuppliersView root){
+        this.root = root;
     }
 
     private void setText(){

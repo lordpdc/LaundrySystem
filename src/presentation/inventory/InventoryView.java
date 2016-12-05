@@ -28,7 +28,7 @@ public class InventoryView extends TabView<Consumable> {
         data.addAll(admin.getAllData());
 
         table.addColumn("nombre","name",100);
-        table.addColumn("descripción","address",100);
+        table.addColumn("descripción","description",100);
 
         table.setData(data);
 

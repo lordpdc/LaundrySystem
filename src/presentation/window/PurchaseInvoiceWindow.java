@@ -1,7 +1,9 @@
 package presentation.window;
 
+import business.administrator.ConsumableAdministrator;
 import business.administrator.PurchaseInvoiceAdministrator;
 import business.administrator.SupplierAdministrator;
+import business.entities.Consumable;
 import business.entities.PurchaseDetail;
 import business.entities.PurchaseInvoice;
 import business.entities.Supplier;
@@ -13,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.KeyEvent;
 import presentation.gui.tabs.Table;
 
 import javax.swing.*;
@@ -25,8 +28,10 @@ import static java.lang.Integer.parseInt;
  * Created by cesar on 04/12/16.
  */
 public class PurchaseInvoiceWindow implements Initializable {
-    PurchaseInvoiceAdministrator admin = new PurchaseInvoiceAdministrator();
+    private PurchaseInvoiceAdministrator admin = new PurchaseInvoiceAdministrator();
     private SupplierAdministrator admin2 = new SupplierAdministrator();
+    private ConsumableAdministrator admin3 = new ConsumableAdministrator();
+
     private JFrame frame;
     private Table<PurchaseDetailObj> table = new Table<>();
     private ObservableList<PurchaseDetailObj> data = FXCollections.observableArrayList();
@@ -38,6 +43,10 @@ public class PurchaseInvoiceWindow implements Initializable {
     @FXML private TableColumn<PurchaseDetailObj, String> nameColumn;
     @FXML private TableColumn<PurchaseDetailObj, String> quantityColumn;
     @FXML private TableColumn<PurchaseDetailObj, String> priceColumn;
+
+    @FXML private MenuButton consumableSelect;
+    @FXML private TextField quantityInput;
+    @FXML private TextField priceInput;
 
 
     @Override
@@ -78,6 +87,18 @@ public class PurchaseInvoiceWindow implements Initializable {
             supplierSelect.getItems().add(menu);
         }
 
+        for (Consumable c: admin3.getAllData()){
+            MenuItem menu = new MenuItem(c.getName());
+            menu.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    System.out.println(c.getId());
+                    consumableSelect.setText(c.getName());
+                }
+            });
+            consumableSelect.getItems().add(menu);
+        }
+
         newConsumableBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -86,6 +107,32 @@ public class PurchaseInvoiceWindow implements Initializable {
             }
         });
 
+
+
+        quantityInput.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(4));
+        priceInput.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(10));
+
+    }
+
+    private EventHandler<KeyEvent> numeric_Validation(final Integer max_Lengh) {
+        return new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent e) {
+                TextField txt_TextField = (TextField) e.getSource();
+                if (txt_TextField.getText().length() >= max_Lengh) {
+                    e.consume();
+                }
+                if(e.getCharacter().matches("[0-9.]")){
+                    if(txt_TextField.getText().contains(".") && e.getCharacter().matches("[.]")){
+                        e.consume();
+                    }else if(txt_TextField.getText().length() == 0 && e.getCharacter().matches("[.]")){
+                        e.consume();
+                    }
+                }else{
+                    e.consume();
+                }
+            }
+        };
     }
 
     public void setFrame(JFrame frame){
