@@ -105,19 +105,16 @@ public class SupplierWindow implements Initializable {
     }
 
     private boolean isFieldEmty(){
-        if(nameField.getText() == null){
-            return true;
+        if(nameField.getText().isEmpty()){
+            return false;
+        }else if(addressField.getText().isEmpty()) {
+            return false;
+        }else if(telephoneField.getText().isEmpty()){
+            return false;
+        }else if(emailField.getText().isEmpty()){
+            return false;
         }
-        if(addressField.getText() == null) {
-            return true;
-        }
-        if(telephoneField.getText() == null){
-            return true;
-        }
-        if(emailField.getText() == null){
-            return true;
-        }
-        return false;
+        return true;
     }
 
     private void FieldEmptyMessage(){

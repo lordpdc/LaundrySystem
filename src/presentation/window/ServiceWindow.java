@@ -36,7 +36,7 @@ public class ServiceWindow implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 if(isUpdate){
-                    if (isFieldEmty()) {
+                    if (isFieldEmty() || isUnitariPriceNumeric()) {
                         Service servicefromWindow = getServicefromWindow();
                         administrator.update(service.getId(),servicefromWindow);
 
@@ -47,7 +47,7 @@ public class ServiceWindow implements Initializable {
                         FieldEmptyMessage();
                     }
                 }else {
-                    if (isFieldEmty()) {
+                    if (isFieldEmty() || isUnitariPriceNumeric()) {
                         service = getServicefromWindow();
                         administrator.addNew(service);
 
@@ -96,22 +96,29 @@ public class ServiceWindow implements Initializable {
     }
 
     private Service getServicefromWindow(){
-        return new Service(nameField.getText(),descriptionField.getText(),Double.parseDouble(unitariPriceField.getText()));
+            return new Service(nameField.getText(), descriptionField.getText(), Double.parseDouble(unitariPriceField.getText()));
+
     }
 
     private boolean isFieldEmty(){
         if(nameField.getText().isEmpty()){
-            return true;
+            return false;
+        }else if(descriptionField.getText().isEmpty()) {
+            return false;
+        }else if(unitariPriceField.getText().isEmpty()){
+            return false;
         }
-        if(descriptionField.getText().isEmpty()){
-            return true;
-        }
-        if(unitariPriceField.getText().isEmpty()){
-            return true;
-        }
-        return false;
+        return true;
     }
 
+    private boolean isUnitariPriceNumeric(){
+        try{
+            Integer.parseInt(unitariPriceField.getText());
+            return true;
+        }catch (NumberFormatException exception){
+            return false;
+        }
+    }
     private void FieldEmptyMessage(){
         JOptionPane.showMessageDialog(null,"Falta llenar campos",  "Mensaje de Advertencia",JOptionPane.WARNING_MESSAGE);
     }

@@ -98,12 +98,11 @@ public class ConsumableWindow implements Initializable {
 
     private boolean isFieldEmty(){
         if(nameField.getText().isEmpty()){
-            return true;
+            return false;
+        }else if(descriptionField.getText().isEmpty()) {
+            return false;
         }
-        if(descriptionField.getText().isEmpty()){
-            return true;
-        }
-        return false;
+        return true;
     }
 
     private void FieldEmptyMessage(){

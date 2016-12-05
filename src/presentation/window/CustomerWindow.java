@@ -99,15 +99,13 @@ public class CustomerWindow implements Initializable {
 
     private boolean isFieldEmty(){
         if(nameField.getText().isEmpty()){
-            return true;
+            return false;
+        } else if(telephoneField.getText().isEmpty()){
+            return false;
+        }else if(emailField.getText().isEmpty()){
+            return false;
         }
-        if(telephoneField.getText().isEmpty()){
-            return true;
-        }
-        if(emailField.getText().isEmpty()){
-            return true;
-        }
-        return false;
+        return true;
     }
 
     private void FieldEmptyMessage(){

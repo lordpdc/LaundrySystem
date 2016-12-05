@@ -7,10 +7,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import presentation.gui.tabs.TabView;
-import presentation.window.ConsumableWindow;
 import presentation.window.CustomerWindow;
 
+import javax.swing.*;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by cesar on 04/12/16.
@@ -26,13 +27,13 @@ public class CustomerView extends TabView<Customer>{
     }
 
     private void initComponents(){
-        data.addAll(administrator.getAllData());
+        getData().addAll(administrator.getAllData());
 
         table.addColumn("nombre","name");
         table.addColumn("telefono","telephone");
         table.addColumn("correo","email");
 
-        table.setData(data);
+        table.setData(getData());
 
         JFXPanel panel = new JFXPanel();
         try {
@@ -61,7 +62,7 @@ public class CustomerView extends TabView<Customer>{
             ctrl.setWindowtoUpdate(id);
             frame.setVisible(true);
         }else{
-            message();
+            warningMessage();
         }
     }
 
@@ -71,12 +72,36 @@ public class CustomerView extends TabView<Customer>{
             int id = ((Customer) table.getSelectedItem()).getId();
             administrator.remove(id);
         }else{
-            System.out.println("Debe seleccionar un proveedor");
+            warningMessage();
         }
     }
 
     @Override
     protected void searchAction() {
+        if(isFieldEmpty()){
+            if(isSearchFieldNumeric()){
+                Customer searchItem = administrator.searchById(Integer.parseInt(searchField.getText()));
 
+                if(searchItem.getName().isEmpty()){
+                    JOptionPane.showMessageDialog(null,"Elemento no existente",
+                            "Mensaje Informativo",JOptionPane.INFORMATION_MESSAGE);
+                }else {
+                    JOptionPane.showMessageDialog(null,"Elemento encontrado",
+                            "Mensaje Informativo",JOptionPane.INFORMATION_MESSAGE);
+                }
+            }else {
+                List<Customer> searchItem = administrator.searchByAtribute(searchField.getText());
+                if(searchItem.isEmpty()){
+                    JOptionPane.showMessageDialog(null,"Elemento no existente",
+                            "Mensaje Informativo",JOptionPane.INFORMATION_MESSAGE);
+                }else {
+                    JOptionPane.showMessageDialog(null,"Elemento encontrado",
+                            "Mensaje Informativo",JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"No a introducido nada para buscar.",
+                    "Mensaje de Advertencia",JOptionPane.WARNING_MESSAGE);
+        }
     }
 }

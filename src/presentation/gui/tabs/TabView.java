@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -25,6 +26,7 @@ public abstract class TabView<T> {
     protected Button searchButton;
     protected Button editButton;
     protected Button deleteButton;
+    protected TextField searchField;
 
     protected JFrame frame;
 
@@ -45,7 +47,7 @@ public abstract class TabView<T> {
     }
 
     public void updateObsList(T p){
-        data.add(p);
+        getData().add(p);
     }
 
     public JFrame getFrame(){
@@ -60,6 +62,7 @@ public abstract class TabView<T> {
         searchButton = (Button) tab.getContent().lookup("#searchButton");
         editButton = (Button) tab.getContent().lookup("#editButton");
         deleteButton = (Button) tab.getContent().lookup("#deleteButton");
+        searchField = (TextField) tab.getContent().lookup("#searchField");
 
         createButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -86,7 +89,8 @@ public abstract class TabView<T> {
             @Override
             public void handle(ActionEvent event) {
                 deleteAction();
-                JOptionPane.showMessageDialog(null,"Elemento eliminado","Mensaje Informativo",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Elemento eliminado",
+                        "Mensaje Informativo",JOptionPane.INFORMATION_MESSAGE);
             }
         });
     }
@@ -99,8 +103,35 @@ public abstract class TabView<T> {
 
     protected abstract void searchAction();
 
-    protected void message(){
+    protected void warningMessage(){
         JOptionPane.showMessageDialog(null,"Debe seleccionar un elemento",
                 "Mensaje de Advertencia",JOptionPane.WARNING_MESSAGE);
     }
+
+    protected boolean isFieldEmpty(){
+        if(searchField.getText().isEmpty()){
+            System.out.println("entra a crear");
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+    protected boolean isSearchFieldNumeric(){
+        try{
+            Integer.parseInt(searchField.getText());
+            return true;
+        }catch (NumberFormatException exception){
+            return false;
+        }
+    }
+
+    public ObservableList<T> getData() {
+        return data;
+    }
+
+    public void setData(ObservableList<T> data) {
+        this.data = data;
+    }
+
 }
