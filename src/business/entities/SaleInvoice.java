@@ -6,6 +6,8 @@
 package business.entities;
 
 import business.utilities.DefaultValues;
+import data.dao.DataField;
+
 import java.sql.Date;
 
 /**
@@ -13,10 +15,10 @@ import java.sql.Date;
  * @author Luis
  */
 public class SaleInvoice {
-    private int idCustomer;
-    private int id;
-    private Date date;
-    private double totalPrice;
+    @DataField private int idCustomer;
+    @DataField private int id;
+    @DataField private Date date;
+    @DataField private double totalPrice;
 
     public SaleInvoice() {
         this.id = DefaultValues.INTEGER;

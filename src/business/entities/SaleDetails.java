@@ -6,17 +6,18 @@
 package business.entities;
 
 import business.utilities.DefaultValues;
+import data.dao.DataField;
 
 /**
  *
  * @author Luis
  */
 public class SaleDetails {
-    private int id;
-    private int idSaleInvoice;
-    private int idService;
-    private double amount;
-    private double price;
+    @DataField private int id;
+    @DataField private int idSaleInvoice;
+    @DataField private int idService;
+    @DataField private double amount;
+    @DataField private double price;
     
     public SaleDetails(){
         this.id = DefaultValues.INTEGER;

@@ -1,7 +1,6 @@
 package data.db;
 
 import java.lang.reflect.Field;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -12,17 +11,17 @@ import java.util.List;
  * Created by cesar on 20/09/16.
  */
 public class Table {
-    private String name;
+    private String tableName;
     private Connector db;
 
     public Table(String name){
         System.out.println(this.toString());
-        this.name = name;
+        this.tableName = name;
         db = new Connector();
     }
 
     public List<Row> getAllRows(){
-        String stmt = "SELECT * FROM "+name;
+        String stmt = "SELECT * FROM "+ tableName;
 
         List<Row> rows = new ArrayList<>();
         ResultSet rs = db.executeQuery(stmt);
@@ -43,7 +42,7 @@ public class Table {
 
 
     public List<Row> getRowsByAttr(String value, List<Field > fields){
-        String stmt = "SELECT * FROM "+name+" WHERE";
+        String stmt = "SELECT * FROM "+ tableName +" WHERE";
         for(Field field: fields){
             stmt=stmt.concat(" "+ field.getName()+" LIKE '%"+value+"%' OR");
         }
@@ -67,7 +66,14 @@ public class Table {
     }
 
     public Row getRow(int id){
-        String stmt = "SELECT * FROM "+name+" WHERE id="+id;
+        String stmt = "SELECT * FROM "+ tableName +" WHERE id="+id;
+        ResultSet rs = db.executeQuery(stmt);
+
+        return createRow(rs);
+    }
+
+    public Row getLastRow(){
+        String stmt = "SELECT * FROM "+ tableName +" ORDER BY id DESC LIMIT 1";
         ResultSet rs = db.executeQuery(stmt);
 
         return createRow(rs);
@@ -78,8 +84,10 @@ public class Table {
         String strValues = "";
 
         for(Tuple param: params){
-            strKeys += param.getKey()+",";
-            strValues +="'"+param.getValue()+"',";
+            if (!param.getKey().equals("id")){
+                strKeys += param.getKey()+",";
+                strValues +="'"+param.getValue()+"',";
+            }
         }
 
         if (strKeys.charAt(strKeys.length() - 1)==','){
@@ -89,8 +97,8 @@ public class Table {
             strValues = strValues.substring(0, strValues.length()-1);
         }
 
-        System.out.println("INSERT INTO "+name+" ("+strKeys+") VALUES ("+strValues+")");
-        return db.executeStatement("INSERT INTO "+name+" ("+strKeys+") VALUES ("+strValues+")");
+        System.out.println("INSERT INTO "+ tableName +" ("+strKeys+") VALUES ("+strValues+")");
+        return db.executeStatement("INSERT INTO "+ tableName +" ("+strKeys+") VALUES ("+strValues+")");
     }
 
     public int updateRow(int id, List<Tuple> params){
@@ -101,11 +109,11 @@ public class Table {
         if (strUpdate.charAt(strUpdate.length() - 1)==','){
             strUpdate = strUpdate.substring(0, strUpdate.length()-1);
         }
-        return db.executeStatement("UPDATE "+name+" SET "+strUpdate+" WHERE id="+id);
+        return db.executeStatement("UPDATE "+ tableName +" SET "+strUpdate+" WHERE id="+id);
     }
 
     public int deleteRow(int id){
-        return db.executeStatement("DELETE FROM "+name+" WHERE "+name+".id = "+id);
+        return db.executeStatement("DELETE FROM "+ tableName +" WHERE "+ tableName +".id = "+id);
     }
 
     private Row createRow(ResultSet rs){

@@ -16,9 +16,6 @@ public class PurchaseInvoiceAdministrator extends DataAdministrator<PurchaseInvo
         this.setAccessData(new PurchaseInvoiceDAO());
     }
 
-
-
-
     public List<PurchaseDetail> getPurchaseDetails(int idInvoice){
         List<PurchaseDetail> detailsList;
         PurchaseDetailsAdministrator accesDetails=new PurchaseDetailsAdministrator(  );

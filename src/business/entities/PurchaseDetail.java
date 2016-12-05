@@ -1,16 +1,19 @@
 package business.entities;
 
 import business.utilities.DefaultValues;
+import data.dao.DataField;
 
 /**
  * Created by raoman on 01/10/2016.
  */
 public class PurchaseDetail {
-    private int id;
-    private int idPurchaseInvoice;
-    private int idConsumable;
-    private double priceConsumable;
-    private double quantityConsumable;
+    @DataField private int id;
+    @DataField private int idPurchaseInvoice;
+    @DataField private int idConsumable;
+    @DataField private double priceConsumable;
+    @DataField private double quantityConsumable;
+
+    private String consumableName;
 
     public PurchaseDetail(){
         this.id = DefaultValues.INTEGER;
@@ -74,4 +77,11 @@ public class PurchaseDetail {
         this.quantityConsumable = quantityConsumable;
     }
 
+    public String getConsumableName(){
+        return consumableName;
+    }
+
+    public void setConsumableName(String name){
+        this.consumableName = name;
+    }
 }

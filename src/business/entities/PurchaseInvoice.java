@@ -1,16 +1,20 @@
 package business.entities;
 
 import business.utilities.DefaultValues;
+import data.dao.DataField;
+
 import java.sql.Date;
 
 /**
  * Created by raoman on 01/10/2016.
  */
 public class PurchaseInvoice{
-    private int idSupplier;
-    private int id;
-    private Date date;
-    private double totalPrice;
+    @DataField private int idSupplier;
+    @DataField private int id;
+    @DataField private Date date;
+    @DataField private double totalPrice;
+
+    private String supplierName;
 
     public PurchaseInvoice(){
         this.id = DefaultValues.INTEGER;
@@ -66,6 +70,10 @@ public class PurchaseInvoice{
 
     public void setTotalPrice( double totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public String getSupplierName(){
+        return supplierName;
     }
 
 }
