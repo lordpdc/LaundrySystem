@@ -8,10 +8,13 @@ import business.entities.*;
 import business.utilities.DefaultValues;
 import data.dao.CustomerDAO;
 import data.dao.SupplierDAO;
+import javafx.application.Application;
 import javafx.embed.swing.JFXPanel;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 import presentation.window.ConsumableWindow;
 import presentation.window.ReportWindow;
 //import presentation.gui.ReportGeneratorWindow;
@@ -24,7 +27,26 @@ import java.sql.Date;
 /**
  * Created by raoman on 09/10/2016.
  */
-public class TestRoman {
+public class TestRoman extends Application {
+    private static Scene MainContanier;
+    public static void main(String[] args) {
+        launch(args);
+
+    }
+
+    @Override
+    public void start(Stage stage) {
+        FXMLLoader loader = new FXMLLoader();
+        try {
+            Parent root = loader.load(getClass().getResourceAsStream("TabContainer.fxml"));
+            MainContanier = new Scene(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+    /*
     public static void main( String[] args ) {
         EmailSenderService sender=new EmailSenderService();
         sender.sendEmail( "romanramirezmena@gmail.com","prueba","ay ta lo que querias" );
@@ -33,7 +55,7 @@ public class TestRoman {
             test.makeFrame();
         }catch( IOException e ) {
             e.printStackTrace( );
-        }*/
+        }
 
     }
     public void makeFrame() throws IOException {
@@ -65,8 +87,7 @@ public class TestRoman {
         }
 
         frame.add(panel);
-        frame.setVisible( true );*/
+        frame.setVisible( true );
         Desktop.getDesktop().open(builder.getFileReport().getAbsoluteFile());
     }
-
-}
+*/
