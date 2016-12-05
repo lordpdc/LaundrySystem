@@ -16,8 +16,8 @@ import java.util.List;
 public class DataAdministrator< T > {
     protected GenericDAO< T > accessData;
 
-    public void addNew(T t) {
-        this.accessData.create(t);
+    public T addNew(T t) {
+        return this.accessData.create(t);
     }
 
     public void update(int id, T t){

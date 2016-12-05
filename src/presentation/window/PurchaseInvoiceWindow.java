@@ -19,7 +19,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 
 import javax.swing.*;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.URL;
+import java.sql.Date;
 import java.util.ResourceBundle;
 
 import static java.lang.Integer.parseInt;
@@ -28,7 +31,6 @@ import static java.lang.Integer.parseInt;
  * Created by cesar on 04/12/16.
  */
 public class PurchaseInvoiceWindow implements Initializable {
-
     private PurchaseInvoiceAdministrator admin = new PurchaseInvoiceAdministrator();
     private SupplierAdministrator admin2 = new SupplierAdministrator();
     private ConsumableAdministrator admin3 = new ConsumableAdministrator();
@@ -53,6 +55,10 @@ public class PurchaseInvoiceWindow implements Initializable {
     @FXML private TextField quantityInput;
     @FXML private TextField priceInput;
 
+    @FXML private TextField ivaInput;
+    @FXML private Label subtotalLabel;
+    @FXML private Label ivaLabel;
+    @FXML private Label totalLabel;
 
 
     @Override
@@ -68,8 +74,10 @@ public class PurchaseInvoiceWindow implements Initializable {
         newConsumableBtn.setOnAction(detailSaveEvent());
         invoiceSaveBtn.setOnAction(invoiceSaveEvent());
 
-        quantityInput.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(4));
-        priceInput.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(10));
+        quantityInput.addEventFilter(KeyEvent.KEY_TYPED , numericValidation(4));
+        priceInput.addEventFilter(KeyEvent.KEY_TYPED , numericValidation(10));
+        ivaInput.addEventFilter(KeyEvent.KEY_RELEASED, recalculateTotal());
+        ivaInput.addEventFilter(KeyEvent.KEY_TYPED, numericValidation(4));
 
         loadMenuSelectors();
     }
@@ -112,12 +120,12 @@ public class PurchaseInvoiceWindow implements Initializable {
         return (supplierIdSet && totalPriceSet);
     }
 
-    private EventHandler<KeyEvent> numeric_Validation(final Integer max_Lengh) {
+    private EventHandler<KeyEvent> numericValidation(final Integer maxLengh) {
         return new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent e) {
                 TextField txt_TextField = (TextField) e.getSource();
-                if (txt_TextField.getText().length() >= max_Lengh) {
+                if (txt_TextField.getText().length() >= maxLengh) {
                     e.consume();
                 }
                 if(e.getCharacter().matches("[0-9.]")){
@@ -133,6 +141,15 @@ public class PurchaseInvoiceWindow implements Initializable {
         };
     }
 
+    private EventHandler<KeyEvent> recalculateTotal() {
+        return new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent e) {
+                calculateInvoicTotal();
+            }
+        };
+    }
+
     private EventHandler<ActionEvent> detailSaveEvent(){
         return new EventHandler<ActionEvent>() {
             @Override
@@ -142,6 +159,7 @@ public class PurchaseInvoiceWindow implements Initializable {
                 pdobj.setConsumableName(consumableSelect.getText());
                 pdobj.setIdConsumable(parseInt(consumableSelect.getId()));
                 data.add(pdobj);
+                calculateInvoicTotal();
             }
         };
     }
@@ -150,16 +168,43 @@ public class PurchaseInvoiceWindow implements Initializable {
         return new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Ama save....");
-                //invoice.setTotalPrice();
+                System.out.println("Ima save....");
 
-                System.out.println(dateSelect.getValue());
+                if(dateSelect.getValue()!=null){
+                    invoice.setDate(Date.valueOf(dateSelect.getValue()));
+                }
+
+                invoice = admin.addNew(invoice);
 
                 for(PurchaseDetail detail: data){
                     System.out.println(detail.getIdConsumable()+", "+detail.getPriceConsumable());
                 }
             }
         };
+    }
+
+
+    private void calculateInvoicTotal(){
+        BigDecimal sum = new BigDecimal(0);
+        for (PurchaseDetail item: data){
+            BigDecimal currentQuantity = new BigDecimal(item.getQuantityConsumable());
+            BigDecimal currentPrice = new BigDecimal(item.getPriceConsumable());
+            sum = sum.add(currentQuantity.multiply(currentPrice));
+        }
+
+        BigDecimal ivaPercent = new BigDecimal(0);
+        if (!ivaInput.getText().equals("")){
+            ivaPercent = new BigDecimal(ivaInput.getText());
+        }
+
+        BigDecimal totalIva = sum.multiply(ivaPercent.divide(new BigDecimal(100)).setScale(2,BigDecimal.ROUND_HALF_UP));
+        BigDecimal total = sum.add(totalIva);
+
+        subtotalLabel.setText(sum.toString());
+        ivaLabel.setText(totalIva.toString());
+        totalLabel.setText(total.toString());
+
+        invoice.setTotalPrice(sum.doubleValue());
     }
 
 }

@@ -22,9 +22,11 @@ public class GenericDAO<T> implements DAO<T> {
 
     @SuppressWarnings("unchecked")
     @Override
-    public <V> int create(T t) {
+    public <V> T create(T t) {
         List<Tuple> tuples = getTuples( t );
-        return table.addRow(tuples);
+        table.addRow(tuples);
+
+        return instantiateEntity(table.getLastRow());
     }
 
     @Override
