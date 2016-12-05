@@ -63,11 +63,11 @@ public class WindowManager {
                 try {
                     JFrame frame = new JFrame();
                     JFXPanel panel = new JFXPanel();
-                    Parent root = new FXMLLoader().load(getClass().getResourceAsStream("../window/ReportWindow.fxml"));
+                    Parent root = new FXMLLoader().load(getClass().getResourceAsStream("../../window/ReportWindow.fxml"));
                     panel.setScene(new Scene(root));
                     frame.add(panel);
                     frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-                    frame.setSize(600,400);
+                    frame.setSize(600,300);
                     frame.setLocationRelativeTo(null);
                     frame.setVisible(true);
                 } catch (IOException e1) {
@@ -83,7 +83,7 @@ public class WindowManager {
                 try {
                     JFrame frame = new JFrame();
                     JFXPanel panel = new JFXPanel();
-                    Parent root = new FXMLLoader().load(getClass().getResourceAsStream("../window/SendEmailWindow.fxml"));
+                    Parent root = new FXMLLoader().load(getClass().getResourceAsStream("../../window/SendEmailWindow.fxml"));
                     panel.setScene(new Scene(root));
                     frame.add(panel);
                     frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
