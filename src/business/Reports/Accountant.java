@@ -14,9 +14,9 @@ import java.util.List;
 public  class Accountant {
     private Report generalBalanceReport;
     private Period periodForReport;
-    private final String SALES_RESULT="Total de ventas";
     private final String PURCHASE_RESULT="Total de compras";
-    private final String EARNING_NET="Ganancias Netas";
+    private final String SALES_RESULT="Total de ventas";
+
 
     public Accountant() {
         generalBalanceReport=new Report();

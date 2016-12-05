@@ -55,6 +55,8 @@ public class Report {
         return result;
     }
 
+    public Double getValueOfResult(String resultName){ return result.get( resultName ); }
+
     public List< PurchaseInvoice > getListPurchases( ) {
         return listPurchases;
     }
