@@ -56,6 +56,8 @@ public class TabContainer {
         TabView inventoryTab = new InventoryView();
         tabPane.getTabs().add(inventoryTab.tab);
 
+
+
     }
 
 }

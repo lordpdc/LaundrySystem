@@ -1,4 +1,4 @@
-package presentation.gui.tabs;
+package presentation.gui.elements;
 
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;

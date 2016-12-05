@@ -18,7 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
-import presentation.gui.SecondaryWindow;
+import presentation.gui.elements.SecondaryWindow;
 import presentation.inventory.PurchaseInvoiceView;
 
 import java.math.BigDecimal;

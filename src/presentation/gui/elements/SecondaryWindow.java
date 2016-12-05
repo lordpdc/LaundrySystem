@@ -1,4 +1,4 @@
-package presentation.gui;
+package presentation.gui.elements;
 
 import javafx.event.EventHandler;
 import javafx.scene.control.TextField;

@@ -1,4 +1,4 @@
-package presentation.gui;
+package presentation.gui.elements;
 
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
@@ -14,7 +14,7 @@ public class WindowManager {
     }
 
     public void showInventory(){
-        inventory = new JFrame("Inventario");
+        inventory = new JFrame("H. Express Lavanderías");
 
         final JFXPanel fxPanel = new JFXPanel();
         inventory.add(fxPanel);

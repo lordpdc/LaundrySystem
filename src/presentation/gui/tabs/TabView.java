@@ -2,6 +2,7 @@ package presentation.gui.tabs;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import presentation.gui.elements.Table;
 import presentation.utilities.StringValuesMessage;
 
 import javax.swing.*;
@@ -28,19 +30,20 @@ public abstract class TabView<T> {
     protected Button searchButton;
     protected Button editButton;
     protected Button deleteButton;
+
     protected TextField searchField;
 
     protected JFrame frame;
 
     public TabView() {
         try {
-            URL getingsmh = getClass().getResource("../gui/tabs/TabDesign.fxml");
-            tab = (Tab) new FXMLLoader().load(getingsmh.openStream());
+            tab = (Tab) new FXMLLoader().load(getClass().getResourceAsStream("../gui/tabs/TabDesign.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
         table.setTable((TableView) tab.getContent().lookup("#dataTable"));
         registerActionHandlers();
+
 
         frame = new JFrame();
         frame.setSize(620,560);

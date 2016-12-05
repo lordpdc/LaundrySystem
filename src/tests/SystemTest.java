@@ -1,16 +1,6 @@
 package tests;
 
-import business.entities.PurchaseInvoice;
-import business.entities.Supplier;
-import data.dao.PurchaseDetailDAO;
-import data.dao.PurchaseInvoiceDAO;
-import data.dao.SupplierDAO;
-import presentation.gui.WindowManager;
-
-
-import presentation.gui.WindowManager;
-
-import java.sql.Date;
+import presentation.gui.elements.WindowManager;
 
 public class SystemTest {
 

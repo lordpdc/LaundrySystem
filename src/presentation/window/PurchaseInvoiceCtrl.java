@@ -18,10 +18,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
-import presentation.gui.SecondaryWindow;
+import presentation.gui.elements.SecondaryWindow;
 import presentation.inventory.PurchaseInvoiceView;
 
-import javax.swing.*;
 import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.Date;
