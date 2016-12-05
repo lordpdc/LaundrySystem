@@ -52,11 +52,6 @@ public class CustomerView extends TabView<Customer>{
     }
 
     @Override
-    protected void createAction() {
-        frame.setVisible(true);
-    }
-
-    @Override
     protected void editAction() {
         if (table.getSelectedItem()!=null){
             int id = ((Customer) table.getSelectedItem()).getId();

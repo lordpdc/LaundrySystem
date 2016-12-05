@@ -8,7 +8,7 @@ import data.dao.DataField;
  */
 public class PurchaseDetail {
     @DataField private int id;
-    @DataField private int idPurchaseInvoice;
+    @DataField private int idInvoicePurchase;
     @DataField private int idConsumable;
     @DataField private double priceConsumable;
     @DataField private double quantityConsumable;
@@ -17,7 +17,7 @@ public class PurchaseDetail {
 
     public PurchaseDetail(){
         this.id = DefaultValues.INTEGER;
-        this.idPurchaseInvoice = DefaultValues.INTEGER;
+        this.idInvoicePurchase = DefaultValues.INTEGER;
         this.idConsumable = DefaultValues.INTEGER;
         this.priceConsumable = DefaultValues.DOUBLE;
         this.quantityConsumable = DefaultValues.DOUBLE;
@@ -31,7 +31,7 @@ public class PurchaseDetail {
     public PurchaseDetail(int id, int idPurchaseInvoice, int idConsumable,
                           double priceConsumable, double quantityConsumable){
         this.id = id;
-        this.idPurchaseInvoice = idPurchaseInvoice;
+        this.idInvoicePurchase = idPurchaseInvoice;
         this.idConsumable = idConsumable;
         this.priceConsumable = priceConsumable;
         this.quantityConsumable = quantityConsumable;
@@ -45,12 +45,12 @@ public class PurchaseDetail {
         this.id = id;
     }
 
-    public int getIdPurchaseInvoice() {
-        return idPurchaseInvoice;
+    public int getIdInvoicePurchase() {
+        return idInvoicePurchase;
     }
 
-    public void setIdPurchaseInvoice(int idPurchaseInvoice) {
-        this.idPurchaseInvoice = idPurchaseInvoice;
+    public void setIdInvoicePurchase(int idInvoicePurchase) {
+        this.idInvoicePurchase = idInvoicePurchase;
     }
 
     public int getIdConsumable() {

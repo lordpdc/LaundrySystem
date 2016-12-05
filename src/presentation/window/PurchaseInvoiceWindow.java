@@ -1,6 +1,7 @@
 package presentation.window;
 
 import business.administrator.ConsumableAdministrator;
+import business.administrator.PurchaseDetailsAdministrator;
 import business.administrator.PurchaseInvoiceAdministrator;
 import business.administrator.SupplierAdministrator;
 import business.entities.Consumable;
@@ -17,10 +18,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import presentation.gui.SecondaryWindow;
 
 import javax.swing.*;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ResourceBundle;
@@ -30,12 +31,11 @@ import static java.lang.Integer.parseInt;
 /**
  * Created by cesar on 04/12/16.
  */
-public class PurchaseInvoiceWindow implements Initializable {
+public class PurchaseInvoiceWindow extends SecondaryWindow implements Initializable {
     private PurchaseInvoiceAdministrator admin = new PurchaseInvoiceAdministrator();
     private SupplierAdministrator admin2 = new SupplierAdministrator();
     private ConsumableAdministrator admin3 = new ConsumableAdministrator();
-
-    private JFrame frame;
+    private PurchaseDetailsAdministrator admin4 = new PurchaseDetailsAdministrator();
 
     private ObservableList<PurchaseDetail> data;
     private PurchaseInvoice invoice = new PurchaseInvoice();
@@ -80,10 +80,6 @@ public class PurchaseInvoiceWindow implements Initializable {
         ivaInput.addEventFilter(KeyEvent.KEY_TYPED, numericValidation(4));
 
         loadMenuSelectors();
-    }
-
-    public void setFrame(JFrame frame){
-        this.frame = frame;
     }
 
     private void loadMenuSelectors(){
@@ -177,12 +173,12 @@ public class PurchaseInvoiceWindow implements Initializable {
                 invoice = admin.addNew(invoice);
 
                 for(PurchaseDetail detail: data){
-                    System.out.println(detail.getIdConsumable()+", "+detail.getPriceConsumable());
+                    detail.setIdInvoicePurchase(invoice.getId());
+                    admin4.addNew(detail);
                 }
             }
         };
     }
-
 
     private void calculateInvoicTotal(){
         BigDecimal sum = new BigDecimal(0);
