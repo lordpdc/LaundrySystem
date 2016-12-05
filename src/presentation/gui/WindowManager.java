@@ -22,10 +22,17 @@ public class WindowManager {
         inventory.setLocationRelativeTo(null);
         inventory.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         inventory.setVisible(true);
+        JMenuBar menuBar=new JMenuBar();
+        JButton reportes=new JButton( "Reportes" );
+        menuBar.add( reportes );
+        JButton correos=new JButton( "Correos" );
+        menuBar.add( correos );
+        inventory.setJMenuBar( menuBar );
 
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
+
                 fxPanel.setScene(new TabContainer().getScene());
             }
         });

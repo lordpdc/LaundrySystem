@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import presentation.gui.tabs.TabView;
+import presentation.utilities.StringValuesMessage;
 import presentation.window.ConsumableWindow;
 
 import javax.swing.*;
@@ -87,8 +88,8 @@ public class InventoryView extends TabView<Consumable> {
                     JOptionPane.showMessageDialog(null,"Elemento no existente",
                             "Mensaje Informativo",JOptionPane.INFORMATION_MESSAGE);
                 }else {
-                    JOptionPane.showMessageDialog(null,"Elemento encontrado",
-                            "Mensaje Informativo",JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null,StringValuesMessage.elementExistMessage,
+                            StringValuesMessage.informationTitle,JOptionPane.INFORMATION_MESSAGE);
                 }
             }else {
                 List<Consumable> searchItem = administrator.searchByAtribute(searchField.getText());
@@ -96,13 +97,13 @@ public class InventoryView extends TabView<Consumable> {
                     JOptionPane.showMessageDialog(null,"Elemento no existente",
                             "Mensaje Informativo",JOptionPane.INFORMATION_MESSAGE);
                 }else {
-                    JOptionPane.showMessageDialog(null,"Elemento encontrado",
-                            "Mensaje Informativo",JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null,StringValuesMessage.elementExistMessage,
+                            StringValuesMessage.informationTitle,JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         }else{
-            JOptionPane.showMessageDialog(null,"No a introducido nada para buscar.",
-                    "Mensaje de Advertencia",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, StringValuesMessage.missingSearchFieldMessage,
+                    StringValuesMessage.warningTitle,JOptionPane.WARNING_MESSAGE);
         }
     }
 

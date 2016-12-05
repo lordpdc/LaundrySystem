@@ -9,10 +9,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import presentation.utilities.StringValuesMessage;
 
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 
 /**
  * Created by cesar on 01/12/16.
@@ -20,7 +22,7 @@ import java.net.URL;
 public abstract class TabView<T> {
     protected Tab tab;
     protected Table table = new Table<T>();
-    private ObservableList<T> data = FXCollections.observableArrayList();
+    protected ObservableList<T> data = FXCollections.observableArrayList();
 
     protected Button createButton;
     protected Button searchButton;
@@ -50,50 +52,19 @@ public abstract class TabView<T> {
         getData().add(p);
     }
 
+    public void cleanTable(){
+        getData().removeAll();
+    }
+
+    public void updateTable(List<T> p){
+        getData().addAll(p);
+    }
+
     public JFrame getFrame(){
         if (frame ==null){
             frame = new JFrame();
         }
         return frame;
-    }
-
-    public ObservableList<T> getData() {
-        return data;
-    }
-
-    public void setData(ObservableList<T> data) {
-        this.data = data;
-    }
-
-    public abstract T saveEntity(T entity);
-
-    protected abstract void editAction();
-
-    protected abstract void deleteAction();
-
-    protected abstract void searchAction();
-
-    protected void warningMessage(){
-        JOptionPane.showMessageDialog(null,"Debe seleccionar un elemento",
-                "Mensaje de Advertencia",JOptionPane.WARNING_MESSAGE);
-    }
-
-    protected boolean isFieldEmpty(){
-        if(searchField.getText().isEmpty()){
-            System.out.println("entra a crear");
-            return false;
-        }else {
-            return true;
-        }
-    }
-
-    protected boolean isSearchFieldNumeric(){
-        try{
-            Integer.parseInt(searchField.getText());
-            return true;
-        }catch (NumberFormatException exception){
-            return false;
-        }
     }
 
     private void registerActionHandlers(){
@@ -128,8 +99,8 @@ public abstract class TabView<T> {
             @Override
             public void handle(ActionEvent event) {
                 deleteAction();
-                JOptionPane.showMessageDialog(null,"Elemento eliminado",
-                        "Mensaje Informativo",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null,StringValuesMessage.deletedMessage,
+                        StringValuesMessage.informationTitle,JOptionPane.INFORMATION_MESSAGE);
             }
         });
     }
@@ -137,6 +108,42 @@ public abstract class TabView<T> {
     private void createAction(){
         frame.pack();
         frame.setVisible(true);
+    }
+
+    protected abstract void editAction();
+
+    protected abstract void deleteAction();
+
+    protected abstract void searchAction();
+
+    protected void warningMessage(){
+        JOptionPane.showMessageDialog(null,StringValuesMessage.notSelectingMessage,
+                StringValuesMessage.warningTitle,JOptionPane.WARNING_MESSAGE);
+    }
+
+    protected boolean isFieldEmpty(){
+        if(searchField.getText().isEmpty()){
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+    protected boolean isSearchFieldNumeric(){
+        try{
+            Integer.parseInt(searchField.getText());
+            return true;
+        }catch (NumberFormatException exception){
+            return false;
+        }
+    }
+
+    public ObservableList<T> getData() {
+        return data;
+    }
+
+    public void setData(ObservableList<T> data) {
+        this.data = data;
     }
 
 }

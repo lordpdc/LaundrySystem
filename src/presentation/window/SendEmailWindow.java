@@ -46,7 +46,7 @@ public class SendEmailWindow implements Initializable {
         String msg= msgTextArea.getText();
         if(!(addressee.isEmpty()||subject.isEmpty()||msg.isEmpty())){
             EmailSenderService sender=new EmailSenderService();
-            sender.sendEmail( addressee,subject,msg );
+           /* sender.sendEmail( addressee,subject,msg );*/
         }
         else{
             new Exception( MSG_FAIL );

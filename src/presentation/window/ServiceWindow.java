@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import presentation.sales.ServiceView;
+import presentation.utilities.StringValuesMessage;
 
 import javax.swing.*;
 import java.net.URL;
@@ -120,6 +121,7 @@ public class ServiceWindow implements Initializable {
         }
     }
     private void FieldEmptyMessage(){
-        JOptionPane.showMessageDialog(null,"Falta llenar campos",  "Mensaje de Advertencia",JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(null, StringValuesMessage.missingFieldMessage,
+                StringValuesMessage.warningTitle,JOptionPane.WARNING_MESSAGE);
     }
 }

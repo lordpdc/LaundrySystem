@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextArea;
 import presentation.inventory.InventoryView;
+import presentation.utilities.StringValuesMessage;
 
 import javax.swing.*;
 import java.net.URL;
@@ -106,6 +107,7 @@ public class ConsumableWindow implements Initializable {
     }
 
     private void FieldEmptyMessage(){
-        JOptionPane.showMessageDialog(null,"Falta llenar campos",  "Mensaje de Advertencia",JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(null, StringValuesMessage.missingFieldMessage,
+                StringValuesMessage.warningTitle,JOptionPane.WARNING_MESSAGE);
     }
 }
