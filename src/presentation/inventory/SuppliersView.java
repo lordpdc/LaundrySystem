@@ -54,6 +54,11 @@ public class SuppliersView extends TabView<Supplier> {
 
 
     @Override
+    public Supplier saveEntity(Supplier entity) {
+        return null;
+    }
+
+    @Override
     protected void editAction() {
         if (table.getSelectedItem()!=null){
             int id = ((Supplier) table.getSelectedItem()).getId();

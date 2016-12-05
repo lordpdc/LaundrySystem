@@ -19,6 +19,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import presentation.gui.SecondaryWindow;
+import presentation.inventory.PurchaseInvoiceView;
 
 import javax.swing.*;
 import java.math.BigDecimal;
@@ -31,7 +32,7 @@ import static java.lang.Integer.parseInt;
 /**
  * Created by cesar on 04/12/16.
  */
-public class PurchaseInvoiceWindow extends SecondaryWindow implements Initializable {
+public class PurchaseInvoiceCtrl extends SecondaryWindow<PurchaseInvoiceView> implements Initializable {
     private PurchaseInvoiceAdministrator admin = new PurchaseInvoiceAdministrator();
     private SupplierAdministrator admin2 = new SupplierAdministrator();
     private ConsumableAdministrator admin3 = new ConsumableAdministrator();
@@ -116,27 +117,6 @@ public class PurchaseInvoiceWindow extends SecondaryWindow implements Initializa
         return (supplierIdSet && totalPriceSet);
     }
 
-    private EventHandler<KeyEvent> numericValidation(final Integer maxLengh) {
-        return new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent e) {
-                TextField txt_TextField = (TextField) e.getSource();
-                if (txt_TextField.getText().length() >= maxLengh) {
-                    e.consume();
-                }
-                if(e.getCharacter().matches("[0-9.]")){
-                    if(txt_TextField.getText().contains(".") && e.getCharacter().matches("[.]")){
-                        e.consume();
-                    }else if(txt_TextField.getText().length() == 0 && e.getCharacter().matches("[.]")){
-                        e.consume();
-                    }
-                }else{
-                    e.consume();
-                }
-            }
-        };
-    }
-
     private EventHandler<KeyEvent> recalculateTotal() {
         return new EventHandler<KeyEvent>() {
             @Override
@@ -170,12 +150,13 @@ public class PurchaseInvoiceWindow extends SecondaryWindow implements Initializa
                     invoice.setDate(Date.valueOf(dateSelect.getValue()));
                 }
 
-                invoice = admin.addNew(invoice);
+                invoice = primaryView.saveEntity(invoice);
 
                 for(PurchaseDetail detail: data){
                     detail.setIdInvoicePurchase(invoice.getId());
                     admin4.addNew(detail);
                 }
+                frame.setVisible(false);
             }
         };
     }
@@ -200,7 +181,7 @@ public class PurchaseInvoiceWindow extends SecondaryWindow implements Initializa
         ivaLabel.setText(totalIva.toString());
         totalLabel.setText(total.toString());
 
-        invoice.setTotalPrice(sum.doubleValue());
+        invoice.setTotalPrice(total.doubleValue());
     }
 
 }

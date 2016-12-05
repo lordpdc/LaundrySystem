@@ -7,7 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import presentation.gui.tabs.TabView;
-import presentation.window.PurchaseInvoiceWindow;
+import presentation.window.PurchaseInvoiceCtrl;
 
 import java.io.IOException;
 
@@ -38,8 +38,9 @@ public class PurchaseInvoiceView extends TabView<PurchaseInvoice> {
             Parent root = loader.load(getClass().getResourceAsStream("../window/PurchaseInvoiceWindow.fxml"));
             Scene scene = new Scene(root);
             panel.setScene(scene);
-            PurchaseInvoiceWindow ctrl = (PurchaseInvoiceWindow)loader.getController();
+            PurchaseInvoiceCtrl ctrl = (PurchaseInvoiceCtrl)loader.getController();
             ctrl.setFrame(frame);
+            ctrl.setPrimaryView(this);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -47,6 +48,13 @@ public class PurchaseInvoiceView extends TabView<PurchaseInvoice> {
         frame.add(panel);
     }
 
+
+    @Override
+    public PurchaseInvoice saveEntity(PurchaseInvoice entity) {
+        PurchaseInvoice savedEntity = admin.addNew(entity);
+        updateObsList(savedEntity);
+        return savedEntity;
+    }
 
     @Override
     protected void editAction() {

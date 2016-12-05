@@ -1,16 +1,9 @@
 package presentation.sales;
 
-import business.administrator.PurchaseInvoiceAdministrator;
 import business.administrator.SaleInvoiceAdministrator;
 import business.entities.SaleInvoice;
 import javafx.embed.swing.JFXPanel;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import presentation.gui.tabs.TabView;
-import presentation.window.PurchaseInvoiceWindow;
-
-import java.io.IOException;
 
 /**
  * Created by cesar on 04/12/16.
@@ -37,16 +30,21 @@ public class SaleInvoiceView extends TabView<SaleInvoice> {
         /*
         try {
             FXMLLoader loader = new FXMLLoader();
-            Parent root = loader.load(getClass().getResourceAsStream("../window/PurchaseInvoiceWindow.fxml"));
+            Parent root = loader.load(getClass().getResourceAsStream("../window/PurchaseInvoiceCtrl.fxml"));
             Scene scene = new Scene(root);
             panel.setScene(scene);
-            PurchaseInvoiceWindow ctrl = (PurchaseInvoiceWindow)loader.getController();
+            PurchaseInvoiceCtrl ctrl = (PurchaseInvoiceCtrl)loader.getController();
             ctrl.setFrame(frame);
         } catch (IOException e) {
             e.printStackTrace();
         }*/
 
         frame.add(panel);
+    }
+
+    @Override
+    public SaleInvoice saveEntity(SaleInvoice entity) {
+        return null;
     }
 
     @Override
