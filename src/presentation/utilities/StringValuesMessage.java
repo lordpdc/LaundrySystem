@@ -17,8 +17,7 @@ public class StringValuesMessage {
     public static final String deletedMessage = "Elemento eliminado";
     public static final String notSelectingMessage ="Debe seleccionar un elemento";
 
+    public static final String MSG_INCOMPLETE = "por favor rellene todoslos campos";
 
-
-
-
+    public static final String MSG_NO_SEND ="Mensaje no enviado, intentelo mas tarde" ;
 }

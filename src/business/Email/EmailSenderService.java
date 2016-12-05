@@ -3,15 +3,14 @@ package business.Email;
 /**
  * Created by raoman on 04/12/2016.
  */
-/*
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;*/
+
+import javax.mail.*;
+import javax.mail.internet.*;
+
 import static business.Email.EmailDefaultValues.*;
 
     public class EmailSenderService {
+
         private final String MSG_ERROR="Mensaje no enviado";
         private final EmailConnector connector;
 
@@ -19,23 +18,27 @@ import static business.Email.EmailDefaultValues.*;
             connector=new EmailConnector();
         }
 
-/*
         public void sendEmail(String addressee,String subject,String message){
-
-
              try{
-                Message mimeMessage = new MimeMessage(connector.getSession());
-                mimeMessage.setFrom(new InternetAddress(SENDER_VALUE));
-                mimeMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(addressee));
-                mimeMessage.setSubject(subject);
-                mimeMessage.setText(message);
-
-                Transport.send( mimeMessage );
+               Message msgCreated=createMessage( addressee,subject,message );
+               Transport.send( msgCreated );
 ;
-            }catch (MessagingException me){
-                 me.printStackTrace();
-                new Exception( MSG_ERROR+me.toString());
+            }catch (Exception me){
+                new Exception( MSG_ERROR);
             }
 
-        }*/
+        }
+        private Message createMessage(String addressee,String subject,String message) throws Exception {
+            Session accountEmailSession=connector.getConnection();
+            InternetAddress adressee= new InternetAddress(addressee);
+            InternetAddress sender=new InternetAddress(accountEmailSession.getProperty( SENDER_IDENTIFIER ));
+            Message msgCreated = new MimeMessage(accountEmailSession);
+
+            msgCreated.setFrom(sender);
+            msgCreated.setRecipient(Message.RecipientType.TO,adressee );
+            msgCreated.setSubject(subject);
+            msgCreated.setText(message);
+
+            return msgCreated;
+        }
     }
