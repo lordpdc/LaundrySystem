@@ -2,11 +2,13 @@ package presentation.gui;
 
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
+import javafx.fxml.FXMLLoader;
 import presentation.gui.tabs.TabContainer;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class WindowManager {
     private JFrame inventory;
@@ -24,7 +26,7 @@ public class WindowManager {
         inventory.setLocationRelativeTo( null );
         inventory.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         inventory.setVisible( true );
-        setMenuElement( inventory );
+        setMenuElement();
 
         Platform.runLater( new Runnable( ) {
             @Override
@@ -38,7 +40,6 @@ public class WindowManager {
 
     private void setSystemProperties( ) {
         // take the menu bar off the jframe
-        System.setProperty( "apple.laf.useScreenMenuBar", "true" );
 
         // set the name of the application menu item
         System.setProperty( "apple.awt.application.name", "Lavanderia" );
@@ -51,13 +52,17 @@ public class WindowManager {
         }
     }
 
-    private void setMenuElement( JFrame frame ) {
+    private void setMenuElement( ) {
         JMenuBar menuBar = new JMenuBar( );
         JButton reportes = new JButton( "Reportes" );
         reportes.addActionListener( new ActionListener( ) {
             @Override
             public void actionPerformed( ActionEvent e ) {
-
+                try {
+                    new FXMLLoader().load(getClass().getResourceAsStream("../../awd"));
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
             }
         } );
         menuBar.add( reportes );
