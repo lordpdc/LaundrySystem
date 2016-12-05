@@ -52,7 +52,6 @@ public abstract class TabView<T> {
         if (frame ==null){
             frame = new JFrame();
         }
-
         return frame;
     }
 
@@ -78,7 +77,7 @@ public abstract class TabView<T> {
         editButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                editAction(0);
+                editAction();
             }
         });
 
@@ -86,7 +85,7 @@ public abstract class TabView<T> {
 
     protected abstract void createAction();
 
-    protected abstract void editAction(int id);
+    protected abstract void editAction();
 
     protected abstract void deleteAction();
 

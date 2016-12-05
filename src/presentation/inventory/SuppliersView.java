@@ -55,9 +55,15 @@ public class SuppliersView extends TabView<Supplier> {
     }
 
     @Override
-    protected void editAction(int id) {
-        ctrl.setWindowtoUpdate(id);
-        frame.setVisible(true);
+    protected void editAction() {
+        if (table.getSelectedItem()!=null){
+            int id = ((Supplier) table.getSelectedItem()).getId();
+            System.out.println(id);
+            ctrl.setWindowtoUpdate(id);
+            frame.setVisible(true);
+        }else{
+            System.out.println("Debe seleccionar un proveedor");
+        }
     }
 
     @Override

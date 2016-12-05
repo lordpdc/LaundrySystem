@@ -45,11 +45,13 @@ public class PurchaseInvoiceWindow implements Initializable {
     @FXML private TableColumn quantityColumn;
     @FXML private TableColumn priceColumn;
 
+    @FXML private Button invoiceSaveBtn;
+    @FXML private Button invoiceCancelBtn;
+
     @FXML private MenuButton consumableSelect;
     @FXML private TextField quantityInput;
     @FXML private TextField priceInput;
-    @FXML private Button invoiceSaveBtn;
-    @FXML private Button invoiceCanceBtn;
+
 
 
     @Override
@@ -145,6 +147,9 @@ public class PurchaseInvoiceWindow implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("Ama save....");
+                //invoice.setTotalPrice();
+
+                System.out.println(dateSelect.getValue());
 
                 for(PurchaseDetailObj detail: data){
                     System.out.println(detail.toString());

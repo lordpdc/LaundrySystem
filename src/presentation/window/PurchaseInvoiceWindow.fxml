@@ -35,6 +35,6 @@
         </items>
       </MenuButton>
       <Button fx:id="invoiceSaveBtn" defaultButton="true" layoutX="506.0" layoutY="410.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="90.0" text="Guardar" />
-      <Button fx:id="invoiceCanceBtn" cancelButton="true" layoutX="426.0" layoutY="410.0" mnemonicParsing="false" text="Cancelar" />
+      <Button fx:id="invoiceCancelBtn" cancelButton="true" layoutX="426.0" layoutY="410.0" mnemonicParsing="false" text="Cancelar" />
     </children>
 </Pane>

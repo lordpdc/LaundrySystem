@@ -39,7 +39,7 @@ public class InventoryView extends TabView<Consumable> {
             Scene scene = new Scene(root);
             panel.setScene(scene);
             ConsumableWindow ctrl = (ConsumableWindow)loader.getController();
-            /*ctrl.setFrame(frame);*/
+            ctrl.setParent(this);
         } catch (IOException e) {
             e.printStackTrace();
         }

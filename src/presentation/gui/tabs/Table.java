@@ -56,6 +56,10 @@ public class Table<T> {
         tableView.setItems(items);
     }
 
+    public T getSelectedItem(){
+        return tableView.getSelectionModel().getSelectedItem();
+    }
+
     public ObservableList<T> getData(){
         return data;
     }
