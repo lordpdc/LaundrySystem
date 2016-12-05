@@ -20,7 +20,7 @@ public class SaleInvoiceView extends TabView<SaleInvoice> {
 
     public SaleInvoiceView(){
         super();
-        this.tab.setText("Facturas de Compras");
+        this.tab.setText("Facturas de Ventas");
         initComponents();
     }
 
