@@ -60,7 +60,7 @@ public class ServiceView extends TabView<Service>{
             ctrl.setWindowtoUpdate(id);
             frame.setVisible(true);
         }else{
-            message();
+            warningMessage();
         }
     }
 
@@ -70,7 +70,7 @@ public class ServiceView extends TabView<Service>{
             int id = ((Service) table.getSelectedItem()).getId();
             administrator.remove(id);
         }else{
-            System.out.println("Debe seleccionar un proveedor");
+            warningMessage();
         }
     }
 

@@ -60,7 +60,7 @@ public class InventoryView extends TabView<Consumable> {
             ctrl.setWindowtoUpdate(id);
             frame.setVisible(true);
         }else{
-            message();
+            warningMessage();
         }
     }
 
@@ -70,7 +70,7 @@ public class InventoryView extends TabView<Consumable> {
             int id = ((Consumable) table.getSelectedItem()).getId();
             administrator.remove(id);
         }else{
-            System.out.println("Debe seleccionar un proveedor");
+            warningMessage();
         }
     }
 

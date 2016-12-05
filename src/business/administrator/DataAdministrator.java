@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * @author Luis
  */
-public abstract class DataAdministrator< T > {
+public class DataAdministrator< T > {
     protected GenericDAO< T > accessData;
 
     public void addNew(T t) {
@@ -30,6 +30,10 @@ public abstract class DataAdministrator< T > {
 
     public T searchById( int id ) {
         return accessData.read( id );
+    }
+
+    public List<T> searchByAtribute(String value){
+        return  accessData.readByAtrr(value);
     }
 
     public List<T> getAllData( ) {

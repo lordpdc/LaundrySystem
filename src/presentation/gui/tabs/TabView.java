@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -25,6 +26,7 @@ public abstract class TabView<T> {
     protected Button searchButton;
     protected Button editButton;
     protected Button deleteButton;
+    protected TextField searchField;
 
     protected JFrame frame;
 
@@ -86,7 +88,8 @@ public abstract class TabView<T> {
             @Override
             public void handle(ActionEvent event) {
                 deleteAction();
-                JOptionPane.showMessageDialog(null,"Elemento eliminado","Mensaje Informativo",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Elemento eliminado",
+                        "Mensaje Informativo",JOptionPane.INFORMATION_MESSAGE);
             }
         });
     }
@@ -99,8 +102,25 @@ public abstract class TabView<T> {
 
     protected abstract void searchAction();
 
-    protected void message(){
+    protected void warningMessage(){
         JOptionPane.showMessageDialog(null,"Debe seleccionar un elemento",
                 "Mensaje de Advertencia",JOptionPane.WARNING_MESSAGE);
+    }
+
+    protected boolean isFieldEmpty(){
+        if(searchField.getText() == null){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    protected boolean isSearchFieldNumeric(){
+        try{
+            Integer.parseInt(searchField.getText());
+            return false;
+        }catch (NumberFormatException exception){
+            return true;
+        }
     }
 }

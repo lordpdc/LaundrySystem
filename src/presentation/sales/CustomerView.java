@@ -61,7 +61,7 @@ public class CustomerView extends TabView<Customer>{
             ctrl.setWindowtoUpdate(id);
             frame.setVisible(true);
         }else{
-            message();
+            warningMessage();
         }
     }
 
@@ -71,7 +71,7 @@ public class CustomerView extends TabView<Customer>{
             int id = ((Customer) table.getSelectedItem()).getId();
             administrator.remove(id);
         }else{
-            System.out.println("Debe seleccionar un proveedor");
+            warningMessage();
         }
     }
 

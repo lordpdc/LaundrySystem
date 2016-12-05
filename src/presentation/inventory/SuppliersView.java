@@ -9,7 +9,9 @@ import javafx.scene.Scene;
 import presentation.gui.tabs.TabView;
 import presentation.window.SupplierWindow;
 
+import javax.swing.*;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by cesar on 01/12/16.
@@ -61,7 +63,7 @@ public class SuppliersView extends TabView<Supplier> {
             ctrl.setWindowtoUpdate(id);
             frame.setVisible(true);
         }else{
-            message();
+            warningMessage();
         }
     }
 
@@ -71,14 +73,36 @@ public class SuppliersView extends TabView<Supplier> {
             int id = ((Supplier) table.getSelectedItem()).getId();
             administrator.remove(id);
         }else{
-            message();
+            warningMessage();
         }
     }
 
     @Override
     protected void searchAction() {
-
-
+        if(isFieldEmpty()){
+            if(isSearchFieldNumeric()){
+                Supplier searchItem = administrator.searchById(Integer.parseInt(searchField.getText()));
+                if(searchItem != null){
+                    JOptionPane.showMessageDialog(null,"Elemento elemento encontrado",
+                            "Mensaje Informativo",JOptionPane.INFORMATION_MESSAGE);
+                }else {
+                    JOptionPane.showMessageDialog(null,"Elemento no existente",
+                            "Mensaje Informativo",JOptionPane.INFORMATION_MESSAGE);
+                }
+            }else {
+                List<Supplier> searchItem = administrator.searchByAtribute(searchField.getText());
+                if(searchItem != null){
+                    JOptionPane.showMessageDialog(null,"Elemento elemento encontrado",
+                            "Mensaje Informativo",JOptionPane.INFORMATION_MESSAGE);
+                }else {
+                    JOptionPane.showMessageDialog(null,"Elemento no existente",
+                            "Mensaje Informativo",JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"No a introducido nada para buscar.",
+                    "Mensaje de Advertencia",JOptionPane.WARNING_MESSAGE);
+        }
     }
 
 
