@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextArea;
 import presentation.inventory.InventoryView;
 import presentation.utilities.StringValuesMessage;
+import presentation.utilities.StringValuesWindow;
 
 import javax.swing.*;
 import java.net.URL;
@@ -19,14 +20,11 @@ import java.util.ResourceBundle;
 /**
  * Created by Luis on 03/12/2016.
  */
-public class ConsumableWindow implements Initializable {
+public class ConsumableWindow extends window {
     private InventoryView root;
-    private boolean isUpdate = false;
     private Consumable consumable;
     private ConsumableAdministrator administrator = new ConsumableAdministrator();
 
-    @FXML protected Button createButton;
-    @FXML protected Button cancelButton;
     @FXML protected TextField nameField;
     @FXML protected TextArea descriptionField;
 
@@ -75,15 +73,13 @@ public class ConsumableWindow implements Initializable {
         this.root = root;
     }
 
-    public void setIsUpdate(boolean isUpdate){
-        this.isUpdate = isUpdate;
-    }
 
     public void setWindowtoUpdate(int id){
         consumable = administrator.searchById(id);
 
         nameField.setText(consumable.getName());
         descriptionField.setText(consumable.getDescription());
+        createButton.setText(StringValuesWindow.updateButton);
 
         setIsUpdate(true);
     }
@@ -92,12 +88,13 @@ public class ConsumableWindow implements Initializable {
         return new Consumable(nameField.getText(),descriptionField.getText());
     }
 
-    private void cleanWindow(){
+    protected void cleanWindow(){
         nameField.setText(null);
         descriptionField.setText(null);
+        setText();
     }
 
-    private boolean isFieldEmty(){
+    protected boolean isFieldEmty(){
         if(nameField.getText().isEmpty()){
             return false;
         }else if(descriptionField.getText().isEmpty()) {
@@ -106,8 +103,4 @@ public class ConsumableWindow implements Initializable {
         return true;
     }
 
-    private void FieldEmptyMessage(){
-        JOptionPane.showMessageDialog(null, StringValuesMessage.missingFieldMessage,
-                StringValuesMessage.warningTitle,JOptionPane.WARNING_MESSAGE);
-    }
 }
