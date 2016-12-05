@@ -1,8 +1,10 @@
-package presentation.gui;
+package presentation.gui.elements;
 
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import presentation.gui.tabs.TabContainer;
 
 import javax.swing.*;
@@ -59,7 +61,15 @@ public class WindowManager {
             @Override
             public void actionPerformed( ActionEvent e ) {
                 try {
-                    new FXMLLoader().load(getClass().getResourceAsStream("../../awd"));
+                    JFrame frame = new JFrame();
+                    JFXPanel panel = new JFXPanel();
+                    Parent root = new FXMLLoader().load(getClass().getResourceAsStream("../window/ReportWindow.fxml"));
+                    panel.setScene(new Scene(root));
+                    frame.add(panel);
+                    frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                    frame.setSize(600,400);
+                    frame.setLocationRelativeTo(null);
+                    frame.setVisible(true);
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
@@ -70,7 +80,19 @@ public class WindowManager {
         correos.addActionListener( new ActionListener( ) {
             @Override
             public void actionPerformed( ActionEvent e ) {
-
+                try {
+                    JFrame frame = new JFrame();
+                    JFXPanel panel = new JFXPanel();
+                    Parent root = new FXMLLoader().load(getClass().getResourceAsStream("../window/SendEmailWindow.fxml"));
+                    panel.setScene(new Scene(root));
+                    frame.add(panel);
+                    frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                    frame.setSize(600,420);
+                    frame.setLocationRelativeTo(null);
+                    frame.setVisible(true);
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
             }
         } );
         menuBar.add( correos );
