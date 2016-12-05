@@ -16,7 +16,8 @@ import java.io.IOException;
  * Created by cesar on 04/12/16.
  */
 public class InventoryView extends TabView<Consumable> {
-    private ConsumableAdministrator admin = new ConsumableAdministrator();
+    private ConsumableAdministrator administrator = new ConsumableAdministrator();
+    private ConsumableWindow ctrl;
 
     public InventoryView(){
         super();
@@ -25,7 +26,7 @@ public class InventoryView extends TabView<Consumable> {
     }
 
     private void initComponents(){
-        data.addAll(admin.getAllData());
+        data.addAll(administrator.getAllData());
 
         table.addColumn("nombre","name",100);
         table.addColumn("descripción","description",100);
@@ -38,7 +39,7 @@ public class InventoryView extends TabView<Consumable> {
             Parent root = loader.load(getClass().getResourceAsStream("../window/ConsumableWindow.fxml"));
             Scene scene = new Scene(root);
             panel.setScene(scene);
-            ConsumableWindow ctrl = (ConsumableWindow)loader.getController();
+            ctrl = (ConsumableWindow)loader.getController();
             ctrl.setParent(this);
         } catch (IOException e) {
             e.printStackTrace();
@@ -54,12 +55,23 @@ public class InventoryView extends TabView<Consumable> {
 
     @Override
     protected void editAction() {
-
+        if (table.getSelectedItem()!=null){
+            int id = ((Consumable) table.getSelectedItem()).getId();
+            ctrl.setWindowtoUpdate(id);
+            frame.setVisible(true);
+        }else{
+            message();
+        }
     }
 
     @Override
     protected void deleteAction() {
-
+        if (table.getSelectedItem()!=null){
+            int id = ((Consumable) table.getSelectedItem()).getId();
+            administrator.remove(id);
+        }else{
+            System.out.println("Debe seleccionar un proveedor");
+        }
     }
 
     @Override

@@ -59,6 +59,7 @@ public abstract class TabView<T> {
         createButton = (Button) tab.getContent().lookup("#createButton");
         searchButton = (Button) tab.getContent().lookup("#searchButton");
         editButton = (Button) tab.getContent().lookup("#editButton");
+        deleteButton = (Button) tab.getContent().lookup("#deleteButton");
 
         createButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -81,6 +82,13 @@ public abstract class TabView<T> {
             }
         });
 
+        deleteButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                deleteAction();
+                JOptionPane.showMessageDialog(null,"Elemento eliminado","Mensaje Informativo",JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
     }
 
     protected abstract void createAction();
@@ -91,4 +99,8 @@ public abstract class TabView<T> {
 
     protected abstract void searchAction();
 
+    protected void message(){
+        JOptionPane.showMessageDialog(null,"Debe seleccionar un elemento",
+                "Mensaje de Advertencia",JOptionPane.WARNING_MESSAGE);
+    }
 }
