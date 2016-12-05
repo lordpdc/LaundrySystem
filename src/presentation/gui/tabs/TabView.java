@@ -67,6 +67,8 @@ public abstract class TabView<T> {
         return frame;
     }
 
+    public abstract T saveEntity(T entity);
+
     private void registerActionHandlers(){
         createButton = (Button) tab.getContent().lookup("#createButton");
         searchButton = (Button) tab.getContent().lookup("#searchButton");
