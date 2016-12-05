@@ -19,8 +19,9 @@ import java.util.ResourceBundle;
  */
 public class CustomerWindow implements Initializable {
     private CustomerView root;
-    private boolean isUpdate;
-
+    private boolean isUpdate = false;
+    private Customer customer;
+    private CustomerAdministrator administrator = new CustomerAdministrator();
 
     @FXML protected Button createButton;
     @FXML protected Button cancelButton;
@@ -33,19 +34,37 @@ public class CustomerWindow implements Initializable {
         createButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                Customer customer = getNewCustomer();
+                if(isUpdate){
+                    if (isFieldEmty()) {
+                        Customer customerfromWindow = getCustomerfromWindow();
+                        administrator.update(customer.getId(),customerfromWindow);
 
-                if(customer != null) {
-                    CustomerAdministrator admin = new CustomerAdministrator();
-                    admin.addNew(customer);
-                    /*root.getFrame().setVisible(false);*/
+                        setIsUpdate(false);
+                        cleanWindow();
+                        root.getFrame().setVisible(false);
+                    }else{
+                        FieldEmptyMessage();
+                    }
+                }else {
+                    if (isFieldEmty()) {
+                        customer = getCustomerfromWindow();
+                        administrator.addNew(customer);
+
+                        root.updateObsList(customer);
+                        cleanWindow();
+                        root.getFrame().setVisible(false);
+                    }else {
+                        FieldEmptyMessage();
+                    }
                 }
             }
         });
         cancelButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                /*root.getFrame().setVisible(false);*/
+                cleanWindow();
+                setIsUpdate(false);
+                root.getFrame().setVisible(false);
             }
         });
     }
@@ -58,15 +77,24 @@ public class CustomerWindow implements Initializable {
         this.isUpdate = isUpdate;
     }
 
-    public void setWindow(){
+    public void setWindowtoUpdate(int id){
+        customer = administrator.searchById(id);
 
+        nameField.setText(customer.getName());
+        telephoneField.setText(customer.getTelephone());
+        emailField.setText(customer.getEmail());
+
+        setIsUpdate(true);
     }
 
-    private Customer getNewCustomer(){
-        if(isFieldEmty()){
-            return null;
-        }
+    private Customer getCustomerfromWindow(){
         return new Customer(nameField.getText(),telephoneField.getText(),emailField.getText());
+    }
+
+    private void cleanWindow(){
+        nameField.setText(null);
+        telephoneField.setText(null);
+        emailField.setText(null);
     }
 
     private boolean isFieldEmty(){
@@ -80,5 +108,9 @@ public class CustomerWindow implements Initializable {
             return true;
         }
         return false;
+    }
+
+    private void FieldEmptyMessage(){
+        JOptionPane.showMessageDialog(null,"Falta llenar campos",  "Mensaje de Advertencia",JOptionPane.WARNING_MESSAGE);
     }
 }

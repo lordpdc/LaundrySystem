@@ -24,7 +24,7 @@ public class SupplierWindow implements Initializable {
     private SuppliersView root;
     private boolean isUpdate = false;
     private Supplier supplier;
-    private SupplierAdministrator admin = new SupplierAdministrator();
+    private SupplierAdministrator administrator = new SupplierAdministrator();
 
     @FXML protected Button createButton;
     @FXML protected Button cancelButton;
@@ -39,22 +39,26 @@ public class SupplierWindow implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 if(isUpdate){
-                    Supplier supplierfromWindow = getSupplierfromWindow();
-
-                    if (supplier != null) {
-                        admin.update(supplier.getId(),supplierfromWindow);
-                        root.updateObsList(supplierfromWindow);
+                    if (isFieldEmty()) {
+                        Supplier supplierfromWindow = getSupplierfromWindow();
+                        administrator.update(supplier.getId(),supplierfromWindow);
 
                         setIsUpdate(false);
+                        cleanWindow();
                         root.getFrame().setVisible(false);
+                    }else{
+                        FieldEmptyMessage();
                     }
                 }else {
-                    supplier = getSupplierfromWindow();
+                    if (isFieldEmty()) {
+                        supplier = getSupplierfromWindow();
+                        administrator.addNew(supplier);
 
-                    if (supplier != null) {
-                        admin.addNew(supplier);
                         root.updateObsList(supplier);
+                        cleanWindow();
                         root.getFrame().setVisible(false);
+                    }else {
+                        FieldEmptyMessage();
                     }
                 }
             }
@@ -62,6 +66,8 @@ public class SupplierWindow implements Initializable {
         cancelButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                cleanWindow();
+                setIsUpdate(false);
                 root.getFrame().setVisible(false);
             }
         });
@@ -77,7 +83,7 @@ public class SupplierWindow implements Initializable {
     }
 
     public void setWindowtoUpdate(int id){
-        supplier = admin.searchById(id);
+        supplier = administrator.searchById(id);
 
         nameField.setText(supplier.getName());
         addressField.setText(supplier.getAddress());
@@ -88,26 +94,33 @@ public class SupplierWindow implements Initializable {
     }
 
     private Supplier getSupplierfromWindow(){
-        if(isFieldEmty()){
-            return null;
-        }
         return new Supplier(nameField.getText(),addressField.getText(),telephoneField.getText(),emailField.getText());
     }
 
+    private void cleanWindow(){
+        nameField.setText(null);
+        addressField.setText(null);
+        telephoneField.setText(null);
+        emailField.setText(null);
+    }
+
     private boolean isFieldEmty(){
-        if(nameField.getText().isEmpty()){
+        if(nameField.getText() == null){
             return true;
         }
-        if(addressField.getText().isEmpty()) {
+        if(addressField.getText() == null) {
             return true;
         }
-        if(telephoneField.getText().isEmpty()){
+        if(telephoneField.getText() == null){
             return true;
         }
-        if(emailField.getText().isEmpty()){
+        if(emailField.getText() == null){
             return true;
         }
         return false;
     }
 
+    private void FieldEmptyMessage(){
+        JOptionPane.showMessageDialog(null,"Falta llenar campos",  "Mensaje de Advertencia",JOptionPane.WARNING_MESSAGE);
+    }
 }
