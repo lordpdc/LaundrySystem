@@ -1,7 +1,6 @@
 package business.Reports;
 
-import business.entities.PurchaseInvoice;
-import business.entities.SaleInvoice;
+import business.entities.*;
 import business.utilities.DefaultValues;
 
 import java.util.*;
@@ -12,12 +11,17 @@ import java.util.*;
 public class Report {
     private List< PurchaseInvoice > listPurchases;
     private List< SaleInvoice > listSales;
+    private List< PurchaseDetail > listPurchasesDetails;
+    private List< SaleDetails > listSalesDetails;
+
     private HashMap< String, Double > result;
     private Period period;
 
     public Report( ) {
         listPurchases = new ArrayList<>(  );
         listSales = new ArrayList<>(  );
+        listPurchasesDetails= new ArrayList<>(  );
+        listSalesDetails= new ArrayList<>(  );
         result = new HashMap< String, Double >( );
     }
 
@@ -27,6 +31,12 @@ public class Report {
 
     public void addSales( SaleInvoice sale ) {
         listSales.add( sale );
+    }
+
+    public void addSaleDetails(SaleDetails saleDetails){ listSalesDetails.add( saleDetails );}
+
+    public void addPurchaseDetails(PurchaseDetail purchaseDetail){
+        listPurchasesDetails.add( purchaseDetail );
     }
 
     public void addResult( String key, Double value ) {
@@ -51,5 +61,13 @@ public class Report {
 
     public List< SaleInvoice > getListSales( ) {
         return listSales;
+    }
+
+    public List< PurchaseDetail > getListPurchasesDetails( ) {
+        return listPurchasesDetails;
+    }
+
+    public List< SaleDetails > getListSalesDetails( ) {
+        return listSalesDetails;
     }
 }

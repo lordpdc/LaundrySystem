@@ -1,9 +1,7 @@
 package business.Reports;
 
-import business.administrator.PurchaseInvoiceAdministrator;
-import business.administrator.SaleInvoiceAdministrator;
-import business.entities.PurchaseInvoice;
-import business.entities.SaleInvoice;
+import business.administrator.*;
+import business.entities.*;
 import business.utilities.DefaultValues;
 
 import java.sql.Date;
@@ -13,11 +11,12 @@ import java.util.List;
 /**
  * Created by raoman on 11/11/2016.
  */
-public abstract class Accountant {
+public  class Accountant {
     private Report generalBalanceReport;
     private Period periodForReport;
     private final String SALES_RESULT="Total de ventas";
     private final String PURCHASE_RESULT="Total de compras";
+    private final String EARNING_NET="Ganancias Netas";
 
     public Accountant() {
         generalBalanceReport=new Report();
@@ -26,10 +25,11 @@ public abstract class Accountant {
         this.periodForReport=period;
     }
 
-    public void makeGeneralBalance(){
+    public Report makeGeneralBalance(){
         generalBalanceReport.setPeriod( periodForReport );
         fillSalesInformation();
         fillPurchasesInformation();
+        return generalBalanceReport;
 
     }
     private void fillSalesInformation(){
@@ -55,6 +55,10 @@ public abstract class Accountant {
             }
         }
         generalBalanceReport.addResult( PURCHASE_RESULT,totalPurchases );
+    }
+    private void fillPurchaseDetailsInformation(List<PurchaseDetail> details){
+       List<PurchaseDetail> detailForFill=details;
+
     }
 
 

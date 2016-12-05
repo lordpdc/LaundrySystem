@@ -26,7 +26,7 @@ public class TestRoman {
         report.addResult( "yolisimo",2121.0 );
         BuilderFileReport builder=BuilderFileReport.callBuilder();
         builder.setReport( report );
-        Desktop.getDesktop().open(builder.getFileReport().getAbsoluteFile());
+       /* Desktop.getDesktop().open(builder.getFileReport().getAbsoluteFile());  */
     }
 
 }

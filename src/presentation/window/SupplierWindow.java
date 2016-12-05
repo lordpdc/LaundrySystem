@@ -21,7 +21,10 @@ import java.util.ResourceBundle;
  * Created by Luis on 03/12/2016.
  */
 public class SupplierWindow implements Initializable {
-    SuppliersView root;
+    private SuppliersView root;
+    private boolean isUpdate = false;
+    private Supplier supplier;
+    private SupplierAdministrator admin = new SupplierAdministrator();
 
     @FXML protected Button createButton;
     @FXML protected Button cancelButton;
@@ -35,13 +38,24 @@ public class SupplierWindow implements Initializable {
         createButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                Supplier supplier = getNewSupplier();
+                if(isUpdate){
+                    Supplier supplierfromWindow = getSupplierfromWindow();
 
-                if(supplier !=null) {
-                    SupplierAdministrator admin = new SupplierAdministrator();
-                    admin.addNew(supplier);
-                    root.updateObsList(supplier);
-                    root.getFrame().setVisible(false);
+                    if (supplier != null) {
+                        admin.update(supplier.getId(),supplierfromWindow);
+                        root.updateObsList(supplierfromWindow);
+
+                        setIsUpdate(false);
+                        root.getFrame().setVisible(false);
+                    }
+                }else {
+                    supplier = getSupplierfromWindow();
+
+                    if (supplier != null) {
+                        admin.addNew(supplier);
+                        root.updateObsList(supplier);
+                        root.getFrame().setVisible(false);
+                    }
                 }
             }
         });
@@ -57,11 +71,23 @@ public class SupplierWindow implements Initializable {
         this.root = root;
     }
 
-    private void setText(){
 
+    private void setIsUpdate(boolean isUpdate){
+        this.isUpdate = isUpdate;
     }
 
-    private Supplier getNewSupplier(){
+    public void setWindowtoUpdate(int id){
+        supplier = admin.searchById(id);
+
+        nameField.setText(supplier.getName());
+        addressField.setText(supplier.getAddress());
+        telephoneField.setText(supplier.getTelephone());
+        emailField.setText(supplier.getEmail());
+
+        setIsUpdate(true);
+    }
+
+    private Supplier getSupplierfromWindow(){
         if(isFieldEmty()){
             return null;
         }
@@ -83,4 +109,5 @@ public class SupplierWindow implements Initializable {
         }
         return false;
     }
+
 }
