@@ -51,6 +51,11 @@ public class CustomerView extends TabView<Customer>{
     }
 
     @Override
+    public Customer saveEntity(Customer entity) {
+        return null;
+    }
+
+    @Override
     protected void editAction() {
         if (table.getSelectedItem()!=null){
             int id = ((Customer) table.getSelectedItem()).getId();

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="536.0" prefWidth="604.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.window.SaleInvoiceCtrl">
+    <children>
+        <MenuButton fx:id="supplierSelect" layoutX="16.0" layoutY="14.0" maxWidth="250" mnemonicParsing="false" text="Proveedor">
+            <items>
+            </items>
+        </MenuButton>
+        <TableView fx:id="detailsTable" layoutX="13.0" layoutY="124.0" prefHeight="276.0" prefWidth="582.0">
+            <columns>
+                <TableColumn fx:id="nameColumn" prefWidth="253.0" text="Insumo" />
+                <TableColumn fx:id="quantityColumn" prefWidth="127.0" text="cantidad" />
+                <TableColumn fx:id="priceColumn" prefWidth="189.0" text="Precio Unitario" />
+            </columns>
+        </TableView>
+        <DatePicker fx:id="dateSelect" layoutX="420.0" layoutY="14.0" prefHeight="27.0" prefWidth="175.0" />
+        <Button fx:id="newConsumableBtn" layoutX="477.0" layoutY="88.0" mnemonicParsing="false" text="Agregar Insumo" />
+        <Line endX="480.0" layoutX="115.0" layoutY="50.0" opacity="0.09" startX="-100.0" />
+        <TextField fx:id="quantityInput" layoutX="200.0" layoutY="88.0" prefHeight="27.0" prefWidth="99.0" promptText="cantidad" />
+        <TextField fx:id="priceInput" layoutX="305.0" layoutY="88.0" prefHeight="27.0" prefWidth="142.0" promptText="precio unitario" />
+        <Label layoutX="16.0" layoutY="60.0" prefHeight="18.0" prefWidth="142.0" text="Detalle de factura:" textFill="#464242">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="369.0" layoutY="19.0" text="Fecha:" textFill="#545353" />
+        <MenuButton fx:id="consumableSelect" layoutX="16.0" layoutY="88.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="175.0" text="Insumo">
+            <items>
+            </items>
+        </MenuButton>
+        <Button fx:id="invoiceSaveBtn" defaultButton="true" layoutX="508.0" layoutY="501.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="90.0" text="Guardar" />
+        <Button fx:id="invoiceCancelBtn" cancelButton="true" layoutX="427.0" layoutY="501.0" mnemonicParsing="false" text="Cancelar" />
+        <TextField fx:id="ivaInput" layoutX="13.0" layoutY="433.0" prefHeight="27.0" prefWidth="115.0" />
+        <Label layoutX="16.0" layoutY="410.0" text="IVA" />
+        <Label layoutX="135.0" layoutY="438.0" text="\%" />
+        <Label layoutX="439.0" layoutY="460.0" text="Total:">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="419.0" layoutY="411.0" text="Subtotal:" />
+        <Label layoutX="446.0" layoutY="430.0" prefHeight="17.0" prefWidth="35.0" text="IVA:" />
+        <Label fx:id="subtotalLabel" layoutX="504.0" layoutY="411.0" text="0" />
+        <Label fx:id="ivaLabel" layoutX="504.0" layoutY="430.0" text="0" />
+        <Label fx:id="totalLabel" layoutX="501.0" layoutY="460.0" text="0">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Separator layoutX="389.0" layoutY="454.0" prefWidth="200.0" />
+    </children>
+</Pane>

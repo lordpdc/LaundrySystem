@@ -51,6 +51,11 @@ public class ServiceView extends TabView<Service>{
     }
 
     @Override
+    public Service saveEntity(Service entity) {
+        return null;
+    }
+
+    @Override
     protected void editAction() {
         if (table.getSelectedItem()!=null){
             int id = ((Service) table.getSelectedItem()).getId();

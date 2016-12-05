@@ -49,6 +49,12 @@ public class InventoryView extends TabView<Consumable> {
         frame.add(panel);
     }
 
+    @Override
+    public Consumable saveEntity(Consumable entity) {
+        Consumable savedEntity = administrator.addNew(entity);
+        updateObsList(savedEntity);
+        return savedEntity;
+    }
 
     @Override
     protected void editAction() {
