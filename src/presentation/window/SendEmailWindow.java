@@ -6,7 +6,9 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import presentation.utilities.StringValuesMessage;
 
+import javax.swing.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -45,11 +47,19 @@ public class SendEmailWindow implements Initializable {
         String subject=addresseeField.getText();
         String msg= msgTextArea.getText();
         if(!(addressee.isEmpty()||subject.isEmpty()||msg.isEmpty())){
-            EmailSenderService sender=new EmailSenderService();
-           /* sender.sendEmail( addressee,subject,msg );*/
+            try {
+                EmailSenderService sender=new EmailSenderService();
+                sender.sendEmail( addressee,subject,msg );
+            }
+            catch( Exception e ){
+                JOptionPane.showMessageDialog(null, StringValuesMessage.MSG_NO_SEND,
+                        StringValuesMessage.informationTitle,JOptionPane.INFORMATION_MESSAGE);
+            }
+
         }
         else{
-            new Exception( MSG_FAIL );
+            JOptionPane.showMessageDialog(null, StringValuesMessage.MSG_INCOMPLETE,
+                    StringValuesMessage.informationTitle,JOptionPane.INFORMATION_MESSAGE);
         }
     }
 }
