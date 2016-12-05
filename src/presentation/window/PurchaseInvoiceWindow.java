@@ -4,9 +4,9 @@ import business.administrator.ConsumableAdministrator;
 import business.administrator.PurchaseInvoiceAdministrator;
 import business.administrator.SupplierAdministrator;
 import business.entities.Consumable;
-import business.entities.PurchaseDetail;
 import business.entities.PurchaseInvoice;
 import business.entities.Supplier;
+import business.utilities.DefaultValues;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,9 +14,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
-import presentation.gui.tabs.Table;
 
 import javax.swing.*;
 import java.net.URL;
@@ -28,66 +27,69 @@ import static java.lang.Integer.parseInt;
  * Created by cesar on 04/12/16.
  */
 public class PurchaseInvoiceWindow implements Initializable {
+
     private PurchaseInvoiceAdministrator admin = new PurchaseInvoiceAdministrator();
     private SupplierAdministrator admin2 = new SupplierAdministrator();
     private ConsumableAdministrator admin3 = new ConsumableAdministrator();
 
     private JFrame frame;
-    private Table<PurchaseDetailObj> table = new Table<>();
-    private ObservableList<PurchaseDetailObj> data = FXCollections.observableArrayList();
+
+    private ObservableList<PurchaseDetailObj> data;
+    private PurchaseInvoice invoice = new PurchaseInvoice();
 
     @FXML private MenuButton supplierSelect;
     @FXML private Button newConsumableBtn;
     @FXML private DatePicker dateSelect;
-    @FXML private TableView detailsTable;
-    @FXML private TableColumn<PurchaseDetailObj, String> nameColumn;
-    @FXML private TableColumn<PurchaseDetailObj, String> quantityColumn;
-    @FXML private TableColumn<PurchaseDetailObj, String> priceColumn;
+    @FXML private TableView<PurchaseDetailObj> detailsTable;
+    @FXML private TableColumn nameColumn;
+    @FXML private TableColumn quantityColumn;
+    @FXML private TableColumn priceColumn;
 
     @FXML private MenuButton consumableSelect;
     @FXML private TextField quantityInput;
     @FXML private TextField priceInput;
+    @FXML private Button invoiceSaveBtn;
+    @FXML private Button invoiceCanceBtn;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        data.add(new PurchaseDetailObj("bnm","iop"));
+        data = FXCollections.observableArrayList();
 
-        table.setColumnValue(nameColumn,"idConsumable");
+        nameColumn.setCellValueFactory(new PropertyValueFactory<PurchaseDetailObj,String>("idConsumable"));
+        quantityColumn.setCellValueFactory(new PropertyValueFactory<PurchaseDetailObj,String>("quantityConsumable"));
+        priceColumn.setCellValueFactory(new PropertyValueFactory<PurchaseDetailObj,String>("priceConsumable"));
 
-        nameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        detailsTable.setItems(data);
 
-        /*
-        nameColumn.setOnEditCommit(
-                new EventHandler<TableColumn.CellEditEvent<PurchaseDetail, String>>() {
-                    @Override
-                    public void handle(TableColumn.CellEditEvent<PurchaseDetail, String> t) {
-                        ((PurchaseDetail) t.getTableView().getItems().get(t.getTablePosition().getRow())).setIdConsumable(parseInt(t.getNewValue()));
-                    }
-                }
-        );
-        */
+        newConsumableBtn.setOnAction(detailSaveEvent());
+        invoiceSaveBtn.setOnAction(invoiceSaveEvent());
 
-        table.setTable(detailsTable);
-        table.setColumnValue(quantityColumn,"quantityConsumable");
-        table.setColumnValue(priceColumn,"priceConsumable");
+        quantityInput.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(4));
+        priceInput.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(10));
 
-        table.setData(data);
-        table.toggleEditable();
+        loadMenuSelectors();
+    }
 
-        for (Supplier s: admin2.getAllData()){
+    public void setFrame(JFrame frame){
+        this.frame = frame;
+    }
+
+    private void loadMenuSelectors(){
+        for (Supplier s: admin2.getAllData()) {
             MenuItem menu = new MenuItem(s.getName());
             menu.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
                     System.out.println(s.getId());
+                    invoice.setIdSupplier(s.getId());
                     supplierSelect.setText("Proveedor: "+s.getName());
                 }
             });
             supplierSelect.getItems().add(menu);
         }
 
-        for (Consumable c: admin3.getAllData()){
+        for (Consumable c: admin3.getAllData()) {
             MenuItem menu = new MenuItem(c.getName());
             menu.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
@@ -98,20 +100,12 @@ public class PurchaseInvoiceWindow implements Initializable {
             });
             consumableSelect.getItems().add(menu);
         }
+    }
 
-        newConsumableBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("awdij");
-                data.add(new PurchaseDetailObj("",""));
-            }
-        });
-
-
-
-        quantityInput.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(4));
-        priceInput.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation(10));
-
+    private boolean validateInvoice(){
+        boolean supplierIdSet = invoice.getIdSupplier()!=DefaultValues.INTEGER;
+        boolean totalPriceSet = invoice.getTotalPrice()!=DefaultValues.DOUBLE;
+        return (supplierIdSet && totalPriceSet);
     }
 
     private EventHandler<KeyEvent> numeric_Validation(final Integer max_Lengh) {
@@ -135,7 +129,28 @@ public class PurchaseInvoiceWindow implements Initializable {
         };
     }
 
-    public void setFrame(JFrame frame){
-        this.frame = frame;
+    private EventHandler<ActionEvent> detailSaveEvent(){
+        return new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println(consumableSelect.getText()+", "+priceInput.getText()+", "+quantityInput.getText());
+                PurchaseDetailObj pdobj = new PurchaseDetailObj(consumableSelect.getText(),"$"+priceInput.getText(),quantityInput.getText());
+                data.add(pdobj);
+            }
+        };
     }
+
+    private EventHandler<ActionEvent> invoiceSaveEvent(){
+        return new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Ama save....");
+
+                for(PurchaseDetailObj detail: data){
+                    System.out.println(detail.toString());
+                }
+            }
+        };
+    }
+
 }

@@ -28,7 +28,6 @@ public abstract class TabView<T> {
 
     protected JFrame frame;
 
-
     public TabView() {
         try {
             URL getingsmh = getClass().getResource("../gui/tabs/TabDesign.fxml");

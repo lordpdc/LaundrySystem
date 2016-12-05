@@ -51,8 +51,17 @@ public class Table<T> {
         column.setCellValueFactory(new PropertyValueFactory<T,String>(value));
     }
 
-    public void setData(ObservableList items){
+    public void setData(ObservableList<T> items){
+        //this.data = items;
         tableView.setItems(items);
+    }
+
+    public ObservableList<T> getData(){
+        return data;
+    }
+
+    public void updateData(T item){
+        this.data.add(item);
     }
 
     public void toggleEditable(){
