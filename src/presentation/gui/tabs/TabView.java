@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 
 /**
  * Created by cesar on 01/12/16.
@@ -48,6 +49,14 @@ public abstract class TabView<T> {
 
     public void updateObsList(T p){
         getData().add(p);
+    }
+
+    public void cleanTable(){
+        getData().removeAll();
+    }
+
+    public void updateTable(List<T> p){
+        getData().addAll(p);
     }
 
     public JFrame getFrame(){
@@ -110,7 +119,6 @@ public abstract class TabView<T> {
 
     protected boolean isFieldEmpty(){
         if(searchField.getText().isEmpty()){
-            System.out.println("entra a crear");
             return false;
         }else {
             return true;

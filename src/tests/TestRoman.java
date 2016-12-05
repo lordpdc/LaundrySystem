@@ -26,7 +26,7 @@ import java.sql.Date;
  */
 public class TestRoman {
     public static void main( String[] args ) {
-        EmailSenderService sender=new EmailSenderService();
+        EmailSenderService sender=new EmailSenderService();/*
         sender.sendEmail( "romanramirezmena@gmail.com","prueba","ay ta lo que querias" );
       /* TestRoman test=new TestRoman();
         try {
@@ -66,7 +66,7 @@ public class TestRoman {
 
         frame.add(panel);
         frame.setVisible( true );*/
-        Desktop.getDesktop().open(builder.getFileReport().getAbsoluteFile());
+        /*Desktop.getDesktop().open(builder.getFileReport().getAbsoluteFile());
     }
-
-}
+*/
+}}
