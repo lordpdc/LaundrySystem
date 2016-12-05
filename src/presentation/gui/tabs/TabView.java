@@ -9,10 +9,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import presentation.utilities.StringValuesMessage;
 
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 
 /**
  * Created by cesar on 01/12/16.
@@ -48,6 +50,14 @@ public abstract class TabView<T> {
 
     public void updateObsList(T p){
         getData().add(p);
+    }
+
+    public void cleanTable(){
+        getData().removeAll();
+    }
+
+    public void updateTable(List<T> p){
+        getData().addAll(p);
     }
 
     public JFrame getFrame(){
@@ -89,8 +99,8 @@ public abstract class TabView<T> {
             @Override
             public void handle(ActionEvent event) {
                 deleteAction();
-                JOptionPane.showMessageDialog(null,"Elemento eliminado",
-                        "Mensaje Informativo",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null,StringValuesMessage.deletedMessage,
+                        StringValuesMessage.informationTitle,JOptionPane.INFORMATION_MESSAGE);
             }
         });
     }
@@ -107,13 +117,12 @@ public abstract class TabView<T> {
     protected abstract void searchAction();
 
     protected void warningMessage(){
-        JOptionPane.showMessageDialog(null,"Debe seleccionar un elemento",
-                "Mensaje de Advertencia",JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(null,StringValuesMessage.notSelectingMessage,
+                StringValuesMessage.warningTitle,JOptionPane.WARNING_MESSAGE);
     }
 
     protected boolean isFieldEmpty(){
         if(searchField.getText().isEmpty()){
-            System.out.println("entra a crear");
             return false;
         }else {
             return true;

@@ -1,6 +1,6 @@
 package business.Email;
-
-import javax.mail.*;
+/*
+import javax.mail.*;*/
 
 import java.util.Properties;
 
@@ -11,7 +11,7 @@ import static business.Email.EmailDefaultValues.*;
  */
 public class EmailConnector {
     private Properties serverEmailPropiertes;
-    private Session session;
+ /*   private Session session;
 
     public EmailConnector(  ) {
         serverEmailPropiertes=new Properties(  );
@@ -44,5 +44,5 @@ public class EmailConnector {
                 return new PasswordAuthentication( SENDER_VALUE, PASSWORD );
             }
         };
-    }
+    }*/
 }

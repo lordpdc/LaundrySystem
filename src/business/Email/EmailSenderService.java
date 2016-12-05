@@ -3,12 +3,12 @@ package business.Email;
 /**
  * Created by raoman on 04/12/2016.
  */
-
+/*
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMessage;*/
 import static business.Email.EmailDefaultValues.*;
 
     public class EmailSenderService {
@@ -19,7 +19,7 @@ import static business.Email.EmailDefaultValues.*;
             connector=new EmailConnector();
         }
 
-
+/*
         public void sendEmail(String addressee,String subject,String message){
 
 
@@ -37,5 +37,5 @@ import static business.Email.EmailDefaultValues.*;
                 new Exception( MSG_ERROR+me.toString());
             }
 
-        }
+        }*/
     }
