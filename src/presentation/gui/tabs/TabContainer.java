@@ -42,19 +42,20 @@ public class TabContainer {
     private void addTabs(){
         tabPane = (TabPane) MainContanier.lookup("#tabContainer");
 
-        TabView tab1 = new SuppliersView();
-        TabView tab2 = new PurchaseInvoiceView();
-        TabView tab3 = new InventoryView();
-        TabView tab4 = new CustomerView();
-        TabView tab5 = new SaleInvoiceView();
-        TabView tab6 = new ServiceView();
+        TabView saleInvoiceTab = new SaleInvoiceView();
+        tabPane.getTabs().add(saleInvoiceTab.tab);
+        TabView customerTab = new CustomerView();
+        tabPane.getTabs().add(customerTab.tab);
+        TabView serviceTab = new ServiceView();
+        tabPane.getTabs().add(serviceTab.tab);
 
-        tabPane.getTabs().add(tab1.tab);
-        tabPane.getTabs().add(tab2.tab);
-        tabPane.getTabs().add(tab3.tab);
-        tabPane.getTabs().add(tab4.tab);
-        tabPane.getTabs().add(tab5.tab);
-        tabPane.getTabs().add(tab6.tab);
+        TabView purchaseInvoiceTab = new PurchaseInvoiceView();
+        tabPane.getTabs().add(purchaseInvoiceTab.tab);
+        TabView suppliersTab = new SuppliersView();
+        tabPane.getTabs().add(suppliersTab.tab);
+        TabView inventoryTab = new InventoryView();
+        tabPane.getTabs().add(inventoryTab.tab);
+
     }
 
 }
