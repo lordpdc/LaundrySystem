@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import presentation.sales.CustomerView;
 
 import javax.swing.*;
 import java.net.URL;
@@ -17,7 +18,9 @@ import java.util.ResourceBundle;
  * Created by Luis on 03/12/2016.
  */
 public class CustomerWindow implements Initializable {
-    private JFrame frame;
+    private CustomerView root;
+    private boolean isUpdate;
+
 
     @FXML protected Button createButton;
     @FXML protected Button cancelButton;
@@ -35,20 +38,28 @@ public class CustomerWindow implements Initializable {
                 if(customer != null) {
                     CustomerAdministrator admin = new CustomerAdministrator();
                     admin.addNew(customer);
-                    frame.setVisible(false);
+                    /*root.getFrame().setVisible(false);*/
                 }
             }
         });
         cancelButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                frame.setVisible(false);
+                /*root.getFrame().setVisible(false);*/
             }
         });
     }
 
-    public void setFrame(JFrame frame){
-        this.frame = frame;
+    public void setParent(CustomerView root){
+        this.root = root;
+    }
+
+    public void setIsUpdate(boolean isUpdate){
+        this.isUpdate = isUpdate;
+    }
+
+    public void setWindow(){
+
     }
 
     private Customer getNewCustomer(){

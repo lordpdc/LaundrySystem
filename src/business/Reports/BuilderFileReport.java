@@ -5,10 +5,12 @@ import business.administrator.SupplierAdministrator;
 import business.entities.PurchaseInvoice;
 import business.entities.SaleInvoice;
 import business.utilities.DefaultValues;
+/*
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
 import jxl.write.*;
 import jxl.write.Label;
+*/
 
 import java.io.File;
 import java.io.IOException;
@@ -43,6 +45,8 @@ public class BuilderFileReport {
     public void setReport( Report report ) {
         this.report = report;
     }
+
+    /*
 
     public File getFileReport( ) {
         File fileMaked = null;
@@ -140,5 +144,5 @@ public class BuilderFileReport {
         }
 
     }
-
+*/
 }

@@ -79,7 +79,7 @@ public abstract class TabView<T> {
         editButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                editAction();
+                editAction(0);
             }
         });
 
@@ -87,7 +87,7 @@ public abstract class TabView<T> {
 
     protected abstract void createAction();
 
-    protected abstract void editAction();
+    protected abstract void editAction(int id);
 
     protected abstract void deleteAction();
 

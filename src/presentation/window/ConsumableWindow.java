@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextArea;
+import presentation.inventory.InventoryView;
 
 import javax.swing.*;
 import java.net.URL;
@@ -18,7 +19,7 @@ import java.util.ResourceBundle;
  * Created by Luis on 03/12/2016.
  */
 public class ConsumableWindow implements Initializable {
-    private JFrame frame;
+    private InventoryView root;
 
     @FXML protected Button createButton;
     @FXML protected Button cancelButton;
@@ -36,20 +37,20 @@ public class ConsumableWindow implements Initializable {
                 if(consumable != null) {
                     ConsumableAdministrator admin = new ConsumableAdministrator();
                     admin.addNew(consumable);
-                    frame.setVisible(false);
+                    root.getFrame().setVisible(false);
                 }
             }
         });
         cancelButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                frame.setVisible(false);
+                root.getFrame().setVisible(false);
             }
         });
     }
 
-    public void setFrame(JFrame frame){
-        this.frame = frame;
+    public void setParent(InventoryView root){
+        this.root = root;
     }
 
     private Consumable getNewConsumable(){

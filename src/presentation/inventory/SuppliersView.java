@@ -16,6 +16,7 @@ import java.io.IOException;
  */
 public class SuppliersView extends TabView<Supplier> {
     private SupplierAdministrator admin = new SupplierAdministrator();
+    private SupplierWindow ctrl;
 
     public SuppliersView(){
         super();
@@ -39,7 +40,7 @@ public class SuppliersView extends TabView<Supplier> {
             Parent root = loader.load(getClass().getResourceAsStream("../window/SupplierWindow.fxml"));
             Scene scene = new Scene(root);
             panel.setScene(scene);
-            SupplierWindow ctrl = (SupplierWindow)loader.getController();
+            ctrl = (SupplierWindow)loader.getController();
             ctrl.setParent(this);
         } catch (IOException e) {
             e.printStackTrace();
@@ -54,8 +55,9 @@ public class SuppliersView extends TabView<Supplier> {
     }
 
     @Override
-    protected void editAction() {
-        System.out.println("Editing");
+    protected void editAction(int id) {
+        ctrl.setWindowtoUpdate(id);
+        frame.setVisible(true);
     }
 
     @Override
