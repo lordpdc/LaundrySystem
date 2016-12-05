@@ -9,6 +9,9 @@ import javafx.scene.control.TableView;
 import presentation.inventory.InventoryView;
 import presentation.inventory.SuppliersView;
 import presentation.inventory.PurchaseInvoiceView;
+import presentation.sales.CustomerView;
+import presentation.sales.SaleInvoiceView;
+import presentation.sales.ServiceView;
 
 import java.io.IOException;
 
@@ -39,13 +42,19 @@ public class TabContainer {
     private void addTabs(){
         tabPane = (TabPane) MainContanier.lookup("#tabContainer");
 
-        TabView view1 = new SuppliersView();
-        TabView view2 = new PurchaseInvoiceView();
+        TabView tab1 = new SuppliersView();
+        TabView tab2 = new PurchaseInvoiceView();
         TabView tab3 = new InventoryView();
+        TabView tab4 = new CustomerView();
+        TabView tab5 = new SaleInvoiceView();
+        TabView tab6 = new ServiceView();
 
-        tabPane.getTabs().add(view1.tab);
-        tabPane.getTabs().add(view2.tab);
+        tabPane.getTabs().add(tab1.tab);
+        tabPane.getTabs().add(tab2.tab);
         tabPane.getTabs().add(tab3.tab);
+        tabPane.getTabs().add(tab4.tab);
+        tabPane.getTabs().add(tab5.tab);
+        tabPane.getTabs().add(tab6.tab);
     }
 
 }
