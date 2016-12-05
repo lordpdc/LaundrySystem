@@ -95,7 +95,10 @@ public abstract class TabView<T> {
         });
     }
 
-    protected abstract void createAction();
+    private void createAction(){
+        frame.pack();
+        frame.setVisible(true);
+    }
 
     protected abstract void editAction();
 

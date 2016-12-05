@@ -50,12 +50,6 @@ public class SaleInvoiceView extends TabView<SaleInvoice> {
     }
 
     @Override
-    protected void createAction() {
-        frame.setVisible(true);
-        frame.pack();
-    }
-
-    @Override
     protected void editAction() {
 
     }

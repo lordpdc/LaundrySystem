@@ -49,10 +49,6 @@ public class ServiceView extends TabView<Service>{
 
         frame.add(panel);
     }
-    @Override
-    protected void createAction() {
-        frame.setVisible(true);
-    }
 
     @Override
     protected void editAction() {

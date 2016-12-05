@@ -43,15 +43,10 @@ public class PurchaseInvoiceView extends TabView<PurchaseInvoice> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        frame.setTitle("Factura de Compras");
         frame.add(panel);
     }
 
-    @Override
-    protected void createAction() {
-        frame.setVisible(true);
-        frame.pack();
-    }
 
     @Override
     protected void editAction() {

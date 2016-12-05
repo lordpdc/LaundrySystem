@@ -21,16 +21,16 @@ public class PurchaseInvoiceAdministrator extends DataAdministrator<PurchaseInvo
         PurchaseDetailsAdministrator accesDetails=new PurchaseDetailsAdministrator(  );
         detailsList=accesDetails.getAllData();
         return filterAllDetailsList( idInvoice,detailsList );
-
-
     }
+
     private List<PurchaseDetail> filterAllDetailsList( int idInvoice, List<PurchaseDetail> allDetails){
         List<PurchaseDetail> detailsListFiltered=new ArrayList<>(  );
         for( PurchaseDetail detail: allDetails ) {
-            if(detail.getIdPurchaseInvoice()==idInvoice){
+            if(detail.getIdInvoicePurchase()==idInvoice){
                 detailsListFiltered.add( detail );
             }
         }
         return detailsListFiltered;
     }
+
 }
