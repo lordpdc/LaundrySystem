@@ -12,13 +12,13 @@ import java.util.ResourceBundle;
  */
 public abstract class TabGenerator implements Initializable{
 
-    @FXML protected View genericTab;
+    @FXML protected TabView genericTab;
     @FXML protected Button createButton;
     @FXML protected Button editButton;
     @FXML protected Button deleteButton;
     @FXML protected Button searchButton;
     @FXML protected TextField searchField;
-    @FXML protected TableView dataTable;
+    @FXML protected javafx.scene.control.TableView dataTable;
 
 
 

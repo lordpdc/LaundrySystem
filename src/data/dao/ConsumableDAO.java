@@ -7,7 +7,7 @@ import business.entities.Consumable;
  */
 public class ConsumableDAO extends GenericDAO<Consumable> {
     private static final String entityClassName = "business.entities.Consumable";
-    private static final String tableName = "consumable";
+    private static final String tableName = "consumabletable";
 
     public ConsumableDAO(){
         super(entityClassName,tableName);

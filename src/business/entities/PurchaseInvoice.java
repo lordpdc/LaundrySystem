@@ -1,22 +1,26 @@
 package business.entities;
 
 import business.utilities.DefaultValues;
+import data.dao.DataField;
+
 import java.sql.Date;
 
 /**
  * Created by raoman on 01/10/2016.
  */
-public class PurchaseInvoice {
-    private int id;
-    private int idSupplier;
-    private Date date;
-    private double totalPrice;
+public class PurchaseInvoice{
+    @DataField private int idSupplier;
+    @DataField private int id;
+    @DataField private Date date;
+    @DataField private double totalPrice;
+
+    private String supplierName;
 
     public PurchaseInvoice(){
         this.id = DefaultValues.INTEGER;
-        this.idSupplier = DefaultValues.INTEGER;
         this.date = DefaultValues.DATE;
         this.totalPrice = DefaultValues.DOUBLE;
+        this.idSupplier = DefaultValues.INTEGER;
     }
     
     public PurchaseInvoice(Date date, double totalPrice){
@@ -30,14 +34,10 @@ public class PurchaseInvoice {
         this.date = date;
         this.totalPrice = totalPrice;
     }
-    
-    
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
+    public PurchaseInvoice(int idSupplier, double totalPrice) {
+        this.idSupplier = idSupplier;
+        this.totalPrice = totalPrice;
     }
 
     public int getIdSupplier() {
@@ -48,11 +48,19 @@ public class PurchaseInvoice {
         this.idSupplier = idSupplier;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId( int id) {
+        this.id = id;
+    }
+
     public Date getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate( Date date) {
         this.date = date;
     }
 
@@ -60,8 +68,12 @@ public class PurchaseInvoice {
         return totalPrice;
     }
 
-    public void setTotalPrice(double totalPrice) {
+    public void setTotalPrice( double totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public String getSupplierName(){
+        return supplierName;
     }
 
 }

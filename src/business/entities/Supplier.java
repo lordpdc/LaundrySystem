@@ -6,18 +6,19 @@
 package business.entities;
 
 import business.utilities.DefaultValues;
+import data.dao.DataField;
 
 /**
  *
  * @author Luis
  */
 public class Supplier {
-    protected int id;
-    protected String name;
-    protected String address;
-    protected String telephone;
-    protected String email;
-    
+    @DataField protected int id;
+    @DataField protected String name;
+    @DataField protected String address;
+    @DataField protected String telephone;
+    @DataField protected String email;
+
     public Supplier(){
         this.id= DefaultValues.INTEGER;
         this.name= DefaultValues.STRING;
@@ -105,7 +106,7 @@ public class Supplier {
     }
 
     /**
-     * @param email the mail to set
+     * @param email the email to set
      */
     public void setEmail(String email) {
         this.email = email;

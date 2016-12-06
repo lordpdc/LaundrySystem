@@ -1,8 +1,6 @@
 package business.administrator;
 
-import business.entities.PurchaseDetails;
-import business.entities.PurchaseInvoice;
-import business.administrator.DataAdministrator;
+import business.entities.*;
 import data.dao.*;
 
 import java.util.ArrayList;
@@ -12,39 +10,27 @@ import java.util.List;
  * Created by raoman on 16/11/2016.
  */
 
-public class PurchaseInvoiceAdministrator extends DataAdministrator<PurchaseInvoice> {
-    private List listDetailPurchase;
-
-    public List getListDetailPurchase( ) {
-        return listDetailPurchase;
-    }
-
-    public void setListDetailPurchase( List listDetailPurchase ) {
-        this.listDetailPurchase = listDetailPurchase;
-    }
+public class PurchaseInvoiceAdministrator extends DataAdministrator<PurchaseInvoice > {
 
     public PurchaseInvoiceAdministrator( ) {
         this.setAccessData(new PurchaseInvoiceDAO());
     }
 
-
-    public List<PurchaseDetails> getDetailPurchase( PurchaseInvoice invoice){
-        List<PurchaseDetails> detailsList;
-        PurchaseDetailDAO accesDetails=new PurchaseDetailDAO(  );
-
-        detailsList=accesDetails.readAll();
-
-        return filterDetailsList( invoice.getId(),detailsList );
-
-
+    public List<PurchaseDetail> getPurchaseDetails(int idInvoice){
+        List<PurchaseDetail> detailsList;
+        PurchaseDetailsAdministrator accesDetails=new PurchaseDetailsAdministrator(  );
+        detailsList=accesDetails.getAllData();
+        return filterAllDetailsList( idInvoice,detailsList );
     }
-    private List<PurchaseDetails> filterDetailsList(int idInvoice,List<PurchaseDetails> detailsList){
-        List<PurchaseDetails> detailsListFilter=new ArrayList<>(  );
-        for( PurchaseDetails detail: detailsList ) {
-            if(detail.getIdPurchaseInvoice()==idInvoice){
-                detailsListFilter.add( detail );
+
+    private List<PurchaseDetail> filterAllDetailsList( int idInvoice, List<PurchaseDetail> allDetails){
+        List<PurchaseDetail> detailsListFiltered=new ArrayList<>(  );
+        for( PurchaseDetail detail: allDetails ) {
+            if(detail.getIdInvoicePurchase()==idInvoice){
+                detailsListFiltered.add( detail );
             }
         }
-        return detailsListFilter;
+        return detailsListFiltered;
     }
+
 }

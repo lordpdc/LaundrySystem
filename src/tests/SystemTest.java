@@ -1,9 +1,6 @@
 package tests;
 
-import presentation.gui.WindowManager;
-
-
-import presentation.gui.WindowManager;
+import presentation.gui.elements.WindowManager;
 
 public class SystemTest {
 

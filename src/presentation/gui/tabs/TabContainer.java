@@ -5,8 +5,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
-import presentation.gui.InventoryView;
-import presentation.inventory.Inventory;
+import javafx.scene.control.TableView;
+import presentation.inventory.InventoryView;
+import presentation.inventory.SuppliersView;
+import presentation.inventory.PurchaseInvoiceView;
+import presentation.sales.CustomerView;
+import presentation.sales.SaleInvoiceView;
+import presentation.sales.ServiceView;
 
 import java.io.IOException;
 
@@ -21,7 +26,7 @@ public class TabContainer {
     public TabContainer(){
         FXMLLoader loader = new FXMLLoader();
         try {
-            Parent root = loader.load(getClass().getResource("TabContainer.fxml").openStream());
+            Parent root = loader.load(getClass().getResourceAsStream("TabContainer.fxml"));
             MainContanier = new Scene(root);
             this.addTabs();
         } catch (IOException e) {
@@ -36,19 +41,22 @@ public class TabContainer {
     private void addTabs(){
         tabPane = (TabPane) MainContanier.lookup("#tabContainer");
 
-        View view1 = new InventoryView();
 
-        tabPane.getTabs().add(view1.getTab());
+        TabView suppliersTab = new SuppliersView();
+        tabPane.getTabs().add(suppliersTab.tab);
+        TabView inventoryTab = new InventoryView();
+        tabPane.getTabs().add(inventoryTab.tab);
+        TabView purchaseInvoiceTab = new PurchaseInvoiceView();
+        tabPane.getTabs().add(purchaseInvoiceTab.tab);
+
+        TabView customerTab = new CustomerView();
+        tabPane.getTabs().add(customerTab.tab);
+        TabView serviceTab = new ServiceView();
+        tabPane.getTabs().add(serviceTab.tab);
+        TabView saleInvoiceTab = new SaleInvoiceView();
+        tabPane.getTabs().add(saleInvoiceTab.tab);
+
+
     }
 
-    private Tab generateEmptyTab(){
-        Tab newTab = null;
-        try {
-            newTab = (Tab) new FXMLLoader().load(getClass().getResource("TabDesign.fxml").openStream());
-            //tabPane.getTabs().add(newTab);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return newTab;
-    }
 }

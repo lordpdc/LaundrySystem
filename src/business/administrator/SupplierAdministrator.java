@@ -12,4 +12,8 @@ public class SupplierAdministrator extends DataAdministrator<Supplier>{
         this.setAccessData(new SupplierDAO());
     }
 
+    public void addNew(String name, String address, String phone, String email){
+        super.addNew(new Supplier(name,address,phone,email));
+    }
+
 }

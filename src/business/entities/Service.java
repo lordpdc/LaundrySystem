@@ -6,16 +6,17 @@
 package business.entities;
 
 import business.utilities.DefaultValues;
+import data.dao.DataField;
 
 /**
  *
  * @author Luis
  */
 public class Service {
-    protected int id;
-    protected String name;
-    protected String description;
-    protected double unitariPrice;
+    @DataField protected int id;
+    @DataField protected String name;
+    @DataField protected String description;
+    @DataField protected double unitariPrice;
     
     public Service(){
         this.id = DefaultValues.INTEGER;

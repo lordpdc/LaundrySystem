@@ -12,4 +12,6 @@ public class ConsumableAdministrator extends DataAdministrator<Consumable> {
         this.setAccessData(new ConsumableDAO());
     }
 
+
+
 }
