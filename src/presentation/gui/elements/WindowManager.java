@@ -20,7 +20,7 @@ public class WindowManager {
     }
 
     public void showInventory( ) {
-        inventory = new JFrame( "Inventario" );
+        inventory = new JFrame("Lavandería H. Express");
 
         final JFXPanel fxPanel = new JFXPanel( );
         inventory.add( fxPanel );
