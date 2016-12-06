@@ -130,7 +130,6 @@ public class SaleInvoiceCtrl extends SecondaryWindow<PurchaseInvoiceView> implem
         return new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println(consumableSelect.getText()+", "+priceInput.getText()+", "+quantityInput.getText());
                 PurchaseDetail pdobj = new PurchaseDetail(new Double(priceInput.getText()),new Double(quantityInput.getText()));
                 pdobj.setConsumableName(consumableSelect.getText());
                 pdobj.setIdConsumable(parseInt(consumableSelect.getId()));
@@ -144,8 +143,6 @@ public class SaleInvoiceCtrl extends SecondaryWindow<PurchaseInvoiceView> implem
         return new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Ima save....");
-
                 if(dateSelect.getValue()!=null){
                     invoice.setDate(Date.valueOf(dateSelect.getValue()));
                 }
