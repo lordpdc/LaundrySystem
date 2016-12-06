@@ -49,11 +49,11 @@ public class Period {
     }
 
     private boolean isValidInitialDate( Date date ) {
-        return date != null && date.before( finalDate );
+        return date.compareTo( finalDate )<=0;
     }
 
     private boolean isValidFinalDate( Date date ) {
-        return date != null && date.after( initialDate );
+        return date.compareTo( initialDate )>=0;
     }
 
     public boolean isDateIntoPeriod( Date date ) {

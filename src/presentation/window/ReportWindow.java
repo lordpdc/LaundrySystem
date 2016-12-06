@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.layout.Pane;
 import presentation.inventory.SuppliersView;
+import presentation.utilities.StringValuesMessage;
 
 import javax.swing.*;
 import java.awt.*;
@@ -38,13 +39,13 @@ public class ReportWindow implements Initializable {
 
     @Override
     public void initialize( URL location, ResourceBundle resources ) {
-        period=new Period();
-        setCustomValues();
+        period = new Period( );
+        setCustomValues( );
         finalDatePicker.setOnAction( ( new EventHandler< ActionEvent >( ) {
             @Override
             public void handle( ActionEvent event ) {
-                LocalDate maxInitialDateAvailable=finalDatePicker.getValue();
-                if(initialDatePicker.getValue().isAfter( maxInitialDateAvailable )) {
+                LocalDate maxInitialDateAvailable = finalDatePicker.getValue( );
+                if( initialDatePicker.getValue( ).isAfter( maxInitialDateAvailable ) ) {
                     initialDatePicker.setValue( maxInitialDateAvailable );
                 }
             }
@@ -52,26 +53,25 @@ public class ReportWindow implements Initializable {
         initialDatePicker.setOnAction( ( new EventHandler< ActionEvent >( ) {
             @Override
             public void handle( ActionEvent event ) {
-                LocalDate minFinalDateAvailable=initialDatePicker.getValue();
-                if(finalDatePicker.getValue().isBefore( minFinalDateAvailable )) {
+                LocalDate minFinalDateAvailable = initialDatePicker.getValue( );
+                if( finalDatePicker.getValue( ).isBefore( minFinalDateAvailable ) ) {
                     finalDatePicker.setValue( minFinalDateAvailable );
                 }
             }
         } ) );
 
-
         createReportButton.setOnAction( ( new EventHandler< ActionEvent >( ) {
             @Override
             public void handle( ActionEvent event ) {
                 try {
-                    period.setInitialDate( initialDatePicker.getValue() );
-                    period.setFinalDate( finalDatePicker.getValue() );
-                    Accountant accountant=new Accountant( );
+                    period.setInitialDate( initialDatePicker.getValue( ) );
+                    period.setFinalDate( finalDatePicker.getValue( ) );
+                    Accountant accountant = new Accountant( );
                     accountant.setPeriodForReport( period );
-                    BuilderFileReport builderFile=BuilderFileReport.callBuilder();
-                    builderFile.setReport(accountant.makeGeneralBalance());
-                   /* Desktop.getDesktop().open(builderFile.getFileReport());*/
-
+                    BuilderFileReport builderFile = BuilderFileReport.callBuilder( );
+                    builderFile.setReport( accountant.makeGeneralBalance( ) );
+                    showNotification( StringValuesMessage.OPEN_FILE );
+                    Desktop.getDesktop( ).open( builderFile.getFileReport( ) );
 
                 }catch( Exception e ) {
                     e.printStackTrace( );
@@ -87,12 +87,16 @@ public class ReportWindow implements Initializable {
             }
         } ) );
 
-
     }
 
-    private void setCustomValues(){
-        LocalDate maxInitialDateAvailable=LocalDate.now();
-        LocalDate maxFinalDateAvailable=LocalDate.now();
+    private void showNotification( String msgNotification ) {
+        JOptionPane.showMessageDialog( null, msgNotification,
+                StringValuesMessage.informationTitle, JOptionPane.INFORMATION_MESSAGE );
+    }
+
+    private void setCustomValues( ) {
+        LocalDate maxInitialDateAvailable = LocalDate.now( );
+        LocalDate maxFinalDateAvailable = LocalDate.now( );
         initialDatePicker.setValue( maxInitialDateAvailable );
         finalDatePicker.setValue( maxFinalDateAvailable );
 

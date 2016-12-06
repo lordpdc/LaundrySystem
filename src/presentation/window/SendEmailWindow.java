@@ -1,6 +1,7 @@
 package presentation.window;
 
 import business.Email.EmailSenderService;
+import business.utilities.DefaultValues;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -50,10 +51,11 @@ public class SendEmailWindow implements Initializable {
             try {
                 EmailSenderService sender=new EmailSenderService();
                 sender.sendEmail( addressee,subject,msg );
+                showNotification( StringValuesMessage.MSG_SENDED );
+                prepareForNexEmail();
             }
             catch( Exception e ){
-                JOptionPane.showMessageDialog(null, StringValuesMessage.MSG_NO_SEND,
-                        StringValuesMessage.informationTitle,JOptionPane.INFORMATION_MESSAGE);
+                showNotification( StringValuesMessage.MSG_NO_SENDED );
             }
 
         }
@@ -61,5 +63,17 @@ public class SendEmailWindow implements Initializable {
             JOptionPane.showMessageDialog(null, StringValuesMessage.MSG_INCOMPLETE,
                     StringValuesMessage.informationTitle,JOptionPane.INFORMATION_MESSAGE);
         }
+    }
+    private void prepareForNexEmail(){
+        cleanField();
+    }
+    private void cleanField(){
+        addresseeField.setText( DefaultValues.STRING);
+        subjectField.setText( DefaultValues.STRING);
+        msgTextArea.setText( DefaultValues.STRING);
+    }
+    private void showNotification(String msgNotification){
+        JOptionPane.showMessageDialog(null,msgNotification,
+                StringValuesMessage.informationTitle,JOptionPane.INFORMATION_MESSAGE);
     }
 }

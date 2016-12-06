@@ -22,6 +22,7 @@ import static business.Email.EmailDefaultValues.*;
              try{
                Message msgCreated=createMessage( addressee,subject,message );
                Transport.send( msgCreated );
+
 ;
             }catch (Exception me){
                 new Exception( MSG_ERROR);

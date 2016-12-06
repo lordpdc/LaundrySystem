@@ -16,8 +16,8 @@ public class StringValuesMessage {
     public static final String missingSearchFieldMessage = "No a introducido nada para buscar.";
     public static final String deletedMessage = "Elemento eliminado";
     public static final String notSelectingMessage ="Debe seleccionar un elemento";
-
     public static final String MSG_INCOMPLETE = "por favor rellene todoslos campos";
-
-    public static final String MSG_NO_SEND ="Mensaje no enviado, intentelo mas tarde" ;
+    public static final String MSG_NO_SENDED ="Mensaje no enviado, intentelo mas tarde" ;
+    public static final String MSG_SENDED ="Mensaje Enviado" ;
+    public static final String OPEN_FILE="Abriendo Documento por favor espere";
 }
