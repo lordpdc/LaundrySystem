@@ -32,7 +32,6 @@ public class TabContainer {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public Scene getScene(){
@@ -42,20 +41,20 @@ public class TabContainer {
     private void addTabs(){
         tabPane = (TabPane) MainContanier.lookup("#tabContainer");
 
-        TabView saleInvoiceTab = new SaleInvoiceView();
-        tabPane.getTabs().add(saleInvoiceTab.tab);
-        TabView customerTab = new CustomerView();
-        tabPane.getTabs().add(customerTab.tab);
-        TabView serviceTab = new ServiceView();
-        tabPane.getTabs().add(serviceTab.tab);
 
-        TabView purchaseInvoiceTab = new PurchaseInvoiceView();
-        tabPane.getTabs().add(purchaseInvoiceTab.tab);
         TabView suppliersTab = new SuppliersView();
         tabPane.getTabs().add(suppliersTab.tab);
         TabView inventoryTab = new InventoryView();
         tabPane.getTabs().add(inventoryTab.tab);
+        TabView purchaseInvoiceTab = new PurchaseInvoiceView();
+        tabPane.getTabs().add(purchaseInvoiceTab.tab);
 
+        TabView customerTab = new CustomerView();
+        tabPane.getTabs().add(customerTab.tab);
+        TabView serviceTab = new ServiceView();
+        tabPane.getTabs().add(serviceTab.tab);
+        TabView saleInvoiceTab = new SaleInvoiceView();
+        tabPane.getTabs().add(saleInvoiceTab.tab);
 
 
     }
