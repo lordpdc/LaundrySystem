@@ -70,7 +70,7 @@ public class ReportWindow implements Initializable {
                     accountant.setPeriodForReport( period );
                     BuilderFileReport builderFile=BuilderFileReport.callBuilder();
                     builderFile.setReport(accountant.makeGeneralBalance());
-                   /* Desktop.getDesktop().open(builderFile.getFileReport());*/
+                   Desktop.getDesktop().open(builderFile.getFileReport());
 
 
                 }catch( Exception e ) {
